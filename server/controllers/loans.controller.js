@@ -4,4 +4,9 @@ const controllers = {
 
 }
 
+async function signUp(req, res) {
+  const result = '..'
+  res.send(result)
+}
+
 module.exports = controllers

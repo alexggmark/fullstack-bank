@@ -40,9 +40,11 @@ app.use(bodyParser.urlencoded({ extended: true }))
  * Setting up Routes
  */
 
-const testRouter = require('./server/routes/_testRoute')
+const _testRouter = require('./server/routes/_testRoute')
+const customerRouter = require('./server/routes/customer.routes')
 
-app.use('/api/', testRouter)
+app.use('/api/', _testRouter)
+app.use('/api/', customerRouter)
 
 /**
  * Running server
