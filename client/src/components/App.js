@@ -1,19 +1,18 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import Login from './Login'
-import Register from './Register'
+import LoginLanding from './LoginLanding'
+import LoggedinLanding from './LoggedinLanding'
 
-const App = () => {
+const App = (props) => {
   return (
     <div className="app">
-      <Login />
-      <Register />
+      {!props.loginSuccess ? <LoginLanding /> : <LoggedinLanding /> }
     </div>
   )
 }
 
-const mapStateToProps = ({ Login }) => {
-
-}
+const mapStateToProps = ({ CustomerReducer }) => ({
+  loginSuccess: CustomerReducer.userLoginSuccess,
+})
 
 export default connect(mapStateToProps)(App)

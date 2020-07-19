@@ -24,8 +24,9 @@ async function loginUser(req, res) {
     const user = await CustomerSchema.findByCredentials(username, password)
 
     if (!user) {
-      res.end()
-      return
+      return res.status(400).json({
+        message: 'Unsuccessful login'
+      })
     }
 
     const token = await user.generateAuthToken()

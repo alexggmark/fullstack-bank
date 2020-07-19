@@ -7,24 +7,34 @@ export const customerServices = {
   createUser,
 }
 
-function login (credentials) {
+function handleResponse(res) {
+  if (!res.ok) {
+    if (res.status === 400) {
+      return Promise.reject('Invalid login')
+    }
+  }
+  return res.json()
+}
+
+function login(credentials) {
   const request = {
     method: 'POST',
     headers: {
-      'Accept': 'application/json',
       'Content-Type': 'application/json'
     },
     body: JSON.stringify(credentials)
   }
 
   return fetch(`${API_URL}/api/loginUser`, request)
+    .then(handleResponse)
     .then((res) => {
-      return res
+      console.log(res)
+      localStorage.setItem('user', JSON.stringify({ token: res.token }))
+      return res.user
     })
-    .catch(err => console.error(err))
 }
 
-function createUser (credentials) {
+function createUser(credentials) {
   const request = {
     method: 'POST',
     headers: {
@@ -38,4 +48,8 @@ function createUser (credentials) {
     .then((res) => {
       return res
     })
+}
+
+function logout() {
+  console.log('Logout')
 }

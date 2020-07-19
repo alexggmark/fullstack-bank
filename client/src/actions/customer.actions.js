@@ -14,26 +14,24 @@ function login (credentials) {
   if (!credentials) { return }
 
   return (dispatch) => {
-    dispatch(request())
-    customerServices.login(credentials).then(
-      (res) => {
-        dispatch(response())
-        console.log(res)
+    dispatch(load())
+    customerServices.login(credentials)
+      .then(() => {
+        dispatch(success())
       })
       .catch((err) => {
-        dispatch(fail())
         console.error(err)
-      }
-    )
+        dispatch(fail())
+      })
   }
 
-  function response() {
+  function success() {
     return { type: LOGIN_USER_SUCCESS }
   }
-  function request() {
+  function load() {
     return { type: LOGIN_USER_LOADING }
   }
   function fail() {
-    return { typee: LOGIN_USER_FAIL }
+    return { type: LOGIN_USER_FAIL }
   }
 }
