@@ -1,12 +1,18 @@
 const express = require('express')
 const router = express.Router()
-// const middlewareCurrent = require('../middleware/_testMiddleware')
 const controllerCurrent = require('../controllers/controller.current')
+const { route } = require('./customer.routes')
 
 router.get(
-  '/test',
-  testMiddleWare,
-  testController.first
+  '/getCurrentAccountsUser'
+)
+
+router.post(
+  '/createNewCurrentAccount'
+)
+
+router.delete(
+  '/deleteCurrentAccount'
 )
 
 module.exports = router

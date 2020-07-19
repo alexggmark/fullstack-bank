@@ -1,11 +1,12 @@
-import { combineReducers } from "redux"
+import { combineReducers } from 'redux'
+import CustomerReducer from './customer.reducers'
 
 const combination = combineReducers({
-
+  CustomerReducer,
 })
 
 const rootReducer = (state, action) => {
-  if (action.typee === 'LOGOUT') {
+  if (action.type === 'LOGOUT') {
     state = undefined
   }
 

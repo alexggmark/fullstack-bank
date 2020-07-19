@@ -4,12 +4,12 @@ const auth = require('../middleware/auth')
 const customerControllers = require('../controllers/customer.controller')
 
 router.post(
-  '/auth/createUser',
+  '/createUser',
   customerControllers.createUser
 )
 
 router.post(
-  '/auth/loginUser',
+  '/loginUser',
   customerControllers.loginUser
 )
 
@@ -17,6 +17,12 @@ router.get(
   '/auth/getUsers',
   auth,
   customerControllers.getUsers
+)
+
+router.post(
+  '/auth/addToMoneyStore',
+  auth,
+  customerControllers.addStore
 )
 
 module.exports = router

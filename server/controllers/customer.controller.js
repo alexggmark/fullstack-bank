@@ -3,7 +3,8 @@ const CustomerSchema = require('../models/customer.model')
 const controllers = {
   createUser,
   loginUser,
-  getUsers
+  getUsers,
+  addStore
 }
 
 async function createUser(req, res) {
@@ -28,6 +29,7 @@ async function loginUser(req, res) {
     }
 
     const token = await user.generateAuthToken()
+    console.log(`Success: ${username} - ${password}`)
     res.send({ user, token })
   } catch (err) {
     console.error(err)
@@ -41,6 +43,10 @@ async function getUsers(req, res) {
   } catch (err) {
     console.error(err)
   }
+}
+
+async function addStore(req, res) {
+  // ADD TO MONEY STORE
 }
 
 module.exports = controllers
