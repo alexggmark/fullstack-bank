@@ -5,6 +5,8 @@ async function auth(req, res, next) {
   const token = req.headers['authorization'].replace('Bearer ', '')
   const data = jwt.verify(token, process.env.JWT_KEY)
 
+  console.log(token)
+
   try {
     const user = await CustomerSchema.findOne({ _id: data._id, 'tokens.token': token})
     if (!user) {

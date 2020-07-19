@@ -1,11 +1,20 @@
 import React from 'react'
 import { BrowserRouter, Route, Link, Switch } from 'react-router-dom'
-import { connect } from 'react-redux'
+import { useDispatch, connect } from 'react-redux'
+// import { customerActions } from '../actions/customer.actions'
+// FIXME:
+import { customerServices } from '../_services/customer.services'
+// FIXME:
 import '../styles/loggedin.scss'
 
 const Loggedin = () => {
+  const dispatch = useDispatch()
+
   const getUserData = () => {
-    console.log('Test')
+    customerServices.getUserData()
+      .then((res) => {
+        console.log(res)
+      })
   }
 
   return (

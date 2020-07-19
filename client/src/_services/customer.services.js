@@ -6,6 +6,7 @@ import userAuthHeader from '../_helpers/userAuthHeader'
 export const customerServices = {
   login,
   createUser,
+  getUserData
 }
 
 function handleResponse(res) {
@@ -34,17 +35,16 @@ function login(credentials) {
     })
 }
 
-function getUserData(userId) {
+function getUserData() {
   const request = {
     method: 'GET',
     headers: {
       'Content-Type': 'application/json',
       Authorization: userAuthHeader
-    },
-    body: userId
+    }
   }
 
-  return fetch(`${API_URL}/api/getUserData`, request)
+  return fetch(`${API_URL}/api/auth/getUserData`, request)
       .then(handleResponse)
       .then((res) => {
         console.log('GETTING RES')

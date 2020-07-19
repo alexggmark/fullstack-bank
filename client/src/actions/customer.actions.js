@@ -9,6 +9,7 @@ import {
 
 export const customerActions = {
   loginAction,
+  getUserData
 }
 
 function loginAction(credentials) {
@@ -38,8 +39,13 @@ function loginAction(credentials) {
 }
 
 function getUserData() {
-
-  console.log('test')
+  customerServices.getUserData()
+    .then((res) => {
+      console.log(res)
+    })
+    .catch((err) => {
+      console.error(err)
+    })
 }
 
 function logoutAction() {
