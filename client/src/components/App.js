@@ -1,12 +1,12 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import LoginLanding from './LoginLanding'
-import LoggedinLanding from './LoggedinLanding'
+import Loggedin from './Loggedin'
 
 const App = (props) => {
   return (
     <div className="app">
-      {!props.loginSuccess ? <LoginLanding /> : <LoggedinLanding /> }
+      {!props.loginSuccess ? <LoginLanding /> : <Loggedin /> }
     </div>
   )
 }

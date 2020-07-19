@@ -25,7 +25,7 @@ const Login = (props) => {
     if (!username || !password) { return }
     const credentials = { username, password }
     // customerServices.login(credentials)
-    dispatch(customerActions.login(credentials))
+    dispatch(customerActions.loginAction(credentials))
   }
 
   return (

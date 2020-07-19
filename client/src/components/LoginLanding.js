@@ -1,10 +1,14 @@
 import React from 'react'
 import { connect } from 'react-redux'
+import Login from './Login'
+import Register from './Register'
+import '../styles/loginlanding.scss'
 
 const LoginLanding = () => {
   return (
     <div>
-      LOGIN SPLASH
+      <Login />
+      <Register />
     </div>
   )
 }

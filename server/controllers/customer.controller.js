@@ -3,7 +3,7 @@ const CustomerSchema = require('../models/customer.model')
 const controllers = {
   createUser,
   loginUser,
-  getUsers,
+  getUserData,
   addStore
 }
 
@@ -37,7 +37,7 @@ async function loginUser(req, res) {
   }
 }
 
-async function getUsers(req, res) {
+async function getUserData(req, res) {
   try {
     const user = await CustomerSchema.find().exec()
     res.send(user)

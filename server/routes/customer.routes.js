@@ -14,9 +14,9 @@ router.post(
 )
 
 router.get(
-  '/auth/getUsers',
+  '/auth/getUserData',
   auth,
-  customerControllers.getUsers
+  customerControllers.getUserData
 )
 
 router.post(

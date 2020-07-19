@@ -2,12 +2,13 @@ import {
   LOGIN_USER_LOADING,
   LOGIN_USER_SUCCESS,
   LOGIN_USER_FAIL,
+  LOGOUT_USER
 } from '../_constants/customer.constants'
 import userAuthHeader from '../_helpers/userAuthHeader'
 
 const initialState = {
   userLoginLoading: false,
-  userLoginSuccess: userAuthHeader() ? true : false,
+  userLoginSuccess: userAuthHeader ? true : false,
   userLoginFailure: false,
   userName: null
 }
@@ -32,6 +33,10 @@ export default (state = initialState, action) => {
         ...state,
         userLoginLoading: false,
         userLoginFailure: true
+      }
+    case LOGOUT_USER:
+      return {
+        ...initialState
       }
     default:
       return state

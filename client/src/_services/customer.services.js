@@ -1,6 +1,7 @@
 import {
   API_URL
 } from '../_constants/api.constants'
+import userAuthHeader from '../_helpers/userAuthHeader'
 
 export const customerServices = {
   login,
@@ -28,10 +29,27 @@ function login(credentials) {
   return fetch(`${API_URL}/api/loginUser`, request)
     .then(handleResponse)
     .then((res) => {
-      console.log(res)
       localStorage.setItem('user', JSON.stringify({ token: res.token }))
       return res.user
     })
+}
+
+function getUserData(userId) {
+  const request = {
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json',
+      Authorization: userAuthHeader
+    },
+    body: userId
+  }
+
+  return fetch(`${API_URL}/api/getUserData`, request)
+      .then(handleResponse)
+      .then((res) => {
+        console.log('GETTING RES')
+        console.log(res)
+      })
 }
 
 function createUser(credentials) {
