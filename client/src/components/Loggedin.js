@@ -1,25 +1,10 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { BrowserRouter, Route, Link, Switch } from 'react-router-dom'
-import { useDispatch, connect } from 'react-redux'
+import { connect } from 'react-redux'
 import CreateCurrent from './CreateCurrent'
-// import { customerActions } from '../actions/customer.actions'
-// FIXME:
-import customerServices from '../_services/customer.services'
-// FIXME:
 import '../styles/loggedin.scss'
 
-const Loggedin = () => {
-  const [ user, setUser ] = useState()
-  const dispatch = useDispatch()
-
-  const getUserData = () => {
-    customerServices.getUserData()
-      .then((res) => {
-        console.log(res)
-        setUser(res.firstName)
-      })
-  }
-
+const Loggedin = (props) => {
   return (
     <div className="loggedin">
       <div className="loggedin__nav">
@@ -34,9 +19,19 @@ const Loggedin = () => {
       </div>
       <div className="loggedin__main">
         <div className="loggedin__main-container">
-          <button onClick={() => getUserData()}>Click for user</button>
+          <div className="test">
+            <h1>User data in store</h1>
+            <ul>
+              <li>activeCurrentAccount: {props.activeCurrentAccount ? 'true' : 'false'}</li>
+              <li>activeSavingsAccount: {props.activeSavingsAccount ? 'true' : 'false'}</li>
+              <li>createdAt: {props.createdAt}</li>
+              <li>firstName: {props.firstName}</li>
+              <li>lastName: {props.lastName}</li>
+              <li>moneyStore: {props.moneyStore}</li>
+              <li>username: {props.username}</li>
+            </ul>
+          </div>
           <CreateCurrent />
-          <h1>YOU ARE {user}!</h1>
           <BrowserRouter>
             <Switch>
               <Route path="/">
@@ -51,7 +46,15 @@ const Loggedin = () => {
 }
 
 const mapStateToProps = (state) => ({
-
+  // User props
+  activeCurrentAccount: state.CustomerReducer.activeCurrentAccount,
+  activeSavingsAccount: state.CustomerReducer.activeSavingsAccount,
+  createdAt: state.CustomerReducer.createdAt,
+  firstName: state.CustomerReducer.firstName,
+  lastName: state.CustomerReducer.lastName,
+  moneyStore: state.CustomerReducer.moneyStore,
+  username: state.CustomerReducer.username,
+  // User props
 })
 
 export default connect(mapStateToProps)(Loggedin)

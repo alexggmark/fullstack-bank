@@ -9,7 +9,23 @@ import {
 
 const customerActions = {
   loginAction,
-  getUserData
+  populateUserData
+}
+
+function populateUserData() {
+  return (dispatch) => {
+    customerServices.getUserData()
+      .then((res) => {
+        dispatch({
+          type: POPULATE_USER_DATA,
+          payload: res
+        })
+      })
+      .catch((err) => {
+        console.error(err)
+      })
+  }
+
 }
 
 function loginAction(credentials) {
@@ -36,16 +52,6 @@ function loginAction(credentials) {
   function fail() {
     return { type: LOGIN_USER_FAILURE }
   }
-}
-
-function getUserData() {
-  customerServices.getUserData()
-    .then((res) => {
-      console.log(res)
-    })
-    .catch((err) => {
-      console.error(err)
-    })
 }
 
 function logoutAction() {

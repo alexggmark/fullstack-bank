@@ -46,8 +46,25 @@ export default (state = initialState, action) => {
         ...initialState
       }
     case POPULATE_USER_DATA:
+      console.log('POPULATE_USER_DATA')
+      console.log(action.payload)
+      const {
+        activeCurrentAccount,
+        activeSavingsAccount,
+        createdAt,
+        firstName,
+        lastName,
+        moneyStore,
+        username } = action.payload
       return {
-        ...state
+        ...state,
+        activeCurrentAccount,
+        activeSavingsAccount,
+        createdAt,
+        firstName,
+        lastName,
+        moneyStore,
+        username
       }
     default:
       return state
