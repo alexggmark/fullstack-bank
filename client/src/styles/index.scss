@@ -1,3 +1,19 @@
+.test {
+  border: 2px solid pink;
+  background-color: #eeeeee;
+
+  h1 {
+    color: royalblue;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-size: 20px;
+    font-weight: bold;
+    margin: 0.5rem 0 1rem;
+    text-decoration: underline;
+    text-decoration-style: dotted;
+    text-decoration-color: red;
+  }
+}
+
 /* http://meyerweb.com/eric/tools/css/reset/
    v2.0 | 20110126
    License: none (public domain)

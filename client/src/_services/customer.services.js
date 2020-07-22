@@ -3,7 +3,7 @@ import {
 } from '../_constants/api.constants'
 import userAuthHeader from '../_helpers/userAuthHeader'
 
-export const customerServices = {
+const customerServices = {
   login,
   createUser,
   getUserData
@@ -40,15 +40,14 @@ function getUserData() {
     method: 'GET',
     headers: {
       'Content-Type': 'application/json',
-      Authorization: userAuthHeader
+      Authorization: userAuthHeader.token
     }
   }
 
   return fetch(`${API_URL}/api/auth/getUserData`, request)
       .then(handleResponse)
       .then((res) => {
-        console.log('GETTING RES')
-        console.log(res)
+        return res
       })
 }
 
@@ -71,3 +70,5 @@ function createUser(credentials) {
 function logout() {
   console.log('Logout')
 }
+
+export default customerServices

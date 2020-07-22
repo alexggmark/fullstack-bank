@@ -1,14 +1,16 @@
 const express = require('express')
 const router = express.Router()
-const controllerCurrent = require('../controllers/controller.current')
-const { route } = require('./customer.routes')
+const controllerCurrent = require('../controllers/current.controller')
+const auth = require('../middleware/auth')
 
 router.get(
   '/getCurrentAccountsUser'
 )
 
 router.post(
-  '/createNewCurrentAccount'
+  '/createNewCurrentAccount',
+  auth,
+  controllerCurrent.createCurrentAccount
 )
 
 router.delete(

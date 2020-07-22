@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { useDispatch, connect } from 'react-redux'
-import { customerActions } from '../actions/customer.actions'
+import customerActions from '../actions/customer.actions'
 
 const Login = (props) => {
   const [ username, setUsername ] = useState(null)
@@ -42,10 +42,10 @@ const Login = (props) => {
   )
 }
 
-const mapStateToProps = ({ CustomerReducer }) => ({
-  loginLoading: CustomerReducer.userLoginLoading,
-  loginSuccess: CustomerReducer.userLoginSuccess,
-  loginFailure: CustomerReducer.userLoginFailure
+const mapStateToProps = (state) => ({
+  loginLoading: state.CustomerReducer.userLoginLoading,
+  loginSuccess: state.CustomerReducer.userLoginSuccess,
+  loginFailure: state.CustomerReducer.userLoginFailure
 })
 
 export default connect(mapStateToProps)(Login)

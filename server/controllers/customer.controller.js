@@ -37,13 +37,8 @@ async function loginUser(req, res) {
   }
 }
 
-async function getUserData(req, res) {
-  try {
-    const user = await CustomerSchema.find().exec()
-    res.send(user)
-  } catch (err) {
-    console.error(err)
-  }
+function getUserData(req, res) {
+  res.send(req.user)
 }
 
 async function addStore(req, res) {

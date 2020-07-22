@@ -1,8 +1,10 @@
 import { combineReducers } from 'redux'
 import CustomerReducer from './customer.reducers'
+import CurrentReducer from './current.reducers'
 
 const combination = combineReducers({
   CustomerReducer,
+  CurrentReducer,
 })
 
 const rootReducer = (state, action) => {

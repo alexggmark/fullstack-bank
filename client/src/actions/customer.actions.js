@@ -1,13 +1,12 @@
-import { customerServices } from '../_services/customer.services'
+import customerServices from '../_services/customer.services'
 import {
   LOGIN_USER_LOADING,
   LOGIN_USER_SUCCESS,
   LOGIN_USER_FAIL,
-  LOGOUT_USER,
-  GET_USER_DATA
+  LOGOUT_USER
 } from '../_constants/customer.constants'
 
-export const customerActions = {
+const customerActions = {
   loginAction,
   getUserData
 }
@@ -55,3 +54,5 @@ function logoutAction() {
     return { type: LOGOUT_USER }
   }
 }
+
+export default customerActions

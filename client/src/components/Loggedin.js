@@ -1,19 +1,22 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { BrowserRouter, Route, Link, Switch } from 'react-router-dom'
 import { useDispatch, connect } from 'react-redux'
+import CreateCurrent from './CreateCurrent'
 // import { customerActions } from '../actions/customer.actions'
 // FIXME:
-import { customerServices } from '../_services/customer.services'
+import customerServices from '../_services/customer.services'
 // FIXME:
 import '../styles/loggedin.scss'
 
 const Loggedin = () => {
+  const [ user, setUser ] = useState()
   const dispatch = useDispatch()
 
   const getUserData = () => {
     customerServices.getUserData()
       .then((res) => {
         console.log(res)
+        setUser(res.firstName)
       })
   }
 
@@ -32,6 +35,8 @@ const Loggedin = () => {
       <div className="loggedin__main">
         <div className="loggedin__main-container">
           <button onClick={() => getUserData()}>Click for user</button>
+          <CreateCurrent />
+          <h1>YOU ARE {user}!</h1>
           <BrowserRouter>
             <Switch>
               <Route path="/">
