@@ -8,6 +8,7 @@ const initialState = {
   createCurrentLoading: false,
   createCurrentSuccess: false,
   createCurrentFailure: false,
+  currentAccounts: {}
 }
 
 export default (state = initialState, action) => {

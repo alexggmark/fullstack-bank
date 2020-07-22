@@ -1,8 +1,9 @@
 import {
   LOGIN_USER_LOADING,
   LOGIN_USER_SUCCESS,
-  LOGIN_USER_FAIL,
-  LOGOUT_USER
+  LOGIN_USER_FAILURE,
+  LOGOUT_USER,
+  POPULATE_USER_DATA
 } from '../_constants/customer.constants'
 import userAuthHeader from '../_helpers/userAuthHeader'
 
@@ -10,7 +11,13 @@ const initialState = {
   userLoginLoading: false,
   userLoginSuccess: userAuthHeader ? true : false,
   userLoginFailure: false,
-  userName: null
+  firstName: null,
+  lastName: null,
+  username: null,
+  createdAt: null,
+  activeSavingsAccount: null,
+  activeCurrentAccount: null,
+  moneyStore: null
 }
 
 export default (state = initialState, action) => {
@@ -28,7 +35,7 @@ export default (state = initialState, action) => {
         userLoginSuccess: true,
         userLoginFailure: false
       }
-    case LOGIN_USER_FAIL:
+    case LOGIN_USER_FAILURE:
       return {
         ...state,
         userLoginLoading: false,
@@ -37,6 +44,10 @@ export default (state = initialState, action) => {
     case LOGOUT_USER:
       return {
         ...initialState
+      }
+    case POPULATE_USER_DATA:
+      return {
+        ...state
       }
     default:
       return state

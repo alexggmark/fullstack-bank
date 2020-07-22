@@ -2,8 +2,9 @@ import customerServices from '../_services/customer.services'
 import {
   LOGIN_USER_LOADING,
   LOGIN_USER_SUCCESS,
-  LOGIN_USER_FAIL,
-  LOGOUT_USER
+  LOGIN_USER_FAILURE,
+  LOGOUT_USER,
+  POPULATE_USER_DATA
 } from '../_constants/customer.constants'
 
 const customerActions = {
@@ -33,7 +34,7 @@ function loginAction(credentials) {
     return { type: LOGIN_USER_LOADING }
   }
   function fail() {
-    return { type: LOGIN_USER_FAIL }
+    return { type: LOGIN_USER_FAILURE }
   }
 }
 
