@@ -7,6 +7,7 @@ import CreateSavings from './CreateSavings'
 import UserProfileWidget from './UserProfileWidget'
 import CurrentAccount from './CurrentAccount'
 import SavingsAccount from './SavingsAccount'
+import MoneyMover from './MoneyMover'
 import Logout from './Logout'
 import '../styles/loggedin.scss'
 
@@ -41,6 +42,7 @@ const Loggedin = (props) => {
                 <Logout />
                 <CurrentAccount />
                 <SavingsAccount />
+                <MoneyMover />
               </Route>
             </Switch>
           </BrowserRouter>
