@@ -1,11 +1,12 @@
 const express = require('express')
 const router = express.Router()
-const controllerCurrent = require('../controllers/savings.controller')
-// const auth = require('../middleware/auth')
+const controllerSavings = require('../controllers/savings.controller')
+const auth = require('../middleware/auth')
 
 router.get(
   '/getSavingsAccountsUser',
-  // TODO:
+  auth,
+  controllerSavings.getSavingsAccount
 )
 
 router.put(
@@ -15,7 +16,8 @@ router.put(
 
 router.post(
   '/createNewSavingsAccount',
-  // TODO:
+  auth,
+  controllerSavings.createSavingsAccount
 )
 
 router.delete(

@@ -1,8 +1,8 @@
 import React, { useState } from 'react'
 import { useDispatch, connect } from 'react-redux'
-import currentActions from '../actions/current.actions'
+import savingsActions from '../actions/savings.actions'
 
-const CreateCurrent = (props) => {
+const CreateSavings = (props) => {
   const [ nickName, setNickname ] = useState(null)
   const [ total, setTotal ] = useState(null)
   const dispatch = useDispatch()
@@ -17,8 +17,8 @@ const CreateCurrent = (props) => {
     }
   }
 
-  const createCurrentAccount = () => {
-    dispatch(currentActions.createCurrentAccount({ total, nickName }))
+  const createSavingsAccount = () => {
+    dispatch(savingsActions.createSavingsAccount({ total, nickName }))
   }
 
   return (
@@ -28,18 +28,18 @@ const CreateCurrent = (props) => {
       <p>Total: {total}</p>
       <input type="number" placeholder="total" onChange={(event) => handleInput(event, 'total')} />
       <input type="text" placeholder="nickName" onChange={(event) => handleInput(event, 'nickname')} />
-      <button onClick={() => createCurrentAccount()}>Submit</button>
-      <p>Loading: {props.createLoading ? 'true' : 'false'}</p>
+      <button onClick={() => createSavingsAccount()}>Submit</button>
+      {/* <p>Loading: {props.createLoading ? 'true' : 'false'}</p>
       <p>Success: {props.createSuccess ? 'true' : 'false'}</p>
-      <p>Failure: {props.reateFailure ? 'true' : 'false'}</p>
+      <p>Failure: {props.reateFailure ? 'true' : 'false'}</p> */}
     </div>
   )
 }
 
 const mapStateToProps = (state) => ({
-  createLoading: state.CurrentReducer.createCurrentLoading,
-  createSuccess: state.CurrentReducer.createCurrentSuccess,
-  createFailure: state.CurrentReducer.createCurrentFailure,
+  // createLoading: state.CurrentReducer.createCurrentLoading,
+  // createSuccess: state.CurrentReducer.createCurrentSuccess,
+  // createFailure: state.CurrentReducer.createCurrentFailure,
 })
 
-export default connect(mapStateToProps)(CreateCurrent)
+export default connect(mapStateToProps)(CreateSavings)

@@ -3,8 +3,10 @@ import { BrowserRouter, Route, Link, Switch } from 'react-router-dom'
 import { connect, useDispatch } from 'react-redux'
 import customerActions from '../actions/customer.actions'
 import CreateCurrent from './CreateCurrent'
+import CreateSavings from './CreateSavings'
 import UserProfileWidget from './UserProfileWidget'
 import CurrentAccount from './CurrentAccount'
+import SavingsAccount from './SavingsAccount'
 import Logout from './Logout'
 import '../styles/loggedin.scss'
 
@@ -31,12 +33,14 @@ const Loggedin = (props) => {
       <div className="loggedin__main">
         <div className="loggedin__main-container">
           <CreateCurrent />
+          <CreateSavings />
           <BrowserRouter>
             <Switch>
               <Route path="/">
                 LOGIN:
                 <Logout />
                 <CurrentAccount />
+                <SavingsAccount />
               </Route>
             </Switch>
           </BrowserRouter>

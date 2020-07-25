@@ -22,7 +22,7 @@ const CurrentAccount = (props) => {
       <p>Failure: {props.populateCurrentFailure ? 'true' : 'false'}</p>
       <ul>
         {props.currentAccounts.map((item) => {
-          return <li key={item._id}>{item.nickName} - £{item.total} - {item.createdAt}</li>
+          return <li key={item._id}><strong>{item.nickName}</strong> - £{item.total} - {item.createdAt}</li>
         })}
       </ul>
     </div>
