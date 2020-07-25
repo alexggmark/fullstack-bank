@@ -33,6 +33,7 @@ export default (state = initialState, action) => {
         ...state,
         currentAccounts: [],
         populateCurrentLoading: true,
+        populateCurrentSuccess: false,
         populateCurrentFailure: false,
       }
     case POPULATE_CURRENT_SUCCESS:
@@ -46,12 +47,14 @@ export default (state = initialState, action) => {
       return {
         ...state,
         populateCurrentLoading: false,
+        populateCurrentSuccess: false,
         populateCurrentFailure: true
       }
     case CREATE_CURRENT_LOADING:
       return {
         ...state,
         createCurrentLoading: true,
+        createCurrentSuccess: false,
         createCurrentFailure: false,
       }
     case CREATE_CURRENT_SUCCESS:
@@ -65,6 +68,7 @@ export default (state = initialState, action) => {
       return {
         ...state,
         createCurrentLoading: false,
+        createCurrentSuccess: false,
         createCurrentFailure: true
       }
     default:
