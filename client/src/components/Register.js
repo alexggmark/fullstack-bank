@@ -11,8 +11,8 @@ const Register = () => {
   )
 }
 
-const mapStateToProps = ({  }) => {
+const mapStateToProps = (state) => ({
 
-}
+})
 
 export default connect(mapStateToProps)(Register)

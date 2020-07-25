@@ -5,7 +5,8 @@ const auth = require('../middleware/auth')
 
 router.get(
   '/getCurrentAccountsUser',
-  // TODO:
+  auth,
+  controllerCurrent.getCurrentAccount
 )
 
 router.put(

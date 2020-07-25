@@ -46,7 +46,7 @@ const currentRouter = require('./server/routes/current.routes')
 
 app.use('/api/', _testRouter)
 app.use('/api/', customerRouter)
-app.use('/api', currentRouter)
+app.use('/api/', currentRouter)
 
 /**
  * Running server

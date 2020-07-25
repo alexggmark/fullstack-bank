@@ -3,6 +3,8 @@ import { BrowserRouter, Route, Link, Switch } from 'react-router-dom'
 import { connect, useDispatch } from 'react-redux'
 import customerActions from '../actions/customer.actions'
 import CreateCurrent from './CreateCurrent'
+import UserProfileWidget from './UserProfileWidget'
+import CurrentAccount from './CurrentAccount'
 import Logout from './Logout'
 import '../styles/loggedin.scss'
 
@@ -24,27 +26,17 @@ const Loggedin = (props) => {
           <li>Link</li>
           <li>Link</li>
         </ul>
+        <UserProfileWidget />
       </div>
       <div className="loggedin__main">
         <div className="loggedin__main-container">
-          <div className="test">
-            <h1>User data in store</h1>
-            <ul>
-              <li>activeCurrentAccount: {props.activeCurrentAccount ? 'true' : 'false'}</li>
-              <li>activeSavingsAccount: {props.activeSavingsAccount ? 'true' : 'false'}</li>
-              <li>createdAt: {props.createdAt}</li>
-              <li>firstName: {props.firstName}</li>
-              <li>lastName: {props.lastName}</li>
-              <li>moneyStore: {props.moneyStore}</li>
-              <li>username: {props.username}</li>
-            </ul>
-          </div>
           <CreateCurrent />
           <BrowserRouter>
             <Switch>
               <Route path="/">
                 LOGIN:
                 <Logout />
+                <CurrentAccount />
               </Route>
             </Switch>
           </BrowserRouter>

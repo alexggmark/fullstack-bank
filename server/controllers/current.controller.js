@@ -3,12 +3,23 @@ const CurrentSchema = require('../models/current.model')
 const controllers = {
   getCurrentAccount,
   createCurrentAccount,
+  // getAllCurrentAccounts
 }
 
-async function getCurrentAccount() {
+async function getCurrentAccount(req, res) {
   try {
-    const token = req.headers['authorization'];
-    const response = await CurrentSchema.find({ userId: token.token})
+    // const response = await CurrentSchema.find({ userId: req.user._id})
+    const response = await CurrentSchema.find()
+
+    if (!response) {
+      return res.status(400).json({
+        message: 'Unsuccessful login'
+      })
+    }
+
+    console.log(response)
+    console.log(req.user._id)
+    res.send(response)
   } catch (err) {
     console.error(err)
   }
@@ -31,5 +42,17 @@ async function createCurrentAccount(req, res) {
     console.error(err)
   }
 }
+
+// async function getAllCurrentAccounts(req, res) {
+//   try {
+//     console.log(req)
+//     const userId = req.user._id
+//     const response = await CurrentSchema.find({ userId: userId })
+//     console.log(response.body)
+//     res.send(response)
+//   } catch (err) {
+//     console.error(err)
+//   }
+// }
 
 module.exports = controllers

@@ -17,7 +17,9 @@ const initialState = {
   createdAt: null,
   activeSavingsAccount: null,
   activeCurrentAccount: null,
-  moneyStore: null
+  moneyStore: null,
+  totalCurrent: null,
+  totalSavings: null
 }
 
 export default (state = initialState, action) => {
@@ -55,7 +57,9 @@ export default (state = initialState, action) => {
         firstName,
         lastName,
         moneyStore,
-        username } = action.payload
+        username,
+        totalCurrent,
+        totalSavings } = action.payload
       return {
         ...state,
         activeCurrentAccount,
@@ -64,7 +68,9 @@ export default (state = initialState, action) => {
         firstName,
         lastName,
         moneyStore,
-        username
+        username,
+        totalCurrent,
+        totalSavings
       }
     default:
       return state
