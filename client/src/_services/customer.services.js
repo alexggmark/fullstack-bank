@@ -6,7 +6,8 @@ import userAuthHeader from '../_helpers/userAuthHeader'
 const customerServices = {
   login,
   createUser,
-  getUserData
+  getUserData,
+  logout
 }
 
 function handleResponse(res) {
@@ -37,6 +38,7 @@ function login(credentials) {
 
 function getUserData() {
   console.log('Service: running getUserData')
+  console.log(userAuthHeader)
   const request = {
     method: 'GET',
     headers: {
@@ -72,7 +74,8 @@ function createUser(credentials) {
 }
 
 function logout() {
-  console.log('Logout')
+  localStorage.removeItem('user')
+  window.location.href = '/'
 }
 
 export default customerServices

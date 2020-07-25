@@ -1,17 +1,16 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import { useDispatch, connect } from 'react-redux'
-import customerActions from '../actions/customer.actions'
+// import customerActions from '../actions/customer.actions'
 import LoginLanding from './LoginLanding'
 import Loggedin from './Loggedin'
 
 const App = (props) => {
   const dispatch = useDispatch()
 
-  useEffect(() => {
-    if (!props.loginSuccess) { return }
-    console.log('About to run populateUserData')
-    dispatch(customerActions.populateUserData())
-  }, [])
+  // useEffect(() => {
+  //   if (!props.loginSuccess) { return }
+  //   dispatch(customerActions.populateUserData())
+  // }, [])
 
   return (
     <div className="app">

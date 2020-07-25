@@ -3,13 +3,14 @@ import {
   LOGIN_USER_LOADING,
   LOGIN_USER_SUCCESS,
   LOGIN_USER_FAILURE,
-  LOGOUT_USER,
+  // LOGOUT_USER,
   POPULATE_USER_DATA
 } from '../_constants/customer.constants'
 
 const customerActions = {
   loginAction,
-  populateUserData
+  populateUserData,
+  // logoutAction
 }
 
 function populateUserData() {
@@ -54,12 +55,18 @@ function loginAction(credentials) {
   }
 }
 
-function logoutAction() {
+// function logoutAction() {
+//   return (dispatch) => {
+//     customerServices.logout()
+//       .then(() => {
+//         dispatch(logout)
+//         console.log('Logging out')
+//       })
+//   }
 
-
-  function logout() {
-    return { type: LOGOUT_USER }
-  }
-}
+//   function logout() {
+//     return { type: LOGOUT_USER }
+//   }
+// }
 
 export default customerActions

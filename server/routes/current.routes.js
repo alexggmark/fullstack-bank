@@ -4,7 +4,13 @@ const controllerCurrent = require('../controllers/current.controller')
 const auth = require('../middleware/auth')
 
 router.get(
-  '/getCurrentAccountsUser'
+  '/getCurrentAccountsUser',
+  // TODO:
+)
+
+router.put(
+  '/updateCurrentAccountsUser',
+  // TODO:
 )
 
 router.post(
@@ -14,7 +20,8 @@ router.post(
 )
 
 router.delete(
-  '/deleteCurrentAccount'
+  '/deleteCurrentAccount',
+  // TODO:
 )
 
 module.exports = router

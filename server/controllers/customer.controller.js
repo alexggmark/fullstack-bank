@@ -42,7 +42,7 @@ function getUserData(req, res) {
 }
 
 async function addStore(req, res) {
-  // ADD TO MONEY STORE
+  // TODO:
 }
 
 module.exports = controllers

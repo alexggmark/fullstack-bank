@@ -1,25 +1,20 @@
 const express = require('express')
 const router = express.Router()
-const controllerCurrent = require('../controllers/loans.controller')
+const controllerCurrent = require('../controllers/loantype.controller')
 // const auth = require('../middleware/auth')
 
 router.get(
-  '/getActiveLoansUser',
+  '/getLoanTypes',
   // TODO:
 )
 
 router.post(
-  '/createNewLoan',
-  // TODO:
-)
-
-router.delete(
-  '/deleteLoansUser',
+  '/admin/createNewLoan',
   // TODO:
 )
 
 router.put(
-  '/repayLoanUser',
+  '/admin/updateLoan',
   // TODO:
 )
 

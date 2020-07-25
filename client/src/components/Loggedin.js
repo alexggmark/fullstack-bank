@@ -1,10 +1,18 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { BrowserRouter, Route, Link, Switch } from 'react-router-dom'
-import { connect } from 'react-redux'
+import { connect, useDispatch } from 'react-redux'
+import customerActions from '../actions/customer.actions'
 import CreateCurrent from './CreateCurrent'
+import Logout from './Logout'
 import '../styles/loggedin.scss'
 
 const Loggedin = (props) => {
+  const dispatch = useDispatch()
+
+  useEffect(() => {
+    dispatch(customerActions.populateUserData())
+  }, [])
+
   return (
     <div className="loggedin">
       <div className="loggedin__nav">
@@ -36,6 +44,7 @@ const Loggedin = (props) => {
             <Switch>
               <Route path="/">
                 LOGIN:
+                <Logout />
               </Route>
             </Switch>
           </BrowserRouter>

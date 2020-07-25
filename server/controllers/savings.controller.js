@@ -1,4 +1,4 @@
-const SavingsSchema = require('../models/model.savings')
+const SavingsSchema = require('../models/savings.model')
 
 const controllers = {
 
