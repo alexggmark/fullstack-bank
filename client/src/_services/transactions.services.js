@@ -13,7 +13,7 @@ function transferMoney(value, fromId, toId) {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
-      Authorization: userAuthHeader.token
+      Authorization: userAuthHeader().token
     },
     body: JSON.stringify({ value, fromId, toId })
   }
@@ -29,7 +29,7 @@ function getTransLogs() {
     TYPE: 'GET',
     headers: {
       'Content-Type': 'application/json',
-      Authorization: userAuthHeader.token
+      Authorization: userAuthHeader().token
     }
   }
 

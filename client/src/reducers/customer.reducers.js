@@ -9,7 +9,7 @@ import userAuthHeader from '../_helpers/userAuthHeader'
 
 const initialState = {
   userLoginLoading: false,
-  userLoginSuccess: userAuthHeader ? true : false,
+  userLoginSuccess: userAuthHeader() ? true : false,
   userLoginFailure: false,
   firstName: null,
   lastName: null,

@@ -1,0 +1,17 @@
+.loginlanding-enter {
+  opacity: 0;
+  transform: scale(0.9);
+}
+.loginlanding-enter-active {
+  opacity: 1;
+  transform: translateX(0);
+  transition: opacity 300ms, transform 300ms;
+}
+.loginlanding-exit {
+  opacity: 1;
+}
+.loginlanding-exit-active {
+  opacity: 0;
+  transform: scale(0.9);
+  transition: opacity 300ms, transform 300ms;
+}

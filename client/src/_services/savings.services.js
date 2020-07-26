@@ -13,7 +13,7 @@ function createSavings(data) {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
-      Authorization: userAuthHeader.token
+      Authorization: userAuthHeader().token
     },
     body: JSON.stringify(data)
   }
@@ -29,7 +29,7 @@ function fetchSavings() {
     method: 'GET',
     headers: {
       'Content-Type': 'application/json',
-      Authorization: userAuthHeader.token
+      Authorization: userAuthHeader().token
     }
   }
 

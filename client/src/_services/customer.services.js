@@ -41,7 +41,7 @@ function getUserData() {
     method: 'GET',
     headers: {
       'Content-Type': 'application/json',
-      Authorization: userAuthHeader.token
+      Authorization: userAuthHeader().token
     }
   }
 
