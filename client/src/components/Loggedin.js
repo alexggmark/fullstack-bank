@@ -20,37 +20,52 @@ const Loggedin = (props) => {
   }, [])
 
   return (
-    <div className="loggedin">
-      <div className="loggedin__nav">
-        <h2>Nav</h2>
-        <ul>
-          <li>Link</li>
-          <li>Link</li>
-          <li>Link</li>
-          <li>Link</li>
-          <li>Link</li>
-        </ul>
-        <UserProfileWidget />
-      </div>
-      <div className="loggedin__main">
-        <div className="loggedin__main-container">
-          <CreateCurrent />
-          <CreateSavings />
-          <BrowserRouter>
-            <Switch>
-              <Route path="/">
-                LOGIN:
-                <Logout />
-                <CurrentAccount />
-                <SavingsAccount />
-                <MoneyMover />
-                <TransLogs />
-              </Route>
-            </Switch>
-          </BrowserRouter>
+    <BrowserRouter>
+      <div className="loggedin">
+        <div className="loggedin__nav">
+          <h2>Nav</h2>
+          <ul>
+
+              <li><Link to="/">Dashboard</Link></li>
+              <li><Link to="/current">Current Account</Link></li>
+              <li><Link to="/savings">Savings Account</Link></li>
+              <li><Link to="/transfer">Transfer Money</Link></li>
+              <li><Link to="/logs">Transfer Logs</Link></li>
+
+          </ul>
+          <UserProfileWidget />
+        </div>
+        <div className="loggedin__main">
+          <div className="loggedin__main-container">
+
+              <Switch>
+                <Route path="/current">
+                  <CreateCurrent />
+                  <CurrentAccount />
+                </Route>
+                <Route path="/savings">
+                  <CreateSavings />
+                  <SavingsAccount />
+                </Route>
+                <Route path="/transfer">
+                  <MoneyMover />
+                </Route>
+                <Route path="/logs">
+                  <TransLogs />
+                </Route>
+                <Route path="/">
+                  LOGIN:
+                  <Logout />
+                  <CurrentAccount />
+                  <SavingsAccount />
+                  <MoneyMover />
+                  <TransLogs />
+                </Route>
+              </Switch>
+          </div>
         </div>
       </div>
-    </div>
+    </BrowserRouter>
   )
 }
 
