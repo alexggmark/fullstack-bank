@@ -8,7 +8,16 @@
   &__nav {
     background-color: #081221;
     color: white;
+    padding: 1rem;
     width: 350px;
+
+    li {
+      margin: 1rem 0;
+    }
+
+    a {
+      color: white;
+    }
   }
 
   &__main {

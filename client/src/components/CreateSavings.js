@@ -23,23 +23,23 @@ const CreateSavings = (props) => {
 
   return (
     <div className="test">
-      <h1>CreateCurrent.js</h1>
+      <h1>CreateSavings.js</h1>
       <p>Nickname: {nickName}</p>
       <p>Total: {total}</p>
       <input type="number" placeholder="total" onChange={(event) => handleInput(event, 'total')} />
       <input type="text" placeholder="nickName" onChange={(event) => handleInput(event, 'nickname')} />
       <button onClick={() => createSavingsAccount()}>Submit</button>
-      {/* <p>Loading: {props.createLoading ? 'true' : 'false'}</p>
+      <p>Loading: {props.createLoading ? 'true' : 'false'}</p>
       <p>Success: {props.createSuccess ? 'true' : 'false'}</p>
-      <p>Failure: {props.reateFailure ? 'true' : 'false'}</p> */}
+      <p>Failure: {props.reateFailure ? 'true' : 'false'}</p>
     </div>
   )
 }
 
 const mapStateToProps = (state) => ({
-  // createLoading: state.CurrentReducer.createCurrentLoading,
-  // createSuccess: state.CurrentReducer.createCurrentSuccess,
-  // createFailure: state.CurrentReducer.createCurrentFailure,
+  createLoading: state.SavingsReducer.createSavingsLoading,
+  createSuccess: state.SavingsReducer.createSavingsSuccess,
+  createFailure: state.SavingsReducer.createSavingsFailure,
 })
 
 export default connect(mapStateToProps)(CreateSavings)
