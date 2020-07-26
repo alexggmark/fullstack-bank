@@ -4,7 +4,7 @@ const controllerTranslog = require('../controllers/translog.controller')
 const auth = require('../middleware/auth')
 
 router.post(
-  '/api/transferMoney',
+  '/transferMoney',
   auth,
   controllerTranslog.transferMoney
 )

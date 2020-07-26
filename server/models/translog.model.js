@@ -5,7 +5,8 @@ const LogSchema = new mongoose.Schema({
   accountId: { type: String, require: true },
   createdAt: { type: Date, default: Date.now },
   value: { type: Number, default: 0 }, // pos/neg
-  logType: { type: String, required: true } // loan, saving, current
+  logType: { type: String, required: true }, // loan, saving, current
+  accountType: { type: String, require: true }
 })
 
 module.exports = mongoose.model('LogSchema', LogSchema)

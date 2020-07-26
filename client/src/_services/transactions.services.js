@@ -7,14 +7,14 @@ const transactionServices = {
   transferMoney,
 }
 
-function transferMoney(data) {
+function transferMoney(value, fromId, toId) {
   const request = {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
       Authorization: userAuthHeader.token
     },
-    body: JSON.stringify(data)
+    body: JSON.stringify({ value, fromId, toId })
   }
 
   return fetch(`${API_URL}/api/transferMoney`, request)

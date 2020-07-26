@@ -17,8 +17,6 @@ async function getSavingsAccount(req, res) {
       })
     }
 
-    console.log(response)
-    console.log(req.user._id)
     res.send(response)
   } catch (err) {
     console.error(err)

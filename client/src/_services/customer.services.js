@@ -37,8 +37,6 @@ function login(credentials) {
 }
 
 function getUserData() {
-  console.log('Service: running getUserData')
-  console.log(userAuthHeader)
   const request = {
     method: 'GET',
     headers: {
@@ -50,9 +48,6 @@ function getUserData() {
   return fetch(`${API_URL}/api/auth/getUserData`, request)
       .then(handleResponse)
       .then((res) => {
-        console.log('I am service')
-        console.log(res)
-        console.log('I am service END')
         return res
       })
 }

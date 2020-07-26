@@ -19,11 +19,9 @@ function createCurrentAccount(data) {
     dispatch(load())
     currentServices.createCurrent(data)
       .then((res) => {
-        console.log(res)
         dispatch(success())
       })
       .catch((err) => {
-        console.error(err)
         dispatch(fail())
       })
   }
@@ -44,7 +42,6 @@ function getCurrentAccountsUser() {
     dispatch(load())
     currentServices.fetchCurrent()
       .then((res) => {
-        console.log(res)
         dispatch(success())
         res.forEach((item) => {
           dispatch({
@@ -54,7 +51,6 @@ function getCurrentAccountsUser() {
         })
       })
       .catch((err) => {
-        console.error(err)
         dispatch(fail())
       })
   }
