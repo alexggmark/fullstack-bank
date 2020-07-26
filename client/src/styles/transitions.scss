@@ -1,5 +1,9 @@
 .loginlanding-enter {
   opacity: 0;
+  position: absolute;
+  top: 0;
+  left:0;
+  right: 0;
   transform: scale(0.9);
 }
 .loginlanding-enter-active {
@@ -11,6 +15,28 @@
   opacity: 1;
 }
 .loginlanding-exit-active {
+  opacity: 0;
+  transform: scale(0.9);
+  transition: opacity 300ms, transform 300ms;
+}
+
+.loggedin-enter {
+  opacity: 0;
+  position: absolute;
+  top: 0;
+  left:0;
+  right: 0;
+  transform: scale(0.9);
+}
+.loggedin-enter-active {
+  opacity: 1;
+  transform: translateX(0);
+  transition: opacity 300ms, transform 300ms;
+}
+.loggedin-exit {
+  opacity: 1;
+}
+.loggedin-exit-active {
   opacity: 0;
   transform: scale(0.9);
   transition: opacity 300ms, transform 300ms;

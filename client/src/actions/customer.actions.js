@@ -3,7 +3,7 @@ import {
   LOGIN_USER_LOADING,
   LOGIN_USER_SUCCESS,
   LOGIN_USER_FAILURE,
-  // LOGOUT_USER,
+  LOGOUT_USER,
   POPULATE_USER_DATA
 } from '../_constants/customer.constants'
 

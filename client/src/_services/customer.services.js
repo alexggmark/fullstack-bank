@@ -70,7 +70,6 @@ function createUser(credentials) {
 
 function logout() {
   localStorage.removeItem('user')
-  window.location.href = '/'
 }
 
 export default customerServices

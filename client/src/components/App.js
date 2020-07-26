@@ -10,8 +10,8 @@ const App = (props) => {
     <div className="app">
       <CSSTransition
         in={!props.loginSuccess}
-        timeout={2000}
         classNames="loginlanding"
+        timeout={1000}
         mountOnEnter
         unmountOnExit
       >
@@ -19,14 +19,13 @@ const App = (props) => {
       </CSSTransition>
       <CSSTransition
         in={props.loginSuccess}
-        timeout={2000}
-        classNames="loginlanding"
+        timeout={1000}
+        classNames="loggedin"
         mountOnEnter
         unmountOnExit
       >
         <Loggedin />
       </CSSTransition>
-      {/* {!props.loginSuccess ? <LoginLanding /> : <Loggedin /> } */}
     </div>
   )
 }

@@ -1,0 +1,54 @@
+@import './variables';
+
+// $color-primary: #BC40DB;
+// $color-secondary: #FFA800;
+// $color-white: #FAFFFF
+// $color-background-light: #FAFFFF;
+// $color-background-dark: #212121;
+
+.loginlanding {
+  background-color: red;
+  height: 100vh;
+
+  &__container {
+    display: flex;
+    flex-flow: row;
+    height: 100vh;
+    width: 100%;
+  }
+
+  &__splash {
+    align-items: center;
+    justify-content: center;
+    background-color: $color-primary;
+    display: flex;
+    flex-flow: column;
+    width: 50%;
+
+    .logo {
+      color: $color-white;
+      font-size: 40px;
+      margin: 1rem 0;
+    }
+
+    .piggu {
+      width: 100%;
+    }
+  }
+
+  &__content {
+    background-color: $color-background-light;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-flow: column;
+    width: 50%;
+
+    input {
+      border: 1px solid $color-dark;
+      border-radius: 100px;
+      padding: 0.5rem;
+      width: 100%;
+    }
+  }
+}

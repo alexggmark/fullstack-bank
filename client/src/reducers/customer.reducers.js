@@ -45,7 +45,8 @@ export default (state = initialState, action) => {
       }
     case LOGOUT_USER:
       return {
-        ...initialState
+        ...state,
+        userLoginSuccess: false,
       }
     case POPULATE_USER_DATA:
       const {
