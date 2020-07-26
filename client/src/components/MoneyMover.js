@@ -12,7 +12,6 @@ const MoneyMover = (props) => {
   const sendMoney = () => {
     if (!fromValue || !toValue) { return }
     transactionServices.transferMoney(sendValue, fromValue, toValue)
-    // dispatch(transactionsActions)
   }
 
   const handleSelect = (id, type) => {
@@ -30,7 +29,7 @@ const MoneyMover = (props) => {
       <p>{fromValue}</p>
       <p>{toValue}</p>
       <p>{sendValue}</p>
-      From: <select onChange={(event) => handleSelect(event.target.value, 0)} value={fromValue} defaultValue="store">
+      From: <select onChange={(event) => handleSelect(event.target.value, 0)} defaultValue="store">
         <option value="store">Money Store</option>
         {props.currentAccounts.map((item) => {
           return <option key={'mm-' + item._id} value={item._id}>{item.nickName} - £{item.total}</option>
@@ -39,7 +38,7 @@ const MoneyMover = (props) => {
           return <option key={'mm-' + item._id} value={item._id}>{item.nickName} - £{item.total}</option>
         })}
       </select>
-      To: <select onChange={(event) => handleSelect(event.target.value, 1)} value={toValue} defaultValue="store">
+      To: <select onChange={(event) => handleSelect(event.target.value, 1)} defaultValue="store">
         <option value="store">Money Store</option>
         {props.currentAccounts.map((item) => {
           return <option key={'mm-' + item._id} value={item._id}>{item.nickName} - £{item.total}</option>

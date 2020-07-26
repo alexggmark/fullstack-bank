@@ -6,6 +6,7 @@ const tConst = require('../_constants/transactions')
 
 const controllers = {
   transferMoney,
+  getTranslogs,
 }
 
 async function transferMoney(req, res) {
@@ -93,6 +94,14 @@ async function transferMoney(req, res) {
   } catch (err) {
     console.error(err)
   }
+}
+
+async function getTranslogs(req, res) {
+  const userId = req.user._id
+
+  const response = await TranslogSchema.find({ userId: userId })
+  console.log(response)
+  res.send(response)
 }
 
 module.exports = controllers

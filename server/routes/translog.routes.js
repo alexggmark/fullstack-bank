@@ -9,4 +9,10 @@ router.post(
   controllerTranslog.transferMoney
 )
 
+router.get(
+  '/getTransLogs',
+  auth,
+  controllerTranslog.getTranslogs
+)
+
 module.exports = router
