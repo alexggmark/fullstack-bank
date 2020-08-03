@@ -1,5 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
+import Logout from './Logout'
 
 const UserProfileWidget = (props) => {
   return (
@@ -16,6 +17,7 @@ const UserProfileWidget = (props) => {
         <li>totalCurrent: {props.totalCurrent}</li>
         <li>totalSavings: {props.totalSavings}</li>
       </ul>
+      <Logout />
     </div>
   )
 }
