@@ -15,6 +15,17 @@
     text-decoration-style: dotted;
     text-decoration-color: red;
   }
+
+  &-button {
+    background-color: blue;
+    color: red;
+    cursor: progress;
+    font-size: 30px;
+    left: 0;
+    position: fixed;
+    top: 0;
+    z-index: 999;
+  }
 }
 
 /* http://meyerweb.com/eric/tools/css/reset/

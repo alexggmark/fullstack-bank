@@ -7,13 +7,15 @@
 // $color-background-dark: #212121;
 
 .loginlanding {
-  background-color: red;
+  background-color: $color-background-dark;
+  overflow: hidden; // FIXME:
   height: 100vh;
 
   &__container {
     display: flex;
     flex-flow: row;
     height: 100vh;
+    // overflow: hidden;
     width: 100%;
   }
 
@@ -37,7 +39,7 @@
   }
 
   &__content {
-    background-color: $color-background-light;
+    background-color: #ffffff;
     display: flex;
     align-items: center;
     justify-content: center;
