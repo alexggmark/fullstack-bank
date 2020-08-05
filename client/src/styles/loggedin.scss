@@ -16,30 +16,19 @@
 
   &__nav {
     background-color: $color-background-dark;
-    color: white;
     flex-shrink: 0;
-    padding: 1rem;
-    width: 250px;
-
-    a {
-      background-color: $color-tertiary;
-      border-radius: 8px;
-      color: $color-dark;
-      display: block;
-      margin: 0.75rem 0;
-      padding: 0.75rem;
-      text-decoration: none;
-      transition: 0.1s background-color, 0.1s color;
-
-      &:hover {
-        background-color: $color-dark;
-        color: $color-tertiary;
-      }
-    }
+    // overflow: hidden;
+    width: 0;
   }
 
   &__main {
     flex-grow: 1;
     padding: 0 2rem;
+  }
+
+  @media screen and (min-width: $breakpoint-lg) {
+    &__nav {
+      width: 290px;
+    }
   }
 }

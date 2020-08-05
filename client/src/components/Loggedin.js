@@ -1,15 +1,14 @@
 import React, { useEffect } from 'react'
-import { BrowserRouter, Route, Link, Switch } from 'react-router-dom'
+import { BrowserRouter, Route, Switch } from 'react-router-dom'
 import { connect, useDispatch } from 'react-redux'
 import customerActions from '../actions/customer.actions'
 import CreateCurrent from './CreateCurrent'
 import CreateSavings from './CreateSavings'
-import UserProfileWidget from './UserProfileWidget'
 import CurrentAccount from './CurrentAccount'
 import SavingsAccount from './SavingsAccount'
 import MoneyMover from './MoneyMover'
 import TransLogs from './TransLogs'
-import { ReactComponent as Piggy } from '../assets/money.svg'
+import Navigation from './Navigation'
 import '../styles/loggedin.scss'
 
 const Loggedin = (props) => {
@@ -23,7 +22,7 @@ const Loggedin = (props) => {
     <BrowserRouter>
       <div className="loggedin">
         <div className="loggedin__nav">
-          <Piggy className="logo" />
+          {/* <Piggy className="logo" />
           <ul>
               <li><Link to="/">Dashboard</Link></li>
               <li><Link to="/current">Current Account</Link></li>
@@ -32,7 +31,8 @@ const Loggedin = (props) => {
               <li><Link to="/logs">Transfer Logs</Link></li>
 
           </ul>
-          <UserProfileWidget />
+          <UserProfileWidget /> */}
+          <Navigation />
         </div>
         <div className="loggedin__main">
           <div className="loggedin__main-container">
