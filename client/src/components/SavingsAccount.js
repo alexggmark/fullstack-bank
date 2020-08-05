@@ -1,6 +1,8 @@
 import React, { useEffect } from 'react'
 import { connect, useDispatch } from 'react-redux'
 import savingsActions from '../actions/savings.actions'
+import LoaderComponent from './LoaderComponent'
+import '../styles/accounts.scss'
 
 const SavingsAccount = (props) => {
   const dispatch = useDispatch()
@@ -14,18 +16,37 @@ const SavingsAccount = (props) => {
   }
 
   return (
-    <div className="test">
-      <h1>Savings Account</h1>
-      <button onClick={() => test()}>Get</button>
-      <p>Loading: {props.populateSavingsLoading ? 'true' : 'false'}</p>
-      <p>Success: {props.populateSavingsSuccess ? 'true' : 'false'}</p>
-      <p>Failure: {props.populateSavingsFailure ? 'true' : 'false'}</p>
-      <ul>
-        {props.savingsAccounts.map((item) => {
-          return <li key={item._id}><strong>{item.nickName}</strong> - £{item.total} - {item.createdAt}</li>
-        })}
-      </ul>
-    </div>
+
+      <LoaderComponent
+        loading={props.populateSavingsLoading}
+      >
+        <h1>Savings Account</h1>
+        <div className="account">
+          {props.savingsAccounts.map((item) => {
+            // return <div key={item._id}><strong>{item.nickName}</strong> - £{item.total} - {item.createdAt}</div>
+            return (
+              <div className="account__tile" key={item._id}>
+                <div className="account__block">
+                  <h3>Account NickName</h3>
+                  <span className="text-sub-info">{item.nickName}</span>
+                </div>
+                <div className="account__block">
+                  <h3>Total</h3>
+                  <span className="text-info">£{item.total}</span>
+                </div>
+                <div className="account__block">
+                  <h3>Created on</h3>
+                  <span className="text-sub-info">{item.createdAt}</span>
+                </div>
+                <div className="account__block">
+                  <h3>Recent transaction</h3>
+                </div>
+              </div>
+            )
+          })}
+        </div>
+      </LoaderComponent>
+
   )
 }
 

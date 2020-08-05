@@ -9,6 +9,7 @@ import CurrentAccount from './CurrentAccount'
 import SavingsAccount from './SavingsAccount'
 import MoneyMover from './MoneyMover'
 import TransLogs from './TransLogs'
+import { ReactComponent as Piggy } from '../assets/money.svg'
 import '../styles/loggedin.scss'
 
 const Loggedin = (props) => {
@@ -22,9 +23,8 @@ const Loggedin = (props) => {
     <BrowserRouter>
       <div className="loggedin">
         <div className="loggedin__nav">
-          <h2>Nav</h2>
+          <Piggy className="logo" />
           <ul>
-
               <li><Link to="/">Dashboard</Link></li>
               <li><Link to="/current">Current Account</Link></li>
               <li><Link to="/savings">Savings Account</Link></li>

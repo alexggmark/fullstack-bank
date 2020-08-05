@@ -22,7 +22,7 @@
   &__splash {
     align-items: center;
     justify-content: center;
-    background-color: $color-primary;
+    background-color: $color-dark;
     display: flex;
     flex-flow: column;
     width: 50%;
@@ -34,12 +34,13 @@
     }
 
     .piggu {
-      width: 100%;
+      fill: $color-white;
+      width: 200px;
     }
   }
 
   &__content {
-    background-color: #ffffff;
+    background-color: $color-background-light;
     display: flex;
     align-items: center;
     justify-content: center;

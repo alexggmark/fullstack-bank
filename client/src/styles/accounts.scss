@@ -1,0 +1,36 @@
+@import './variables';
+
+.account {
+  display: flex;
+  flex-wrap: wrap;
+
+  &__tile {
+    background-color: $color-white;
+    border-radius: 5px;
+    box-sizing: border-box;
+    display: flex;
+    flex-wrap: wrap;
+    margin-bottom: 1rem;
+    padding: 1rem;
+    width: 100%;
+
+    &:nth-child(odd) {
+      margin-right: 1rem;
+    }
+  }
+
+  &__block {
+    margin: 1rem 0;
+    width: 50%;
+  }
+
+  @media screen and (min-width: $breakpoint-lg) {
+    &__tile {
+      width: calc(50% - 1rem);
+
+      &:nth-child(odd) {
+        margin-right: 1rem;
+      }
+    }
+  }
+}

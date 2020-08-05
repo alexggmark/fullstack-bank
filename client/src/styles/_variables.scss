@@ -1,6 +1,12 @@
-$color-primary: #BC40DB;
-$color-secondary: #FFA800;
-$color-white: #FAFFFF;
-$color-dark: #7D9196;
-$color-background-light: #EFF0FA;
-$color-background-dark: #212121;
+$color-primary: #1B37AA;
+$color-secondary: #0F2233;
+$color-tertiary: #2D374B;
+$color-white: #FEFDFE;
+$color-dark: #D7DADE;
+$color-black: $color-secondary;
+$color-background-light: #FAFFFF;
+$color-background-dark: $color-black;
+
+$breakpoint-lg: 1024px;
+$breakpoint-md: 768px;
+$breakpoint-sm: 400px;
