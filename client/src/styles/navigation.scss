@@ -2,9 +2,14 @@
 
 .navigation {
   background-color: $color-background-dark;
+  box-sizing: border-box;
   color: white;
   flex-shrink: 0;
   padding: 1rem;
+  width: 290px;
+  position: fixed;
+  top: 0;
+  left: 0;
 
   a {
     background-color: $color-tertiary;
@@ -19,6 +24,33 @@
     &:hover {
       background-color: $color-dark;
       color: $color-tertiary;
+    }
+  }
+
+  &__button {
+    display: none;
+  }
+
+  @media screen and (max-width: $breakpoint-lg) {
+    height: 100vh;
+    transform: translateX(-100%);
+    transition: transform 0.8s ease;
+    z-index: 99;
+
+    &.active {
+      transform: translateX(0);
+    }
+
+    &__button {
+      background-color: $color-secondary;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: absolute;
+      top: 0;
+      right: -30px;
+      height: 30px;
+      width: 30px;
     }
   }
 }

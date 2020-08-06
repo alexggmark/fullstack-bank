@@ -32,8 +32,8 @@ const Loggedin = (props) => {
 
           </ul>
           <UserProfileWidget /> */}
-          <Navigation />
         </div>
+        <Navigation />
         <div className="loggedin__main">
           <div className="loggedin__main-container">
 

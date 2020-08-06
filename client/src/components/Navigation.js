@@ -1,12 +1,23 @@
-import React from 'react'
+import React, { createRef } from 'react'
 import { ReactComponent as Piggy } from '../assets/money.svg'
 import { Link } from 'react-router-dom'
 import UserProfileWidget from './UserProfileWidget'
 import '../styles/navigation.scss'
 
 const Navigation = () => {
+  const navMenu = createRef()
+
+  const activeNavMobile = () => {
+    if (navMenu.current.classList.contains('active')) {
+      navMenu.current.classList.remove('active')
+      return
+    }
+    navMenu.current.classList.add('active')
+    return
+  }
+
   return (
-    <div className="navigation">
+    <div className="navigation" ref={navMenu}>
       <Piggy className="logo" />
       <ul>
           <li><Link to="/">Dashboard</Link></li>
@@ -16,6 +27,7 @@ const Navigation = () => {
           <li><Link to="/logs">Transfer Logs</Link></li>
 
       </ul>
+      <div className="navigation__button" onClick={() => activeNavMobile()}>X</div>
       <UserProfileWidget />
     </div>
   )
