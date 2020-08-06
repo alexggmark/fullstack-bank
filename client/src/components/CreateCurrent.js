@@ -19,18 +19,27 @@ const CreateCurrent = (props) => {
     }
   }
 
-  const createCurrentAccount = () => {
-    dispatch(currentActions.createCurrentAccount({ total, nickName }))
+  const createCurrentAccount = async () => {
+    try {
+      await dispatch(currentActions.createCurrentAccount({ total, nickName }))
+      props.triggerReload()
+    } catch (err) {
+      console.error(err)
+    }
   }
 
   return (
     <div className="input-form">
       <div className="input-form__tile">
         <h1>CreateCurrent.js</h1>
-        <input type="number" placeholder="total" onChange={(event) => handleInput(event, 'total')} />
-        <input type="text" placeholder="nickName" onChange={(event) => handleInput(event, 'nickname')} />
-        <button onClick={() => createCurrentAccount()}>Submit</button>
-        <LoaderSwitch loading={props.createLoading} success={props.createSuccess} failure={props.createFailure} />
+        <div className="input-form__form-container">
+          <input type="number" placeholder="total" onChange={(event) => handleInput(event, 'total')} />
+          <input type="text" placeholder="nickName" onChange={(event) => handleInput(event, 'nickname')} />
+          <button className="button-dark" onClick={() => createCurrentAccount()}>Submit</button>
+        </div>
+        <div className="input-form__loader-switch">
+          <LoaderSwitch loading={props.createLoading} success={props.createSuccess} failure={props.createFailure} />
+        </div>
       </div>
     </div>
   )

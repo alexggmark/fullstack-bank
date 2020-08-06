@@ -35,6 +35,12 @@ const CurrentAccount = (props) => {
               <div className="account__block">
                 <h3>Recent transaction</h3>
               </div>
+              <div className="account__block">
+                <button className="button-light">Button 1</button>
+              </div>
+              <div className="account__block">
+              <button className="button-light">Button 2</button>
+              </div>
             </div>
           )
         })}

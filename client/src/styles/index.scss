@@ -120,3 +120,54 @@ h3 {
   font-weight: 300;
   margin-bottom: 0.3rem;
 }
+
+.button {
+  background-color: transparent;
+  border: 0;
+  border-radius: 10px;
+  color: $color-white;
+  cursor: pointer;
+  margin-right: 1rem;
+  padding: 0.8rem 1.6rem;
+  transition: background-color 0.2s ease;
+}
+
+.button-dark {
+  @extend .button;
+  border: 1px solid $color-dark;
+  color: $color-dark;
+
+  &:hover {
+    background-color: $color-dark;
+    color: $color-secondary;
+  }
+}
+
+.button-light {
+  @extend .button;
+  border: 1px solid $color-secondary;
+  color: $color-secondary;
+
+  &:hover {
+    background-color: $color-secondary;
+    color: $color-white;
+  }
+}
+
+.button-red {
+  @extend .button;
+  background-color: $color-red;
+
+  &:hover {
+    background-color: $color-red-light;
+  }
+}
+
+.button-green {
+  @extend .button;
+  background-color: $color-green;
+
+  &:hover {
+    background-color: $color-green-light;
+  }
+}
