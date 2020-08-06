@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react'
 import { connect, useDispatch } from 'react-redux'
 import currentActions from '../actions/current.actions'
+import LoaderComponent from './LoaderComponent'
 
 const CurrentAccount = (props) => {
   const dispatch = useDispatch()
@@ -9,23 +10,35 @@ const CurrentAccount = (props) => {
     dispatch(currentActions.getCurrentAccountsUser())
   }, [])
 
-  const test = () => {
-    dispatch(currentActions.getCurrentAccountsUser())
-  }
-
   return (
-    <div className="test">
+    <LoaderComponent
+      loading={props.populateCurrentLoading}
+    >
       <h1>Current Account</h1>
-      <button onClick={() => test()}>Get</button>
-      <p>Loading: {props.populateCurrentLoading ? 'true' : 'false'}</p>
-      <p>Success: {props.populateCurrentSuccess ? 'true' : 'false'}</p>
-      <p>Failure: {props.populateCurrentFailure ? 'true' : 'false'}</p>
-      <ul>
+      <div className="account">
         {props.currentAccounts.map((item) => {
-          return <li key={item._id}><strong>{item.nickName}</strong> - £{item.total} - {item.createdAt}</li>
+          return (
+            <div className="account__tile" key={item._id}>
+              <div className="account__block">
+                <h3>Account NickName</h3>
+                <span className="text-sub-info">{item.nickName}</span>
+              </div>
+              <div className="account__block">
+                <h3>Total</h3>
+                <span className="text-info">£{item.total}</span>
+              </div>
+              <div className="account__block">
+                <h3>Created on</h3>
+                <span className="text-sub-info">{item.createdAt}</span>
+              </div>
+              <div className="account__block">
+                <h3>Recent transaction</h3>
+              </div>
+            </div>
+          )
         })}
-      </ul>
-    </div>
+      </div>
+    </LoaderComponent>
   )
 }
 

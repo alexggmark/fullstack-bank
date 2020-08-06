@@ -15,13 +15,14 @@
   }
 
   &__nav {
-    background-color: $color-background-dark;
+    background-color: $color-background-dark-lighter;
     flex-shrink: 0;
     width: 0;
   }
 
   &__main {
     flex-grow: 1;
+    max-width: 1250px;
     padding: 0 2rem;
   }
 
