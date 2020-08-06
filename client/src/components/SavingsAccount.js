@@ -2,6 +2,7 @@ import React, { useEffect } from 'react'
 import { connect, useDispatch } from 'react-redux'
 import savingsActions from '../actions/savings.actions'
 import LoaderComponent from './LoaderComponent'
+import { formatMoney, formatDate } from '../_helpers/formatStrings'
 import '../styles/accounts.scss'
 
 const SavingsAccount = (props) => {
@@ -26,11 +27,11 @@ const SavingsAccount = (props) => {
               </div>
               <div className="account__block">
                 <h3>Total</h3>
-                <span className="text-info">£{item.total}</span>
+                <span className="text-info">£{formatMoney(item.total)}</span>
               </div>
               <div className="account__block">
                 <h3>Created on</h3>
-                <span className="text-sub-info">{item.createdAt}</span>
+                <span className="text-sub-info">{formatDate(item.createdAt)}</span>
               </div>
               <div className="account__block">
                 <h3>Recent transaction</h3>

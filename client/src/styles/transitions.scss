@@ -75,13 +75,19 @@
     overflow: hidden;
 
     #{$parent}__nav {
-      opacity: 0;
       transform: translateY(-100%);
     }
 
     #{$parent}__main {
       opacity: 0;
       transform: translateY(100%);
+    }
+
+    @media screen and (min-width: $breakpoint-lg) {
+      .navigation {
+        opacity: 0;
+        transform: translateY(-100%);
+      }
     }
   }
 
@@ -91,7 +97,6 @@
     transition: background-color 800ms;
 
     #{$parent}__nav {
-      opacity: 1;
       transform: translateY(0);
       transition: opacity 800ms, transform 800ms;
     }
@@ -100,6 +105,15 @@
       opacity: 1;
       transform: translateY(0);
       transition: opacity 800ms, transform 800ms;
+    }
+
+
+    @media screen and (min-width: $breakpoint-lg) {
+      .navigation {
+        opacity: 1;
+        transform: translateY(0);
+        transition: opacity 1200ms, transform 1000ms;
+      }
     }
   }
 

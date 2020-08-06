@@ -1,6 +1,8 @@
 import React, { useState } from 'react'
 import { useDispatch, connect } from 'react-redux'
 import currentActions from '../actions/current.actions'
+import LoaderSwitch from './LoaderSwitch'
+import '../styles/inputForm.scss'
 
 const CreateCurrent = (props) => {
   const [ nickName, setNickname ] = useState(null)
@@ -22,16 +24,14 @@ const CreateCurrent = (props) => {
   }
 
   return (
-    <div className="test">
-      <h1>CreateCurrent.js</h1>
-      <p>Nickname: {nickName}</p>
-      <p>Total: {total}</p>
-      <input type="number" placeholder="total" onChange={(event) => handleInput(event, 'total')} />
-      <input type="text" placeholder="nickName" onChange={(event) => handleInput(event, 'nickname')} />
-      <button onClick={() => createCurrentAccount()}>Submit</button>
-      <p>Loading: {props.createLoading ? 'true' : 'false'}</p>
-      <p>Success: {props.createSuccess ? 'true' : 'false'}</p>
-      <p>Failure: {props.reateFailure ? 'true' : 'false'}</p>
+    <div className="input-form">
+      <div className="input-form__tile">
+        <h1>CreateCurrent.js</h1>
+        <input type="number" placeholder="total" onChange={(event) => handleInput(event, 'total')} />
+        <input type="text" placeholder="nickName" onChange={(event) => handleInput(event, 'nickname')} />
+        <button onClick={() => createCurrentAccount()}>Submit</button>
+        <LoaderSwitch loading={props.createLoading} success={props.createSuccess} failure={props.createFailure} />
+      </div>
     </div>
   )
 }

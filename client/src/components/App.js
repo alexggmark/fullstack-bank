@@ -22,8 +22,8 @@ const App = (props) => {
       <div className="app">
         <button className="test-button" onClick={() => loginOut()}>Test login</button>
         <CSSTransition
-          in={!login}
-          // in={!props.loginSuccess}
+          // in={!login}
+          in={!props.loginSuccess}
           appear={true}
           classNames="loginlanding"
           timeout={500}
@@ -33,8 +33,8 @@ const App = (props) => {
           <LoginLanding />
         </CSSTransition>
         <CSSTransition
-          in={login}
-          // in={props.loginSuccess}
+          // in={login}
+          in={props.loginSuccess}
           timeout={1500}
           classNames="loggedin"
           mountOnEnter
