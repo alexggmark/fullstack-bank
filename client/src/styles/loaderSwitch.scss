@@ -3,7 +3,8 @@
 .loader-switch {
   $parent: &;
   align-items: center;
-  background-color: $color-dark;
+  // background-color: $color-dark;
+  background-color: $color-quaternary;
   border-radius: 100px;
   display: flex;
   height: 30px;
@@ -14,7 +15,7 @@
   &:before {
     content: '';
     display: block;
-    background-color: #b6c0d0;
+    background-color: $color-tertiary;
     width: calc(100% - 10px);
     border-radius: 100px;
     height: 22px;
@@ -30,16 +31,6 @@
     right: calc(100% - 33px);
     transition: right 0.8s ease, background-color 0.8s ease;
     width: 22px;
-
-    &:before {
-      content: '';
-      display: block;
-      background-color: rgba(255, 255, 255, 0.2);
-      width: 16px;
-      height: 16px;
-      border-radius: 100%;
-      margin: 3px;
-    }
   }
 
   &.loading {

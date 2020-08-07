@@ -1,5 +1,6 @@
 @import './variables';
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;300;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@500&display=swap');
 
 /* http://meyerweb.com/eric/tools/css/reset/
    v2.0 | 20110126
@@ -55,7 +56,8 @@ table {
 /***********************************************/
 
 body {
-  font-family: 'Poppins', sans-serif;
+  // font-family: 'Poppins', sans-serif;
+  font-family: 'Raleway', sans-serif;
 }
 
 .test {
@@ -94,18 +96,19 @@ body {
 
 h1 {
   color: $color-primary;
+  font-family: 'Poppins', sans-serif;
   font-size: 40px;
   margin: 1rem 0;
 }
 
 h3 {
   color: $color-black;
-  font-size: 12px;
+  font-family: 'Poppins', sans-serif;
+  font-size: 14px;
   font-weight: 600;
   line-height: 2.5rem;
   text-transform: uppercase;
   text-decoration: underline;
-  // text-decoration-color: $color-secondary;
 }
 
 .text-info {
@@ -127,7 +130,7 @@ h3 {
   border-radius: 10px;
   color: $color-white;
   cursor: pointer;
-  margin-right: 1rem;
+  margin-right: 0.5rem;
   padding: 0.8rem 1.6rem;
   transition: background-color 0.2s ease;
 }
@@ -145,29 +148,12 @@ h3 {
 
 .button-light {
   @extend .button;
-  border: 1px solid $color-secondary;
+  background-color: $color-dark;
+  border: 1px solid $color-dark;
   color: $color-secondary;
 
   &:hover {
     background-color: $color-secondary;
     color: $color-white;
-  }
-}
-
-.button-red {
-  @extend .button;
-  background-color: $color-red;
-
-  &:hover {
-    background-color: $color-red-light;
-  }
-}
-
-.button-green {
-  @extend .button;
-  background-color: $color-green;
-
-  &:hover {
-    background-color: $color-green-light;
   }
 }
