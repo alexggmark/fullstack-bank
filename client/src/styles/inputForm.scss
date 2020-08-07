@@ -2,7 +2,8 @@
 
 .input-form {
   &__tile {
-    background-color: $color-background-dark;
+    background: linear-gradient(180deg, $color-black, #050f19);
+    background-color: $color-black;
     border-radius: 10px;
     box-sizing: border-box;
     flex-wrap: wrap;

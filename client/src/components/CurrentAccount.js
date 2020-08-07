@@ -36,10 +36,10 @@ const CurrentAccount = (props) => {
                 <h3>Recent transaction</h3>
               </div>
               <div className="account__block">
-                <button className="button-light">Button 1</button>
+                <button className="button-dark">Button 1</button>
               </div>
               <div className="account__block">
-              <button className="button-light">Button 2</button>
+              <button className="button-dark">Button 2</button>
               </div>
             </div>
           )

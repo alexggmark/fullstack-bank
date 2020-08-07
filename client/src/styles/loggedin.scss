@@ -1,7 +1,7 @@
 @import './variables';
 
 .loggedin {
-  background-color: #EFF0FA;
+  background-color: #0c1a27;
   display: flex;
   flex-flow: row;
   min-height: 100vh;
@@ -9,7 +9,7 @@
 
   .logo {
     display: block;
-    fill: $color-white;
+    fill: $color-quaternary;
     margin: 1rem auto 2rem;
     width: 60px;
   }
