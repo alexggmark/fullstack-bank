@@ -29,6 +29,7 @@ function createSavings(data) {
   }
 
   return fetch(`${API_URL}/api/createNewSavingsAccount`, request)
+  .then(handleResponse)
     .then((res) => {
       return res
     })

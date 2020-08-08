@@ -33,7 +33,7 @@ const SavingsAccount = (props) => {
                 key={item._id}
                 timeout={500}
               >
-                <div className="account__tile" key={item._id}>
+                <div className="account__tile">
                   <div className="account__block">
                     <h3>Account NickName</h3>
                     <span className="text-sub-info">{item.nickName}</span>

@@ -21,7 +21,10 @@ function createSavingsAccount(data) {
     dispatch(load())
     savingsServices.createSavings(data)
       .then((res) => {
-        console.log(res)
+        dispatch({
+          type: POPULATE_SAVINGS_DATA,
+          payload: res
+        })
         dispatch(success())
       })
       .catch((err) => {

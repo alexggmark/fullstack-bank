@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { useDispatch, connect } from 'react-redux'
 import savingsActions from '../actions/savings.actions'
+import LoaderSwitch from './LoaderSwitch'
 
 const CreateSavings = (props) => {
   const [ nickName, setNickname ] = useState(null)
@@ -22,16 +23,18 @@ const CreateSavings = (props) => {
   }
 
   return (
-    <div className="test">
-      <h1>CreateSavings.js</h1>
-      <p>Nickname: {nickName}</p>
-      <p>Total: {total}</p>
-      <input type="number" placeholder="total" onChange={(event) => handleInput(event, 'total')} />
-      <input type="text" placeholder="nickName" onChange={(event) => handleInput(event, 'nickname')} />
-      <button onClick={() => createSavingsAccount()}>Submit</button>
-      <p>Loading: {props.createLoading ? 'true' : 'false'}</p>
-      <p>Success: {props.createSuccess ? 'true' : 'false'}</p>
-      <p>Failure: {props.reateFailure ? 'true' : 'false'}</p>
+    <div className="input-form">
+      <div className="input-form__tile">
+        <h1>CreateSavings.js</h1>
+        <div className="input-form__form-container">
+          <input type="number" placeholder="total" onChange={(event) => handleInput(event, 'total')} />
+          <input type="text" placeholder="nickName" onChange={(event) => handleInput(event, 'nickname')} />
+          <button className="button-dark" onClick={() => createSavingsAccount()}>Submit</button>
+        </div>
+        <div className="input-form__loader-switch">
+          <LoaderSwitch loading={props.createLoading} success={props.createSuccess} failure={props.createFailure} />
+        </div>
+      </div>
     </div>
   )
 }

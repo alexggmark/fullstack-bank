@@ -35,8 +35,9 @@ async function createSavingsAccount(req, res) {
       userId
     })
 
-    await savings.save()
-    res.send({ nickName, total })
+    await savings.save((err, data) => {
+      res.send({ nickName, total, _id: data._id })
+    })
   } catch (err) {
     console.error(err)
   }

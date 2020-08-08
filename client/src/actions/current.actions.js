@@ -21,7 +21,6 @@ function createCurrentAccount(data) {
     dispatch(load())
     currentServices.createCurrent(data)
       .then((res) => {
-        console.log(res)
         dispatch({
           type: POPULATE_CURRENT_DATA,
           payload: res
