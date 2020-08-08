@@ -17,6 +17,10 @@
     color: $color-quaternary;
   }
 
+  h3 {
+    margin-right: 0.5rem;
+  }
+
   &__form-container {
     display: flex;
     flex-flow: column;

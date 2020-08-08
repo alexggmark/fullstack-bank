@@ -47,22 +47,22 @@ function populateTranslogData() {
 }
 
 function transferMoney(sendValue, fromId, toId) {
-  return (dispatch) => {
+  return (dispatch) => new Promise(function(resolve, reject) {
     dispatch(load())
     transactionServices.transferMoney(sendValue, fromId, toId)
       .then((res) => {
         dispatch(success())
-        console.log('ACTION:')
-        console.log(res)
         dispatch({
           type: UPDATE_SINGLE_TRANSLOG,
           payload: res
         })
+        resolve(res)
       })
       .catch((err) => {
         dispatch(failure())
+        reject(err)
       })
-  }
+  })
 
   function success() {
     return { type: UPDATING_TRANSLOG_SUCCESS }
