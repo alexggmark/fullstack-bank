@@ -8,6 +8,15 @@ const transactionServices = {
   getTransLogs,
 }
 
+function handleResponse(res) {
+  if (!res.ok) {
+    if (res.status === 400) {
+      return Promise.reject('Invalid login')
+    }
+  }
+  return res.json()
+}
+
 function transferMoney(value, fromId, toId) {
   const request = {
     method: 'POST',
@@ -34,9 +43,7 @@ function getTransLogs() {
   }
 
   return fetch(`${API_URL}/api/getTransLogs`, request)
-    .then((res) => {
-      return res.json()
-    })
+    .then(handleResponse)
     .then((res) => {
       return res
     })

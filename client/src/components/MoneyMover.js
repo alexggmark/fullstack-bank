@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { connect, useDispatch } from 'react-redux'
 // import transactionsActions from '../actions/transactions.actions'
-import transactionServices from '../_services/transactions.services'
+import transactionServices from '../_services/translog.services'
 
 const MoneyMover = (props) => {
   const dispatch = useDispatch()

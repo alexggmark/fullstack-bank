@@ -1,33 +1,62 @@
 import React, { useEffect, useState } from 'react'
-import { connect } from 'react-redux'
-import transactionServices from '../_services/transactions.services'
+import { connect, useDispatch } from 'react-redux'
+import translogActions from '../actions/translog.actions'
+import LoaderComponent from './LoaderComponent'
+import { TransitionGroup, CSSTransition } from 'react-transition-group'
+import { formatMoney, formatDate } from '../_helpers/formatStrings'
+import '../styles/logs.scss'
 
 const TransLogs = (props) => {
-  const [translog, setTranslog] = useState(null)
+  const dispatch = useDispatch()
+
   useEffect(() => {
-    transactionServices.getTransLogs()
-      .then((res) => {
-        setTranslog(res)
-      })
+    dispatch(translogActions.populateTranslogData())
+    console.log(props.translogs)
   }, [])
 
   return (
-    <div className="test">
-      <h1>Transaction Logs</h1>
-      {/* {translog} */}
-      {translog ? translog.map(item => {
-        return (
-        <li key={item._id}>
-          {item.logType}: {item.accountType} - £{item.value} - {item.createdAt}
-        </li>
-      )}) : ''}
-      <button onClick={() => transactionServices.getTransLogs()}>Get data</button>
-    </div>
+    <LoaderComponent
+      loading={props.populateTranslogLoading}
+    >
+      <div className="logs">
+        <h1 className="leading">Transaction Logs</h1>
+        <TransitionGroup
+          className="trans"
+        >
+          {props.translogs.map((item, index) => {
+            return (
+              <CSSTransition
+                classNames="account-item"
+                key={item._id}
+                timeout={500}
+              >
+                <li className="logs__tile">
+                  <div className="logs__block">
+                    <h3>Account Type</h3>
+                    <span className="text-sub-info">{item.accountType}</span>
+                  </div>
+                  <div className="logs__block">
+                    <h3>Value</h3>
+                    <span className="text-sub-info">£{formatMoney(item.value)}</span>
+                  </div>
+                  <div className="logs__block">
+                    <h3>Created on</h3>
+                    <span className="text-sub-info">{formatDate(item.createdAt)}</span>
+                  </div>
+                </li>
+              </CSSTransition>
+          )})}
+        </TransitionGroup>
+      </div>
+    </LoaderComponent>
   )
 }
 
 const mapStateToProps = (state) => ({
-
+  translogs: state.TranslogReducer.translogs,
+  populateTranslogLoading: state.TranslogReducer.populateTranslogLoading,
+  populateTranslogFailure: state.TranslogReducer.populateTranslogFailure,
+  populateTranslogSuccess: state.TranslogReducer.populateTranslogSuccess
 })
 
 export default connect(mapStateToProps)(TransLogs)

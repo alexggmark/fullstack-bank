@@ -49,6 +49,7 @@ function getSavingsAccountsUser() {
     dispatch(load())
     savingsServices.fetchSavings()
       .then((res) => {
+        console.log(res)
         dispatch(success())
         res.forEach((item) => {
           dispatch({
