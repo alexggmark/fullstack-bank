@@ -3,6 +3,7 @@ const SavingsSchema = require('../models/savings.model')
 const controllers = {
   getSavingsAccount,
   createSavingsAccount,
+  deleteSavingsAccount
   // getAllSavingsAccounts
 }
 
@@ -36,6 +37,17 @@ async function createSavingsAccount(req, res) {
 
     await savings.save()
     res.send({ nickName, total })
+  } catch (err) {
+    console.error(err)
+  }
+}
+
+async function deleteSavingsAccount(req, res) {
+  try {
+    const { id } = req.body
+
+    const response = await SavingsSchema.findOneAndDelete({ _id: id })
+    res.send(response)
   } catch (err) {
     console.error(err)
   }

@@ -3,6 +3,7 @@ import {
   CREATE_SAVINGS_LOADING,
   CREATE_SAVINGS_SUCCESS,
   CREATE_SAVINGS_FAILURE,
+  DELETE_SAVINGS,
   POPULATE_SAVINGS_DATA,
   POPULATE_SAVINGS_LOADING,
   POPULATE_SAVINGS_SUCCESS,
@@ -11,7 +12,8 @@ import {
 
 const savingsActions = {
   createSavingsAccount,
-  getSavingsAccountsUser
+  getSavingsAccountsUser,
+  deleteSavingsAccount
 }
 
 function createSavingsAccount(data) {
@@ -65,6 +67,22 @@ function getSavingsAccountsUser() {
   }
   function fail() {
     return { type: POPULATE_SAVINGS_FAILURE }
+  }
+}
+
+function deleteSavingsAccount(id) {
+  return (dispatch) => {
+    savingsServices.deleteSavings(id)
+      .then((res) => {
+        dispatch(deleteSavings(id))
+      })
+      .catch((err) => {
+        console.error(err)
+      })
+  }
+
+  function deleteSavings(id) {
+    return { type: DELETE_SAVINGS, payload: id }
   }
 }
 

@@ -22,6 +22,8 @@ router.post(
 
 router.delete(
   '/deleteSavingsAccount',
+  auth,
+  controllerSavings.deleteSavingsAccount
   // TODO:
 )
 

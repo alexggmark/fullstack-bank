@@ -26,7 +26,7 @@ const CurrentAccount = (props) => {
         <TransitionGroup
           className="trans"
         >
-          {props.currentAccounts.map((item) => {
+          {[...props.currentAccounts].reverse().map((item) => {
             return (
               <CSSTransition
                 classNames="account-item"
@@ -53,7 +53,7 @@ const CurrentAccount = (props) => {
                     <button className="button-dark">Transfer</button>
                   </div>
                   <div className="account__block">
-                  <button className="button-dark" onClick={() => deleteAccount(item._id)}>Delete</button>
+                    <button className="button-dark" onClick={() => deleteAccount(item._id)}>Delete</button>
                   </div>
                 </div>
               </CSSTransition>

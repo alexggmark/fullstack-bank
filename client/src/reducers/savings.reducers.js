@@ -2,6 +2,7 @@ import {
   CREATE_SAVINGS_LOADING,
   CREATE_SAVINGS_SUCCESS,
   CREATE_SAVINGS_FAILURE,
+  DELETE_SAVINGS,
   POPULATE_SAVINGS_DATA,
   POPULATE_SAVINGS_LOADING,
   POPULATE_SAVINGS_SUCCESS,
@@ -70,6 +71,12 @@ export default (state = initialState, action) => {
         createSavingsLoading: false,
         createSavingsSuccess: false,
         createSavingsFailure: true
+      }
+    case DELETE_SAVINGS:
+      console.log('DELETE SAVING')
+      return {
+        ...state,
+        savingsAccounts: state.savingsAccounts.filter(item => item._id !== action.payload.id)
       }
     default:
       return state
