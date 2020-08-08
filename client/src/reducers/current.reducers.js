@@ -2,6 +2,7 @@ import {
   CREATE_CURRENT_LOADING,
   CREATE_CURRENT_SUCCESS,
   CREATE_CURRENT_FAILURE,
+  DELETE_CURRENT,
   POPULATE_CURRENT_DATA,
   POPULATE_CURRENT_LOADING,
   POPULATE_CURRENT_SUCCESS,
@@ -70,6 +71,11 @@ export default (state = initialState, action) => {
         createCurrentLoading: false,
         createCurrentSuccess: false,
         createCurrentFailure: true
+      }
+    case DELETE_CURRENT:
+      return {
+        ...state,
+        currentAccounts: state.currentAccounts.filter(item => item._id !== action.payload.id)
       }
     default:
       return state

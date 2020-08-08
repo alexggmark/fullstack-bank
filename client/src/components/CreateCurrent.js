@@ -22,7 +22,7 @@ const CreateCurrent = (props) => {
   const createCurrentAccount = async () => {
     try {
       await dispatch(currentActions.createCurrentAccount({ total, nickName }))
-      props.triggerReload()
+      // props.triggerReload()
     } catch (err) {
       console.error(err)
     }

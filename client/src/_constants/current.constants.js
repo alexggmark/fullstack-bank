@@ -1,6 +1,7 @@
 export const CREATE_CURRENT_LOADING = 'createCurrentLoading'
 export const CREATE_CURRENT_SUCCESS = 'createCurrentSuccess'
 export const CREATE_CURRENT_FAILURE = 'createCurrentFailure'
+export const DELETE_CURRENT = 'deleteCurrent'
 export const POPULATE_CURRENT_DATA = 'populateCurrentData'
 export const POPULATE_CURRENT_LOADING = 'populateCurrentDataLoading'
 export const POPULATE_CURRENT_SUCCESS = 'populateCurrentDataSuccess'

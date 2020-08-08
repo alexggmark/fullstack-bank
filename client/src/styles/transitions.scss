@@ -1,5 +1,9 @@
 @import '../styles/variables';
 
+.trans {
+  width: 100%;
+}
+
 .testclass {
   &-enter, &-enter-done, &-exit, &-exit-active {
     max-height: 100vh;
@@ -124,5 +128,29 @@
   &-exit-done {
     opacity: 0;
     transition: opacity 1s;
+  }
+}
+
+.account-item {
+  &-enter, &-appear {
+    opacity: 0;
+    transform: translateX(10px);
+  }
+
+  &-appear-done, &-enter-done {
+    transform: translateX(0);
+    opacity: 1;
+    transition: transform 0.5s ease, opacity 0.5s ease;
+  }
+
+  &-exit {
+    opacity: 1;
+    transform: translateX(0);
+  }
+
+  &-exit-active {
+    opacity: 0;
+    transition: opacity 0.5s ease, transform 0.5s ease;
+    transform: translateX(-10px);
   }
 }

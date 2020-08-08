@@ -3,6 +3,7 @@ const CurrentSchema = require('../models/current.model')
 const controllers = {
   getCurrentAccount,
   createCurrentAccount,
+  deleteCurrentAccount
   // getAllCurrentAccounts
 }
 
@@ -34,23 +35,25 @@ async function createCurrentAccount(req, res) {
       userId
     })
 
-    await current.save()
-    res.send({ nickName, total })
+    await current.save((err, data) => {
+      res.send({ nickName, total, _id: data._id })
+    })
   } catch (err) {
     console.error(err)
   }
 }
 
-// async function getAllCurrentAccounts(req, res) {
-//   try {
-//     console.log(req)
-//     const userId = req.user._id
-//     const response = await CurrentSchema.find({ userId: userId })
-//     console.log(response.body)
-//     res.send(response)
-//   } catch (err) {
-//     console.error(err)
-//   }
-// }
+async function deleteCurrentAccount(req, res) {
+  try {
+    console.log(req.body)
+    const { id } = req.body
+
+    const response = await CurrentSchema.findOneAndDelete({ _id: id })
+    console.log(id)
+    res.send(response)
+  } catch (err) {
+    console.error(err)
+  }
+}
 
 module.exports = controllers

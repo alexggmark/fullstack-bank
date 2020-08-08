@@ -3,6 +3,7 @@ import {
   CREATE_CURRENT_LOADING,
   CREATE_CURRENT_SUCCESS,
   CREATE_CURRENT_FAILURE,
+  DELETE_CURRENT,
   POPULATE_CURRENT_DATA,
   POPULATE_CURRENT_LOADING,
   POPULATE_CURRENT_SUCCESS,
@@ -11,7 +12,8 @@ import {
 
 const currentActions = {
   createCurrentAccount,
-  getCurrentAccountsUser
+  getCurrentAccountsUser,
+  deleteCurrentAccount
 }
 
 function createCurrentAccount(data) {
@@ -19,6 +21,11 @@ function createCurrentAccount(data) {
     dispatch(load())
     currentServices.createCurrent(data)
       .then((res) => {
+        console.log(res)
+        dispatch({
+          type: POPULATE_CURRENT_DATA,
+          payload: res
+        })
         dispatch(success())
       })
       .catch((err) => {
@@ -34,6 +41,22 @@ function createCurrentAccount(data) {
   }
   function fail() {
     return { type: CREATE_CURRENT_FAILURE }
+  }
+}
+
+function deleteCurrentAccount(id) {
+  return (dispatch) => {
+    currentServices.deleteCurrent(id)
+      .then((res) => {
+        dispatch(deleteCurrent(id))
+      })
+      .catch((err) => {
+        console.error(err)
+      })
+  }
+
+  function deleteCurrent(id) {
+    return { type: DELETE_CURRENT, payload: id }
   }
 }
 

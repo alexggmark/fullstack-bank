@@ -22,7 +22,8 @@ router.post(
 
 router.delete(
   '/deleteCurrentAccount',
-  // TODO:
+  auth,
+  controllerCurrent.deleteCurrentAccount
 )
 
 module.exports = router
