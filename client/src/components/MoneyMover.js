@@ -50,27 +50,27 @@ const MoneyMover = (props) => {
     <div className="input-form">
       <div className="input-form__tile">
         <h1>Money mover</h1>
-        <LoaderComponent mini loading={props.populateCurrentLoading || props.populateSavingsLoading}>
           <div className="input-form__form-container">
-            <h3>From:</h3>
-            <select onChange={(event) => handleSelect(event.target.value, 0)} defaultValue="store">
-              <option value="store">Money Store</option>
-              {props.currentAccounts.map(OptionTemplate)}
-              {props.savingsAccounts.map(OptionTemplate)}
-            </select>
-            <h3>To:</h3>
-            <select onChange={(event) => handleSelect(event.target.value, 1)} defaultValue="store">
-              <option value="store">Money Store</option>
-              {props.currentAccounts.map(OptionTemplate)}
-              {props.savingsAccounts.map(OptionTemplate)}
-            </select>
-            <input onChange={(event) => handleValue(event)} type="number" placeholder="Send value"></input>
-            <button className="button-dark" onClick={() => sendMoney()}>Send</button>
+            <LoaderComponent mininomargin loading={props.populateCurrentLoading || props.populateSavingsLoading}>
+              <h3>From:</h3>
+                <select onChange={(event) => handleSelect(event.target.value, 0)} defaultValue="store">
+                  <option value="store">Money Store</option>
+                  {props.currentAccounts.map(OptionTemplate)}
+                  {props.savingsAccounts.map(OptionTemplate)}
+                </select>
+              <h3>To:</h3>
+              <select onChange={(event) => handleSelect(event.target.value, 1)} defaultValue="store">
+                <option value="store">Money Store</option>
+                {props.currentAccounts.map(OptionTemplate)}
+                {props.savingsAccounts.map(OptionTemplate)}
+              </select>
+              <input onChange={(event) => handleValue(event)} type="number" placeholder="Send value"></input>
+              <button className="button-dark" onClick={() => sendMoney()}>Send</button>
+            </LoaderComponent>
           </div>
-          <div className="input-form__loader-switch">
+          {/* <div className="input-form__loader-switch">
             <LoaderSwitch loading={props.updatingTranslogLoading} success={props.updatingTranslogSuccess} failure={props.updatingTranslogFailure} />
-          </div>
-        </LoaderComponent>
+          </div> */}
       </div>
     </div>
   )

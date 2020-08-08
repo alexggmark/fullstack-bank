@@ -7,7 +7,11 @@ const LoaderComponent = (props) => {
     {props.loading ? (
       <img
         src={loaderGif}
-        className={`loader ${props.mini ? 'mini' : ''}`}
+        className={`
+          loader
+          ${props.mini ? 'mini' : ''}
+          ${props.mininomargin ? 'mini-no-margin' : ''}
+        `}
       />
     ) : props.children}
     </>

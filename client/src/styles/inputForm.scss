@@ -24,6 +24,7 @@
   &__form-container {
     display: flex;
     flex-flow: column;
+    min-height: 45px;
   }
 
   input, select {
