@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import { connect, useDispatch } from 'react-redux'
-// import transactionsActions from '../actions/transactions.actions'
-import transactionServices from '../_services/translog.services'
+import translogServices from '../_services/translog.services'
+import LoaderSwitch from '../components/LoaderSwitch'
+import '../styles/inputForm.scss'
 
 const MoneyMover = (props) => {
   const dispatch = useDispatch()
@@ -9,9 +10,14 @@ const MoneyMover = (props) => {
   const [toValue, setToValue] = useState('store')
   const [sendValue, setSendValue] = useState(0)
 
+  useEffect(() => {
+    console.log(props.currentAccounts)
+    console.log(props.savingsAccounts)
+  }, [])
+
   const sendMoney = () => {
     if (!fromValue || !toValue) { return }
-    transactionServices.transferMoney(sendValue, fromValue, toValue)
+    translogServices.transferMoney(sendValue, fromValue, toValue)
   }
 
   const handleSelect = (id, type) => {
@@ -24,31 +30,37 @@ const MoneyMover = (props) => {
   }
 
   return (
-    <div className="test">
-      <h1>Money mover</h1>
-      <p>{fromValue}</p>
-      <p>{toValue}</p>
-      <p>{sendValue}</p>
-      From: <select onChange={(event) => handleSelect(event.target.value, 0)} defaultValue="store">
-        <option value="store">Money Store</option>
-        {props.currentAccounts.map((item) => {
-          return <option key={'mm-' + item._id} value={item._id}>{item.nickName} - £{item.total}</option>
-        })}
-        {props.savingsAccounts.map((item) => {
-          return <option key={'mm-' + item._id} value={item._id}>{item.nickName} - £{item.total}</option>
-        })}
-      </select>
-      To: <select onChange={(event) => handleSelect(event.target.value, 1)} defaultValue="store">
-        <option value="store">Money Store</option>
-        {props.currentAccounts.map((item) => {
-          return <option key={'mm-' + item._id} value={item._id}>{item.nickName} - £{item.total}</option>
-        })}
-        {props.savingsAccounts.map((item) => {
-          return <option key={'mm-' + item._id} value={item._id}>{item.nickName} - £{item.total}</option>
-        })}
-      </select>
-      <input onChange={(event) => handleValue(event)} type="number" placeholder="Send value"></input>
-      <button onClick={() => sendMoney()}>Send</button>
+    <div className="input-form">
+      <div className="input-form__tile">
+        <h1>Money mover</h1>
+        <div className="input-form__form-container">
+          <h3>From:</h3>
+          <select onChange={(event) => handleSelect(event.target.value, 0)} defaultValue="store">
+            <option value="store">Money Store</option>
+            {props.currentAccounts.map((item) => {
+              return <option key={'mm-' + item._id} value={item._id}>{item.nickName} - £{item.total}</option>
+            })}
+            {props.savingsAccounts.map((item) => {
+              return <option key={'mm-' + item._id} value={item._id}>{item.nickName} - £{item.total}</option>
+            })}
+          </select>
+          <h3>To:</h3>
+          <select onChange={(event) => handleSelect(event.target.value, 1)} defaultValue="store">
+            <option value="store">Money Store</option>
+            {props.currentAccounts.map((item) => {
+              return <option key={'mm-' + item._id} value={item._id}>{item.nickName} - £{item.total}</option>
+            })}
+            {props.savingsAccounts.map((item) => {
+              return <option key={'mm-' + item._id} value={item._id}>{item.nickName} - £{item.total}</option>
+            })}
+          </select>
+          <input onChange={(event) => handleValue(event)} type="number" placeholder="Send value"></input>
+          <button className="button-dark" onClick={() => sendMoney()}>Send</button>
+        </div>
+        <div className="input-form__loader-switch">
+          <LoaderSwitch loading={props.createLoading} success={props.createSuccess} failure={props.createFailure} />
+        </div>
+      </div>
     </div>
   )
 }

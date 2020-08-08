@@ -22,7 +22,7 @@
     flex-flow: column;
   }
 
-  input {
+  input, select {
     background-color: $color-tertiary;
     border-radius: 10px;
     border: 1px solid transparent;
@@ -42,7 +42,7 @@
       flex-flow: row;
     }
 
-    input {
+    input, select {
       margin: 0 0.5rem 0 0;
     }
 
