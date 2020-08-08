@@ -48,6 +48,7 @@ const Loggedin = (props) => {
                 </Route>
                 <Route path="/transfer">
                   <MoneyMover />
+                  <TransLogs />
                 </Route>
                 <Route path="/logs">
                   <TransLogs />

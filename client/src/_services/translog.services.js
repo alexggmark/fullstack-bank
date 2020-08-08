@@ -28,7 +28,10 @@ function transferMoney(value, fromId, toId) {
   }
 
   return fetch(`${API_URL}/api/transferMoney`, request)
+    .then(handleResponse)
     .then((res) => {
+      console.log('SERVICE')
+      console.log(res)
       return res
     })
 }

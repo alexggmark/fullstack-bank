@@ -5,7 +5,10 @@ const LoaderComponent = (props) => {
   return (
     <>
     {props.loading ? (
-      <img src={loaderGif} className="loader" />
+      <img
+        src={loaderGif}
+        className={`loader ${props.mini ? 'mini' : ''}`}
+      />
     ) : props.children}
     </>
   )

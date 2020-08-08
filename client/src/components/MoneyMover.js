@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { connect, useDispatch } from 'react-redux'
-import translogServices from '../_services/translog.services'
+// import translogServices from '../_services/translog.services'
+import translogActions from '../actions/translog.actions'
 import LoaderSwitch from '../components/LoaderSwitch'
 import '../styles/inputForm.scss'
 
@@ -17,7 +18,7 @@ const MoneyMover = (props) => {
 
   const sendMoney = () => {
     if (!fromValue || !toValue) { return }
-    translogServices.transferMoney(sendValue, fromValue, toValue)
+    dispatch(translogActions.transferMoney(sendValue, fromValue, toValue))
   }
 
   const handleSelect = (id, type) => {

@@ -20,10 +20,11 @@ const TransLogs = (props) => {
     >
       <div className="logs">
         <h1 className="leading">Transaction Logs</h1>
+        <LoaderComponent mini loading={props.updatingTranslogLoading}></LoaderComponent>
         <TransitionGroup
           className="trans"
         >
-          {props.translogs.map((item, index) => {
+          {[...props.translogs].reverse().map((item, index) => {
             return (
               <CSSTransition
                 classNames="account-item"
@@ -56,7 +57,10 @@ const mapStateToProps = (state) => ({
   translogs: state.TranslogReducer.translogs,
   populateTranslogLoading: state.TranslogReducer.populateTranslogLoading,
   populateTranslogFailure: state.TranslogReducer.populateTranslogFailure,
-  populateTranslogSuccess: state.TranslogReducer.populateTranslogSuccess
+  populateTranslogSuccess: state.TranslogReducer.populateTranslogSuccess,
+  updatingTranslogLoading: state.TranslogReducer.updatingTranslogLoading,
+  updatingTranslogFailure: state.TranslogReducer.updatingTranslogFailure,
+  updatingTranslogSuccess: state.TranslogReducer.updatingTranslogSuccess,
 })
 
 export default connect(mapStateToProps)(TransLogs)
