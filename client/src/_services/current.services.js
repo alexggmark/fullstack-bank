@@ -31,7 +31,6 @@ function createCurrent(data) {
   return fetch(`${API_URL}/api/createNewCurrentAccount`, request)
     .then(handleResponse)
     .then((res) => {
-      console.log(res)
       return res
     })
 }

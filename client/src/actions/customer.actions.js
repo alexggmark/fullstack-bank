@@ -55,18 +55,4 @@ function loginAction(credentials) {
   }
 }
 
-// function logoutAction() {
-//   return (dispatch) => {
-//     customerServices.logout()
-//       .then(() => {
-//         dispatch(logout)
-//         console.log('Logging out')
-//       })
-//   }
-
-//   function logout() {
-//     return { type: LOGOUT_USER }
-//   }
-// }
-
 export default customerActions

@@ -38,7 +38,6 @@ function getTransLogs() {
       return res.json()
     })
     .then((res) => {
-      console.log(res)
       return res
     })
 }

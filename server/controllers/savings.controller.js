@@ -41,16 +41,4 @@ async function createSavingsAccount(req, res) {
   }
 }
 
-// async function getAllSavingsAccounts(req, res) {
-//   try {
-//     console.log(req)
-//     const userId = req.user._id
-//     const response = await SavingsSchema.find({ userId: userId })
-//     console.log(response.body)
-//     res.send(response)
-//   } catch (err) {
-//     console.error(err)
-//   }
-// }
-
 module.exports = controllers

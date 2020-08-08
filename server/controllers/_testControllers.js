@@ -10,9 +10,7 @@ function first (req, res) {
 }
 
 async function send (req, res) {
-  console.log('Running async send')
   const result = await new TestSchema(req.body).save()
-  console.log('After save')
   res.send(result)
 }
 

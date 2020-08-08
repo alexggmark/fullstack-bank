@@ -45,11 +45,9 @@ async function createCurrentAccount(req, res) {
 
 async function deleteCurrentAccount(req, res) {
   try {
-    console.log(req.body)
     const { id } = req.body
 
     const response = await CurrentSchema.findOneAndDelete({ _id: id })
-    console.log(id)
     res.send(response)
   } catch (err) {
     console.error(err)
