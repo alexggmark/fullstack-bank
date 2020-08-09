@@ -9,7 +9,13 @@ const controllers = {
 
 async function createUser(req, res) {
   try {
-    const user = new CustomerSchema(req.body)
+    const { username, password, firstname, lastname } = req.body
+    const user = new CustomerSchema({
+      firstName: firstname,
+      lastName: lastname,
+      password,
+      username
+    })
     await user.save()
     const token = await user.generateAuthToken()
     res.send({ user, token })

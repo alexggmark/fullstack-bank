@@ -21,18 +21,7 @@ const Loggedin = (props) => {
   return (
     <BrowserRouter>
       <div className="loggedin">
-        <div className="loggedin__nav">
-          {/* <Piggy className="logo" />
-          <ul>
-              <li><Link to="/">Dashboard</Link></li>
-              <li><Link to="/current">Current Account</Link></li>
-              <li><Link to="/savings">Savings Account</Link></li>
-              <li><Link to="/transfer">Transfer Money</Link></li>
-              <li><Link to="/logs">Transfer Logs</Link></li>
-
-          </ul>
-          <UserProfileWidget /> */}
-        </div>
+        <div className="loggedin__nav" />
         <Navigation />
         <div className="loggedin__main">
           <div className="loggedin__main-container">

@@ -10,7 +10,7 @@ const CustomerSchema = new mongoose.Schema({
   createdAt: { type: Date, default: Date.now },
   activeSavingsAccount: { type: Boolean, default: false},
   activeCurrentAccount: { type: Boolean, default: false },
-  moneyStore: { type: Number, default: 0 },
+  moneyStore: { type: Number, default: 10000 },
   totalCurrent: { type: Number, default: 0 },
   totalSavings: { type: Number, default: 0 },
   tokens: [{

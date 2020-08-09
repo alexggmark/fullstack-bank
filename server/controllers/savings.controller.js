@@ -9,8 +9,7 @@ const controllers = {
 
 async function getSavingsAccount(req, res) {
   try {
-    // const response = await SavingsSchema.find({ userId: req.user._id})
-    const response = await SavingsSchema.find()
+    const response = await SavingsSchema.find({ userId: req.user._id})
 
     if (!response) {
       return res.status(400).json({

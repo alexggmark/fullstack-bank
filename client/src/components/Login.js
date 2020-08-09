@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { useDispatch, connect } from 'react-redux'
+import { Link } from 'react-router-dom'
 import customerActions from '../actions/customer.actions'
 
 const Login = (props) => {
@@ -24,7 +25,6 @@ const Login = (props) => {
   const loginMethod = () => {
     if (!username || !password) { return }
     const credentials = { username, password }
-    // customerServices.login(credentials)
     dispatch(customerActions.loginAction(credentials))
   }
 
@@ -38,6 +38,7 @@ const Login = (props) => {
         <p>Login success: {props.loginSuccess ? 'true' : 'false'}</p>
         <p>Login failure: {props.loginFailure ? 'true' : 'false'}</p>
       </div>
+      <Link to="/register">Register</Link>
     </div>
   )
 }

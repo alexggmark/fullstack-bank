@@ -9,8 +9,7 @@ const controllers = {
 
 async function getCurrentAccount(req, res) {
   try {
-    // const response = await CurrentSchema.find({ userId: req.user._id})
-    const response = await CurrentSchema.find()
+    const response = await CurrentSchema.find({ userId: req.user._id })
 
     if (!response) {
       return res.status(400).json({

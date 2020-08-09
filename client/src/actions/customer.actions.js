@@ -10,7 +10,7 @@ import {
 const customerActions = {
   loginAction,
   populateUserData,
-  // logoutAction
+  registerAction
 }
 
 function populateUserData() {
@@ -52,6 +52,12 @@ function loginAction(credentials) {
   }
   function fail() {
     return { type: LOGIN_USER_FAILURE }
+  }
+}
+
+function registerAction(credentials) {
+  return (dispatch) => {
+    customerServices.createUser(credentials)
   }
 }
 
