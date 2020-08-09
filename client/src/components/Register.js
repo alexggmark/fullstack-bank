@@ -3,10 +3,10 @@ import { connect } from 'react-redux'
 
 const Register = () => {
   return (
-    <div>
+    <div className="register">
       <input type="text" placeholder="Username" />
       <input type="text" placeholder="Password" />
-      <button>Register</button>
+      <button className="button-inverse">Register</button>
     </div>
   )
 }

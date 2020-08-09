@@ -14,8 +14,25 @@ const LoginLanding = () => {
           <h1 className="logo">Alex Bank</h1>
         </div>
         <div className="loginlanding__content">
+          <div className="test">
+            <h1>This is a work in progress</h1>
+            <h1>- 10th Aug 2020</h1>
+            <h2>Test login:</h2>
+            <ul>
+              <li>username: <strong>"Alex"</strong></li>
+              <li>password: <strong>"test"</strong></li>
+            </ul>
+            <p>To do list:</p>
+            <ul>
+              <li>Finish mobile login page</li>
+              <li>Complete register function</li>
+              <li>Improve transition animations</li>
+              <li>Implement D3 charts and dashboard</li>
+              <li>Paginate transaction logs</li>
+            </ul>
+          </div>
           <Login />
-          <Register />
+          {/* <Register /> */}
         </div>
       </div>
     </div>

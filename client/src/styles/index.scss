@@ -64,16 +64,19 @@ body {
   background-color: $color-white;
   border-radius: 10px;
   box-shadow: 0px 10px 44px -17px rgba(0,0,0,0.1);
-  color: black;
   margin: 0 1rem 2rem;
-  opacity: 0.2;
-  padding: 1rem;
+  padding: 1rem 1rem 0.5rem;
 
   h1 {
-    color: #ccc;
+    color: red;
     font-size: 20px;
     font-weight: bold;
     margin: 0.5rem 0 1rem;
+  }
+
+  ul {
+    list-style-type: circle;
+    padding-left: 2rem;
   }
 
   &-button {
@@ -172,5 +175,17 @@ h3 {
   &:hover {
     background-color: $color-secondary;
     color: $color-white;
+  }
+}
+
+.button-inverse {
+  @extend .button;
+  background-color: $color-secondary;
+  border: 1px solid transparent;
+  color: $color-dark;
+
+  &:hover {
+    background-color: $color-dark;
+    color: $color-secondary;
   }
 }

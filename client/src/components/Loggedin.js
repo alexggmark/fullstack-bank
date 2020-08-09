@@ -57,7 +57,6 @@ const Loggedin = (props) => {
                   <CurrentAccount />
                   <SavingsAccount />
                   <MoneyMover />
-                  <TransLogs />
                 </Route>
               </Switch>
           </div>

@@ -20,7 +20,6 @@ const App = (props) => {
       timeout={2500}
     >
       <div className="app">
-        <button className="test-button" onClick={() => loginOut()}>Test login</button>
         <CSSTransition
           // in={!login}
           in={!props.loginSuccess}

@@ -29,10 +29,10 @@ const Login = (props) => {
   }
 
   return (
-    <div>
+    <div className="login">
       <input type="text" placeholder="Username" onChange={(event) => handleInput(event, 'u')} />
       <input type="text" placeholder="Password" onChange={(event) => handleInput(event, 'p')} />
-      <button onClick={() => loginMethod()}>Login</button>
+      <button className="button-inverse" onClick={() => loginMethod()}>Login</button>
       <div>
         <p>Login loading: {props.loginLoading ? 'true' : 'false'}</p>
         <p>Login success: {props.loginSuccess ? 'true' : 'false'}</p>
