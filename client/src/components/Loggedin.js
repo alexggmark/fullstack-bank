@@ -5,6 +5,7 @@ import customerActions from '../actions/customer.actions'
 import CreateCurrent from './CreateCurrent'
 import CreateSavings from './CreateSavings'
 import CurrentAccount from './CurrentAccount'
+import TestDash from './TestDash'
 import SavingsAccount from './SavingsAccount'
 import MoneyMover from './MoneyMover'
 import TransLogs from './TransLogs'
@@ -43,9 +44,10 @@ const Loggedin = (props) => {
                   <TransLogs />
                 </Route>
                 <Route path="/">
-                  <CurrentAccount />
+                  <TestDash />
+                  {/* <CurrentAccount />
                   <SavingsAccount />
-                  <MoneyMover />
+                  <MoneyMover /> */}
                 </Route>
               </Switch>
           </div>

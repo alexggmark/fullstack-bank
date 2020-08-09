@@ -15,26 +15,22 @@ const Register = (props) => {
     switch (type) {
       case 'f':
         setFirstname(event.target.value)
-        console.log(firstname)
         break
       case 'l':
         setLastname(event.target.value)
-        console.log(lastname)
         break
       case 'u':
         setUsername(event.target.value)
-        console.log(username)
         break
       case 'p':
         setPassword(event.target.value)
-        console.log(password)
         break
         default: // do nothing
     }
   }
 
   const registerMethod = () => {
-    if (!username || !password) { return }
+    if (!username || !password || !firstname || !lastname) { return }
     const credentials = { username, password, firstname, lastname }
     dispatch(customerActions.registerAction(credentials))
   }
@@ -47,17 +43,19 @@ const Register = (props) => {
       <input type="text" placeholder="Password" onChange={(event) => handleInput(event, 'p')} />
       <button className="button-inverse" onClick={() => registerMethod()}>Register</button>
       <div>
-        <p>Register loading: {props.loginLoading ? 'true' : 'false'}</p>
-        <p>Register success: {props.loginSuccess ? 'true' : 'false'}</p>
-        <p>Register failure: {props.loginFailure ? 'true' : 'false'}</p>
+        <p>register loading: {props.registerLoading ? 'true' : 'false'}</p>
+        <p>register success: {props.registerSuccess ? 'true' : 'false'}</p>
+        <p>register failure: {props.registerFailure ? 'true' : 'false'}</p>
       </div>
-      <Link to="/">Login</Link>
+      <Link to="/" className="button-form">Go to Login</Link>
     </div>
   )
 }
 
 const mapStateToProps = (state) => ({
-  // FIXME:
+  registerLoading: state.CustomerReducer.registerLoading,
+  registerSuccess: state.CustomerReducer.registerSuccess,
+  registerFailure: state.CustomerReducer.registerFailure
 })
 
 export default connect(mapStateToProps)(Register)

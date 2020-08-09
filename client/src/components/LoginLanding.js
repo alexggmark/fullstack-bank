@@ -31,6 +31,7 @@ const LoginLanding = () => {
                 <li>Improve transition animations</li>
                 <li>Implement D3 charts and dashboard</li>
                 <li>Paginate transaction logs</li>
+                <li>Automate account--store process</li>
               </ul>
             </div>
             <Switch>
