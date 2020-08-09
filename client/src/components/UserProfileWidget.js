@@ -7,20 +7,11 @@ import '../styles/profileWidget.scss'
 const UserProfileWidget = (props) => {
   return (
     <div className="profile-widget">
+      <h3>User Profile</h3>
       <p>Hello {props.firstName},</p>
-      <p>You have £{formatMoney(props.moneyStore)} in store</p>
+      <p>Your store:</p>£
+        <span className="text-info">{formatMoney(props.moneyStore)}</span>
       <p>You joined {formatDate(props.createdAt)}</p>
-      {/* <ul>
-        <li>activeCurrentAccount: {props.activeCurrentAccount ? 'true' : 'false'}</li>
-        <li>activeSavingsAccount: {props.activeSavingsAccount ? 'true' : 'false'}</li>
-        <li>createdAt: {props.createdAt}</li>
-        <li>firstName: {props.firstName}</li>
-        <li>lastName: {props.lastName}</li>
-        <li>moneyStore: {props.moneyStore}</li>
-        <li>username: {props.username}</li>
-        <li>totalCurrent: {props.totalCurrent}</li>
-        <li>totalSavings: {props.totalSavings}</li>
-      </ul> */}
       <Logout />
     </div>
   )

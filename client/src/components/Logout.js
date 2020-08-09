@@ -16,7 +16,7 @@ const Logout = (props) => {
   }
 
   return (
-    <button onClick={() => logoutUser()}>LOGOUT</button>
+    <button className="button-light" onClick={() => logoutUser()}>LOGOUT</button>
   )
 }
 

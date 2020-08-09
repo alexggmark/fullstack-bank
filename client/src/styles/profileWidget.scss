@@ -2,9 +2,14 @@
 
 .profile-widget {
   background-color: $color-black;
+  background: linear-gradient(180deg, $color-black, #050f19);
   color: $color-white;
   border-radius: 10px;
   box-shadow: 0px 10px 44px -17px rgba(0,0,0,0.1);
   margin: 1rem 0;
   padding: 1rem;
+
+  button {
+    margin-top: 1rem;
+  }
 }

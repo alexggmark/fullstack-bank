@@ -6,7 +6,7 @@ export const formatDate = (string) => {
 
 export const formatMoney = (string) => {
   if (string % 1 != 0) {
-    return string
+    return Math.round(string * 100) / 100
   }
   return `${string}.00`
 }

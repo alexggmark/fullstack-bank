@@ -1,21 +1,22 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, useRef } from 'react'
 import { connect, useDispatch } from 'react-redux'
 import currentActions from '../actions/current.actions'
 import savingsActions from '../actions/savings.actions'
 import translogActions from '../actions/translog.actions'
-import LoaderSwitch from '../components/LoaderSwitch'
 import LoaderComponent from '../components/LoaderComponent'
 import '../styles/inputForm.scss'
 
 const MoneyMover = (props) => {
   const dispatch = useDispatch()
+  const selectRef = useRef()
   const [fromValue, setFromValue] = useState('store')
   const [toValue, setToValue] = useState('store')
   const [sendValue, setSendValue] = useState(0)
 
   useEffect(() => {
-    if (props.currentAccounts.length !== 0 && props.savingsAccounts.length !== 0) return
-    fetchAccountData()
+    console.log(props.account)
+    if (props.currentAccounts.length === 0) dispatch(currentActions.getCurrentAccountsUser())
+    if (props.savingsAccounts.length === 0) dispatch(savingsActions.getSavingsAccountsUser())
   }, [])
 
   const fetchAccountData = () => {
@@ -42,35 +43,45 @@ const MoneyMover = (props) => {
     setSendValue(event.target.value)
   }
 
-  const OptionTemplate = (item) => {
-    return <option key={'mm-' + item._id} value={item._id}>{item.nickName} - £{item.total}</option>
+  const OptionTemplate = (item, namespace) => {
+    return <option key={namespace + item._id} value={item._id}>{namespace + item._id}{item.nickName} - £{item.total}</option>
   }
 
   return (
-    <div className="input-form">
+    <div
+      className={`
+        input-form
+        ${props.account}
+        ${props.embedded ? 'embedded' : ''}
+      `}
+      key={props.account}
+    >
       <div className="input-form__tile">
         <h1>Money mover</h1>
           <div className="input-form__form-container">
             <LoaderComponent mininomargin loading={props.populateCurrentLoading || props.populateSavingsLoading}>
               <h3>From:</h3>
-                <select onChange={(event) => handleSelect(event.target.value, 0)} defaultValue="store">
-                  <option value="store">Money Store</option>
-                  {props.currentAccounts.map(OptionTemplate)}
-                  {props.savingsAccounts.map(OptionTemplate)}
-                </select>
+              <select
+                ref={selectRef}
+                onChange={(event) => handleSelect(event.target.value, 0)}
+                defaultValue={`
+                  ${props.account ? props.account : 'store'}
+                `}
+              >
+                <option value="store">Money Store</option>
+                {props.currentAccounts.map(item => OptionTemplate(item, 'from'))}
+                {props.savingsAccounts.map(item => OptionTemplate(item, 'from'))}
+              </select>
               <h3>To:</h3>
               <select onChange={(event) => handleSelect(event.target.value, 1)} defaultValue="store">
                 <option value="store">Money Store</option>
-                {props.currentAccounts.map(OptionTemplate)}
-                {props.savingsAccounts.map(OptionTemplate)}
+                {props.currentAccounts.map(item => OptionTemplate(item, 'to'))}
+                {props.savingsAccounts.map(item => OptionTemplate(item, 'to'))}
               </select>
               <input onChange={(event) => handleValue(event)} type="number" placeholder="Send value"></input>
               <button className="button-dark" onClick={() => sendMoney()}>Send</button>
             </LoaderComponent>
           </div>
-          {/* <div className="input-form__loader-switch">
-            <LoaderSwitch loading={props.updatingTranslogLoading} success={props.updatingTranslogSuccess} failure={props.updatingTranslogFailure} />
-          </div> */}
       </div>
     </div>
   )

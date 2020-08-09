@@ -1,6 +1,8 @@
 @import './variables';
 
 .input-form {
+  $parent: &;
+
   &__tile {
     background: linear-gradient(180deg, $color-black, #050f19);
     background-color: $color-black;
@@ -11,6 +13,10 @@
     margin: 1rem 0 2rem;
     padding: 1rem;
     width: 100%;
+
+    .modal-component & {
+      margin: 0;
+    }
   }
 
   h1 {
@@ -45,6 +51,16 @@
   @media screen and (min-width: $breakpoint-md) {
     &__form-container {
       flex-flow: row;
+    }
+
+    &.embedded {
+      #{$parent}__form-container {
+        flex-flow: column;
+      }
+
+      input, select {
+        margin: 0.5rem 0;
+      }
     }
 
     input, select {
