@@ -75,7 +75,7 @@ const CurrentAccount = (props) => {
         </TransitionGroup>
       </div>
       <ModalComponent onClick={closeModal} open={modalOpen}>
-        <MoneyMover embedded account={transId} />
+        <MoneyMover embedded account={transId} onClose={closeModal} />
       </ModalComponent>
     </LoaderComponent>
   )

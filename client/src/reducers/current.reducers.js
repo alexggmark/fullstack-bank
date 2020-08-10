@@ -22,11 +22,16 @@ const initialState = {
 export default (state = initialState, action) => {
   switch (action.type) {
     case POPULATE_CURRENT_DATA:
+      let response = {
+        ...action.payload,
+        accountType: 'current'
+      }
+      console.log(response)
       return {
         ...state,
         currentAccounts: [
           ...state.currentAccounts,
-          action.payload
+          response
         ]
       }
     case POPULATE_CURRENT_LOADING:

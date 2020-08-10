@@ -14,7 +14,7 @@ const MoneyMover = (props) => {
   const [sendValue, setSendValue] = useState(0)
 
   useEffect(() => {
-    console.log(props.account)
+    console.log(props.currentAccounts)
     if (props.currentAccounts.length === 0) dispatch(currentActions.getCurrentAccountsUser())
     if (props.savingsAccounts.length === 0) dispatch(savingsActions.getSavingsAccountsUser())
   }, [])
@@ -29,6 +29,7 @@ const MoneyMover = (props) => {
     try {
       await dispatch(translogActions.transferMoney(sendValue, fromValue, toValue))
       fetchAccountData()
+      props.onClose()
     } catch (err) {
       console.error(err)
     }
@@ -44,7 +45,7 @@ const MoneyMover = (props) => {
   }
 
   const OptionTemplate = (item, namespace) => {
-    return <option key={namespace + item._id} value={item._id}>{namespace + item._id}{item.nickName} - £{item.total}</option>
+    return <option key={namespace + item._id} value={item._id}>{item.nickName} - £{item.total} ({item.accountType})</option>
   }
 
   return (
@@ -59,7 +60,13 @@ const MoneyMover = (props) => {
       <div className="input-form__tile">
         <h1>Money mover</h1>
           <div className="input-form__form-container">
-            <LoaderComponent mininomargin loading={props.populateCurrentLoading || props.populateSavingsLoading}>
+            <LoaderComponent
+              mininomargin
+              loading={
+                props.populateCurrentLoading ||
+                props.populateSavingsLoading ||
+                props.updatingTranslogLoading
+              }>
               <h3>From:</h3>
               <select
                 ref={selectRef}
@@ -79,7 +86,7 @@ const MoneyMover = (props) => {
                 {props.savingsAccounts.map(item => OptionTemplate(item, 'to'))}
               </select>
               <input onChange={(event) => handleValue(event)} type="number" placeholder="Send value"></input>
-              <button className="button-dark" onClick={() => sendMoney()}>Send</button>
+              <button className="button-dark" onClick={sendMoney}>Send</button>
             </LoaderComponent>
           </div>
       </div>

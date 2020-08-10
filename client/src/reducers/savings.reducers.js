@@ -22,11 +22,16 @@ const initialState = {
 export default (state = initialState, action) => {
   switch (action.type) {
     case POPULATE_SAVINGS_DATA:
+      let response = {
+        ...action.payload,
+        accountType: 'savings'
+      }
+      console.log(response)
       return {
         ...state,
         savingsAccounts: [
           ...state.savingsAccounts,
-          action.payload
+          response
         ]
       }
     case POPULATE_SAVINGS_LOADING:

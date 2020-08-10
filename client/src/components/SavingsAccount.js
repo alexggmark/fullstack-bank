@@ -1,13 +1,17 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { connect, useDispatch } from 'react-redux'
 import savingsActions from '../actions/savings.actions'
 import LoaderComponent from './LoaderComponent'
+import ModalComponent from '../components/ModalComponent'
+import MoneyMover from '../components/MoneyMover'
 import { formatMoney, formatDate } from '../_helpers/formatStrings'
 import { TransitionGroup, CSSTransition } from 'react-transition-group'
-import '../styles/accounts.scss'
+import '../styles/transitions.scss'
 
 const SavingsAccount = (props) => {
   const dispatch = useDispatch()
+  const [transId, setTransId] = useState(null)
+  const [modalOpen, setModalOpen] = useState(false)
 
   useEffect(() => {
     dispatch(savingsActions.getSavingsAccountsUser())
@@ -15,6 +19,15 @@ const SavingsAccount = (props) => {
 
   const deleteAccount = (id) => {
     dispatch(savingsActions.deleteSavingsAccount({ id }))
+  }
+
+  const handleTransfer = (id) => {
+    setTransId(id)
+    setModalOpen(true)
+  }
+
+  const closeModal = () => {
+    setModalOpen(false)
   }
 
   return (
@@ -50,7 +63,7 @@ const SavingsAccount = (props) => {
                     <h3>Recent transaction</h3>
                   </div>
                   <div className="account__block">
-                    <button className="button-dark">Transfer</button>
+                    <button className="button-dark" onClick={() => handleTransfer(item._id)}>Transfer</button>
                   </div>
                   <div className="account__block">
                     <button className="button-dark" onClick={() => deleteAccount(item._id)}>Delete</button>
@@ -61,6 +74,9 @@ const SavingsAccount = (props) => {
           })}
         </TransitionGroup>
       </div>
+      <ModalComponent onClick={closeModal} open={modalOpen}>
+        <MoneyMover embedded account={transId} onClose={closeModal} />
+      </ModalComponent>
     </LoaderComponent>
   )
 }
