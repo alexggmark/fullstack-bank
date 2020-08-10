@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { connect, useDispatch } from 'react-redux'
 import savingsActions from '../actions/savings.actions'
+import customerActions from '../actions/customer.actions'
 import LoaderComponent from './LoaderComponent'
 import ModalComponent from '../components/ModalComponent'
 import MoneyMover from '../components/MoneyMover'

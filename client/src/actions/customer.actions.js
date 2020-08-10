@@ -6,7 +6,6 @@ import {
   REGISTER_USER_LOADING,
   REGISTER_USER_SUCCESS,
   REGISTER_USER_FAILURE,
-  LOGOUT_USER,
   POPULATE_USER_DATA
 } from '../_constants/customer.constants'
 
@@ -18,6 +17,7 @@ const customerActions = {
 
 function populateUserData() {
   return (dispatch) => {
+    console.log('TESTING')
     customerServices.getUserData()
       .then((res) => {
         dispatch({
@@ -29,7 +29,6 @@ function populateUserData() {
         console.error(err)
       })
   }
-
 }
 
 function loginAction(credentials) {

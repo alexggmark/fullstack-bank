@@ -1,10 +1,10 @@
 const SavingsSchema = require('../models/savings.model')
+const UserSchema = require('../models/customer.model')
 
 const controllers = {
   getSavingsAccount,
   createSavingsAccount,
   deleteSavingsAccount
-  // getAllSavingsAccounts
 }
 
 async function getSavingsAccount(req, res) {
@@ -28,6 +28,20 @@ async function createSavingsAccount(req, res) {
     const { nickName, total } = req.body
     const userId = req.user._id
 
+    const userStore = await UserSchema.findOne({ _id: userId })
+
+    if (total > userStore.moneyStore) {
+      return res.status(400).json({
+        message: 'Not enough money in store'
+      })
+    }
+
+    await UserSchema.updateOne({ _id: userId }, {
+      $inc: {
+        moneyStore: -total
+      }
+    })
+
     const savings = new SavingsSchema({
       nickName,
       total,
@@ -45,6 +59,15 @@ async function createSavingsAccount(req, res) {
 async function deleteSavingsAccount(req, res) {
   try {
     const { id } = req.body
+    const userId = req.user._id
+
+    const userSavings = await SavingsSchema.findOne({ _id: id })
+
+    await UserSchema.updateOne({ _id: userId }, {
+      $inc: {
+        moneyStore: +userSavings.total
+      }
+    })
 
     const response = await SavingsSchema.findOneAndDelete({ _id: id })
     res.send(response)

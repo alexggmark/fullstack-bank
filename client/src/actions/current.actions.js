@@ -9,6 +9,10 @@ import {
   POPULATE_CURRENT_SUCCESS,
   POPULATE_CURRENT_FAILURE
 } from '../_constants/current.constants'
+import {
+  UPDATE_MONEY_STORE,
+  DECREASE_MONEY_STORE
+} from '../_constants/customer.constants'
 
 const currentActions = {
   createCurrentAccount,
@@ -24,6 +28,10 @@ function createCurrentAccount(data) {
         dispatch({
           type: POPULATE_CURRENT_DATA,
           payload: res
+        })
+        dispatch({
+          type: DECREASE_MONEY_STORE,
+          payload: res.total
         })
         dispatch(success())
       })
@@ -47,15 +55,21 @@ function deleteCurrentAccount(id) {
   return (dispatch) => {
     currentServices.deleteCurrent(id)
       .then((res) => {
-        dispatch(deleteCurrent(id))
+        dispatch({
+          type: DELETE_CURRENT,
+          payload: id
+        })
+        return res
+      })
+      .then((res) => {
+        dispatch({
+          type: UPDATE_MONEY_STORE,
+          payload: res.total
+        })
       })
       .catch((err) => {
         console.error(err)
       })
-  }
-
-  function deleteCurrent(id) {
-    return { type: DELETE_CURRENT, payload: id }
   }
 }
 

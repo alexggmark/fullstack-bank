@@ -9,6 +9,10 @@ import {
   POPULATE_SAVINGS_SUCCESS,
   POPULATE_SAVINGS_FAILURE
 } from '../_constants/savings.constants'
+import {
+  UPDATE_MONEY_STORE,
+  DECREASE_MONEY_STORE
+} from '../_constants/customer.constants'
 
 const savingsActions = {
   createSavingsAccount,
@@ -24,6 +28,10 @@ function createSavingsAccount(data) {
         dispatch({
           type: POPULATE_SAVINGS_DATA,
           payload: res
+        })
+        dispatch({
+          type: DECREASE_MONEY_STORE,
+          payload: res.total
         })
         dispatch(success())
       })
@@ -78,15 +86,21 @@ function deleteSavingsAccount(id) {
   return (dispatch) => {
     savingsServices.deleteSavings(id)
       .then((res) => {
-        dispatch(deleteSavings(id))
+        dispatch({
+          type: DELETE_SAVINGS,
+          payload: id
+        })
+        return res
+      })
+      .then((res) => {
+        dispatch({
+          type: UPDATE_MONEY_STORE,
+          payload: res.total
+        })
       })
       .catch((err) => {
         console.error(err)
       })
-  }
-
-  function deleteSavings(id) {
-    return { type: DELETE_SAVINGS, payload: id }
   }
 }
 

@@ -9,6 +9,10 @@ import {
   UPDATING_TRANSLOG_FAILURE,
   UPDATE_SINGLE_TRANSLOG
 } from '../_constants/translog.constants'
+import {
+  UPDATE_MONEY_STORE,
+  DECREASE_MONEY_STORE
+} from '../_constants/customer.constants'
 
 const transactionActions = {
   populateTranslogData,
@@ -47,7 +51,9 @@ function populateTranslogData() {
 }
 
 function transferMoney(sendValue, fromId, toId) {
-  return (dispatch) => new Promise(function(resolve, reject) {
+  return (dispatch) => new Promise((resolve, reject) => {
+    console.log(`fromId: ${fromId}`)
+    console.log(`toId: ${toId}`)
     dispatch(load())
     transactionServices.transferMoney(sendValue, fromId, toId)
       .then((res) => {
@@ -56,6 +62,14 @@ function transferMoney(sendValue, fromId, toId) {
           type: UPDATE_SINGLE_TRANSLOG,
           payload: res
         })
+        if (fromId === 'store') dispatch({
+            type: DECREASE_MONEY_STORE,
+            payload: res.value
+          })
+        if (toId === 'store') dispatch({
+            type: UPDATE_MONEY_STORE,
+            payload: res.value
+          })
         resolve(res)
       })
       .catch((err) => {

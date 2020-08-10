@@ -6,7 +6,9 @@ import {
   REGISTER_USER_SUCCESS,
   REGISTER_USER_FAILURE,
   LOGOUT_USER,
-  POPULATE_USER_DATA
+  POPULATE_USER_DATA,
+  UPDATE_MONEY_STORE,
+  DECREASE_MONEY_STORE
 } from '../_constants/customer.constants'
 import userAuthHeader from '../_helpers/userAuthHeader'
 
@@ -96,6 +98,16 @@ export default (state = initialState, action) => {
         username,
         totalCurrent,
         totalSavings
+      }
+    case UPDATE_MONEY_STORE:
+      return {
+        ...state,
+        moneyStore: state.moneyStore + action.payload
+      }
+    case DECREASE_MONEY_STORE:
+      return {
+        ...state,
+        moneyStore: state.moneyStore - action.payload
       }
     default:
       return state

@@ -10,7 +10,7 @@ const UserProfileWidget = (props) => {
       <h3>User Profile</h3>
       <p>Hello {props.firstName},</p>
       <p>Your store:</p>£
-        <span className="text-info">{formatMoney(props.moneyStore)}</span>
+      <span className="text-info">{formatMoney(props.moneyStore)}</span>
       <p>You joined {formatDate(props.createdAt)}</p>
       <Logout />
     </div>

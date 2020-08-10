@@ -5,7 +5,6 @@ const controllers = {
   getCurrentAccount,
   createCurrentAccount,
   deleteCurrentAccount
-  // getAllCurrentAccounts
 }
 
 async function getCurrentAccount(req, res) {
@@ -71,7 +70,6 @@ async function deleteCurrentAccount(req, res) {
     })
 
     const response = await CurrentSchema.findOneAndDelete({ _id: id })
-
     res.send(response)
   } catch (err) {
     console.error(err)
