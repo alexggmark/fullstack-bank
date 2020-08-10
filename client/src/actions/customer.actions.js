@@ -17,7 +17,6 @@ const customerActions = {
 
 function populateUserData() {
   return (dispatch) => {
-    console.log('TESTING')
     customerServices.getUserData()
       .then((res) => {
         dispatch({
@@ -59,15 +58,12 @@ function loginAction(credentials) {
 
 function registerAction(credentials) {
   return (dispatch) => {
-    console.log('registerAction: LOAD')
     dispatch(load())
     customerServices.createUser(credentials)
       .then(() => {
-        console.log('registerAction: SUCCESS')
         dispatch(success())
       })
       .catch((err) => {
-        console.log('registerAction: FAILURE')
         dispatch(fail())
       })
   }

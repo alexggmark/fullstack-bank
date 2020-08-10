@@ -19,11 +19,9 @@ const Login = (props) => {
     switch (type) {
       case 'u':
         setUsername(event.target.value)
-        console.log(username)
         break
       case 'p':
         setPassword(event.target.value)
-        console.log(password)
         break
       default: // do nothing
     }

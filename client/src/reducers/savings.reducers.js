@@ -26,7 +26,6 @@ export default (state = initialState, action) => {
         ...action.payload,
         accountType: 'savings'
       }
-      console.log(response)
       return {
         ...state,
         savingsAccounts: [
@@ -78,7 +77,6 @@ export default (state = initialState, action) => {
         createSavingsFailure: true
       }
     case DELETE_SAVINGS:
-      console.log('DELETE SAVING')
       return {
         ...state,
         savingsAccounts: state.savingsAccounts.filter(item => item._id !== action.payload.id)

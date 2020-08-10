@@ -14,7 +14,6 @@ const MoneyMover = (props) => {
   const [sendValue, setSendValue] = useState(0)
 
   useEffect(() => {
-    console.log(props.currentAccounts)
     if (props.currentAccounts.length === 0) dispatch(currentActions.getCurrentAccountsUser())
     if (props.savingsAccounts.length === 0) dispatch(savingsActions.getSavingsAccountsUser())
   }, [])

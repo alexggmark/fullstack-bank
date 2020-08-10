@@ -15,4 +15,10 @@ router.get(
   controllerTranslog.getTranslogs
 )
 
+router.post(
+  '/getMoreTransLogs',
+  auth,
+  controllerTranslog.getMoreTranslogs
+)
+
 module.exports = router

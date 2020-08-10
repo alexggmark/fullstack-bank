@@ -65,7 +65,6 @@ function createUser(credentials) {
   return fetch(`${API_URL}/api/createUser`, request)
     .then(handleResponse)
     .then((res) => {
-      console.log(res)
       return res
     })
 }

@@ -26,7 +26,6 @@ export default (state = initialState, action) => {
         ...action.payload,
         accountType: 'current'
       }
-      console.log(response)
       return {
         ...state,
         currentAccounts: [

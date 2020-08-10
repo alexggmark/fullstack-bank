@@ -36,7 +36,6 @@ async function loginUser(req, res) {
     }
 
     const token = await user.generateAuthToken()
-    console.log(`Success: ${username} - ${password}`)
     res.send({ user, token })
   } catch (err) {
     console.error(err)

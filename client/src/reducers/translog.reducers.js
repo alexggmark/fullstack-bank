@@ -1,5 +1,6 @@
 import {
   POPULATE_TRANSLOG_DATA,
+  POPULATE_TRANSLOG_DATA_REVERSE,
   POPULATE_TRANSLOG_LOADING,
   POPULATE_TRANSLOG_SUCCESS,
   POPULATE_TRANSLOG_FAILURE,
@@ -27,6 +28,14 @@ export default (state = initialState, action) => {
         translogs: [
           ...state.translogs,
           action.payload
+        ]
+      }
+    case POPULATE_TRANSLOG_DATA_REVERSE:
+      return {
+        ...state,
+        translogs: [
+          action.payload,
+          ...state.translogs
         ]
       }
     case UPDATE_SINGLE_TRANSLOG:

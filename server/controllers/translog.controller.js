@@ -7,6 +7,7 @@ const tConst = require('../_constants/transactions')
 const controllers = {
   transferMoney,
   getTranslogs,
+  getMoreTranslogs
 }
 
 async function transferMoney(req, res) {
@@ -99,8 +100,18 @@ async function transferMoney(req, res) {
 async function getTranslogs(req, res) {
   const userId = req.user._id
 
-  const response = await TranslogSchema.find({ userId: userId })
-  console.log(response)
+  const response = await TranslogSchema.find({ userId: userId }).sort({ createdAt: 'desc' }).limit(7)
+
+  res.send(response)
+}
+
+async function getMoreTranslogs(req, res) {
+  const userId = req.user._id
+  const { counter } = req.body
+  let skipStart = 7 + (4 * counter)
+
+  const response = await TranslogSchema.find({ userId: userId }).sort({ createdAt: 'desc' }).skip(skipStart).limit(4)
+
   res.send(response)
 }
 

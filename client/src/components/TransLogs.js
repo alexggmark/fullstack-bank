@@ -8,11 +8,16 @@ import '../styles/logs.scss'
 
 const TransLogs = (props) => {
   const dispatch = useDispatch()
+  const [loadmoreCounter, setLoadmoreCounter] = useState(1)
 
   useEffect(() => {
     dispatch(translogActions.populateTranslogData())
-    console.log(props.translogs)
   }, [])
+
+  const loadMore = () => {
+    setLoadmoreCounter(loadmoreCounter + 1)
+    dispatch(translogActions.loadMoreTranslogData(loadmoreCounter))
+  }
 
   return (
     <LoaderComponent
@@ -48,6 +53,7 @@ const TransLogs = (props) => {
               </CSSTransition>
           )})}
         </TransitionGroup>
+        <button className="button-dark" onClick={loadMore}>Load more</button>
       </div>
     </LoaderComponent>
   )

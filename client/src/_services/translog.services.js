@@ -6,6 +6,7 @@ import userAuthHeader from '../_helpers/userAuthHeader'
 const transactionServices = {
   transferMoney,
   getTransLogs,
+  loadMoreTransLogs
 }
 
 function handleResponse(res) {
@@ -30,15 +31,13 @@ function transferMoney(value, fromId, toId) {
   return fetch(`${API_URL}/api/transferMoney`, request)
     .then(handleResponse)
     .then((res) => {
-      console.log('SERVICE')
-      console.log(res)
       return res
     })
 }
 
 function getTransLogs() {
   const request = {
-    TYPE: 'GET',
+    method: 'GET',
     headers: {
       'Content-Type': 'application/json',
       Authorization: userAuthHeader().token
@@ -46,6 +45,23 @@ function getTransLogs() {
   }
 
   return fetch(`${API_URL}/api/getTransLogs`, request)
+    .then(handleResponse)
+    .then((res) => {
+      return res
+    })
+}
+
+function loadMoreTransLogs(counter) {
+  const request = {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      Authorization: userAuthHeader().token
+    },
+    body: JSON.stringify({ counter })
+  }
+
+  return fetch(`${API_URL}/api/getMoreTransLogs`, request)
     .then(handleResponse)
     .then((res) => {
       return res

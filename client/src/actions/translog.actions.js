@@ -1,6 +1,7 @@
 import transactionServices from '../_services/translog.services'
 import {
   POPULATE_TRANSLOG_DATA,
+  POPULATE_TRANSLOG_DATA_REVERSE,
   POPULATE_TRANSLOG_LOADING,
   POPULATE_TRANSLOG_SUCCESS,
   POPULATE_TRANSLOG_FAILURE,
@@ -16,18 +17,17 @@ import {
 
 const transactionActions = {
   populateTranslogData,
-  transferMoney
+  transferMoney,
+  loadMoreTranslogData
 }
 
 function populateTranslogData() {
   return (dispatch) => {
     dispatch(load())
-    transactionServices.getTransLogs()
+    transactionServices.getTransLogs(4)
       .then((res) => {
-        console.log(res)
         dispatch(success())
         res.forEach((item) => {
-          // console.log(item)
           dispatch({
             type: POPULATE_TRANSLOG_DATA,
             payload: item
@@ -50,10 +50,22 @@ function populateTranslogData() {
   }
 }
 
+function loadMoreTranslogData(counter) {
+  return (dispatch) => {
+    transactionServices.loadMoreTransLogs(counter)
+      .then((res) => {
+        res.forEach((item) => {
+          dispatch({
+            type: POPULATE_TRANSLOG_DATA_REVERSE,
+            payload: item
+          })
+        })
+      })
+  }
+}
+
 function transferMoney(sendValue, fromId, toId) {
   return (dispatch) => new Promise((resolve, reject) => {
-    console.log(`fromId: ${fromId}`)
-    console.log(`toId: ${toId}`)
     dispatch(load())
     transactionServices.transferMoney(sendValue, fromId, toId)
       .then((res) => {
