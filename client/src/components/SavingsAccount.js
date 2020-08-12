@@ -35,7 +35,7 @@ const SavingsAccount = (props) => {
     <LoaderComponent
       loading={props.populateSavingsLoading}
     >
-      <h1>Savings Account</h1>
+      <h1>Savings Accounts</h1>
       <div className="account">
         <TransitionGroup
           className="trans"

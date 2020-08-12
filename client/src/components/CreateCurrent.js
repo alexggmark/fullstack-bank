@@ -26,7 +26,7 @@ const CreateCurrent = (props) => {
   return (
     <div className="input-form">
       <div className="input-form__tile">
-        <h1>CreateCurrent.js</h1>
+        <h1>Create a Current Account</h1>
         <div className="input-form__form-container">
           <input type="number" placeholder="total" onChange={(event) => handleInput(event, 'total')} />
           <input type="text" placeholder="nickName" onChange={(event) => handleInput(event, 'nickname')} />

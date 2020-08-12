@@ -9,11 +9,6 @@ router.get(
   controllerSavings.getSavingsAccount
 )
 
-router.put(
-  '/updateSavingsAccountsUser',
-  // TODO:
-)
-
 router.post(
   '/createNewSavingsAccount',
   auth,
@@ -24,7 +19,6 @@ router.delete(
   '/deleteSavingsAccount',
   auth,
   controllerSavings.deleteSavingsAccount
-  // TODO:
 )
 
 module.exports = router

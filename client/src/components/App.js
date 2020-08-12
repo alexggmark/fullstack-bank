@@ -14,8 +14,8 @@ const App = (props) => {
 
   return (
     <CSSTransition
-      // in={!props.loginSuccess}
-      in={!login}
+      in={!props.loginSuccess}
+      // in={!login}
       classNames="testclass"
       timeout={2500}
     >

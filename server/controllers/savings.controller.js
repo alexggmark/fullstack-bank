@@ -36,11 +36,8 @@ async function createSavingsAccount(req, res) {
       })
     }
 
-    await UserSchema.updateOne({ _id: userId }, {
-      $inc: {
-        moneyStore: -total
-      }
-    })
+    await UserSchema.updateStore(userId, -total)
+    await UserSchema.updateSavings(userId, +total)
 
     const savings = new SavingsSchema({
       nickName,
@@ -63,11 +60,8 @@ async function deleteSavingsAccount(req, res) {
 
     const userSavings = await SavingsSchema.findOne({ _id: id })
 
-    await UserSchema.updateOne({ _id: userId }, {
-      $inc: {
-        moneyStore: +userSavings.total
-      }
-    })
+    await UserSchema.updateStore(userId, +userSavings.total)
+    await UserSchema.updateSavings(userId, -userSavings.total)
 
     const response = await SavingsSchema.findOneAndDelete({ _id: id })
     res.send(response)

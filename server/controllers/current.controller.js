@@ -36,11 +36,8 @@ async function createCurrentAccount(req, res) {
       })
     }
 
-    await UserSchema.updateOne({ _id: userId }, {
-      $inc: {
-        moneyStore: -total
-      }
-    })
+    await UserSchema.updateStore(userId, -total)
+    await UserSchema.updateCurrent(userId, +total)
 
     const current = new CurrentSchema({
       nickName,
@@ -63,11 +60,8 @@ async function deleteCurrentAccount(req, res) {
 
     const userCurrent = await CurrentSchema.findOne({ _id: id })
 
-    await UserSchema.updateOne({ _id: userId }, {
-      $inc: {
-        moneyStore: +userCurrent.total
-      }
-    })
+    await UserSchema.updateStore(userId, +userCurrent.total)
+    await UserSchema.updateCurrent(userId, -userCurrent.total)
 
     const response = await CurrentSchema.findOneAndDelete({ _id: id })
     res.send(response)

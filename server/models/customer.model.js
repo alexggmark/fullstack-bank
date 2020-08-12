@@ -8,8 +8,8 @@ const CustomerSchema = new mongoose.Schema({
   username: { type: String, required: true },
   password: { type: String, required: true },
   createdAt: { type: Date, default: Date.now },
-  activeSavingsAccount: { type: Boolean, default: false},
-  activeCurrentAccount: { type: Boolean, default: false },
+  activeSavingsAccount: { type: Number, default: 0 },
+  activeCurrentAccount: { type: Number, default: 0 },
   moneyStore: { type: Number, default: 10000 },
   totalCurrent: { type: Number, default: 0 },
   totalSavings: { type: Number, default: 0 },
@@ -30,6 +30,30 @@ CustomerSchema.methods.generateAuthToken = async function() {
   this.tokens = this.tokens.concat({ token })
   await this.save()
   return token
+}
+
+CustomerSchema.statics.updateStore = function(userId, total) {
+  return this.updateOne({ _id: userId }, {
+    $inc: {
+      moneyStore: total
+    }
+  })
+}
+
+CustomerSchema.statics.updateSavings = function(userId, total) {
+  return this.updateOne({ _id: userId }, {
+    $inc: {
+      activeSavingsAccount: total
+    }
+  })
+}
+
+CustomerSchema.statics.updateCurrent = function(userId, total) {
+  return this.updateOne({ _id: userId }, {
+    $inc: {
+      activeCurrentAccount: total
+    }
+  })
 }
 
 CustomerSchema.statics.findByCredentials = async function(username, password) {
