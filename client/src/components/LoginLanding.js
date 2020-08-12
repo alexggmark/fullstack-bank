@@ -18,7 +18,7 @@ const LoginLanding = () => {
           <div className="loginlanding__content">
             <div className="test">
               <h1>This is a work in progress</h1>
-              <h1>- 10th Aug 2020</h1>
+              <h1>- 13th Aug 2020</h1>
               <h2>Test login:</h2>
               <ul>
                 <li>username: <strong>"Alex"</strong></li>
@@ -26,12 +26,13 @@ const LoginLanding = () => {
               </ul>
               <p>To do list:</p>
               <ul>
+                <li className="strike">Paginate transaction logs</li>
+                <li className="strike">Automate account--store process</li>
+                <li>Improve transfer money button action</li>
                 <li>Finish mobile login page</li>
                 <li>Complete register function</li>
                 <li>Improve transition animations</li>
                 <li>Implement D3 charts and dashboard</li>
-                <li>Paginate transaction logs</li>
-                <li>Automate account--store process</li>
               </ul>
             </div>
             <Switch>
