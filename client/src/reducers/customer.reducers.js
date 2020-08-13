@@ -8,7 +8,11 @@ import {
   LOGOUT_USER,
   POPULATE_USER_DATA,
   UPDATE_MONEY_STORE,
-  DECREASE_MONEY_STORE
+  DECREASE_MONEY_STORE,
+  UPDATE_SAVINGS_STORE,
+  DECREASE_SAVINGS_STORE,
+  UPDATE_CURRENT_STORE,
+  DECREASE_CURRENT_STORE
 } from '../_constants/customer.constants'
 import userAuthHeader from '../_helpers/userAuthHeader'
 
@@ -23,11 +27,9 @@ const initialState = {
   lastName: null,
   username: null,
   createdAt: null,
-  activeSavingsAccount: null,
-  activeCurrentAccount: null,
-  moneyStore: null,
-  totalCurrent: null,
-  totalSavings: null
+  activeSavingsAccount: 0,
+  activeCurrentAccount: 0,
+  moneyStore: 0
 }
 
 export default (state = initialState, action) => {
@@ -84,9 +86,7 @@ export default (state = initialState, action) => {
         firstName,
         lastName,
         moneyStore,
-        username,
-        totalCurrent,
-        totalSavings } = action.payload
+        username } = action.payload
       return {
         ...state,
         activeCurrentAccount,
@@ -95,19 +95,41 @@ export default (state = initialState, action) => {
         firstName,
         lastName,
         moneyStore,
-        username,
-        totalCurrent,
-        totalSavings
+        username
       }
     case UPDATE_MONEY_STORE:
+      console.log(`UPDATE_MONEY_STORE: ${state.moneyStore} + ${action.payload}`)
       return {
         ...state,
         moneyStore: state.moneyStore + action.payload
       }
     case DECREASE_MONEY_STORE:
+      console.log(`DECREASE_MONEY_STORE: ${state.moneyStore} - ${action.payload}`)
       return {
         ...state,
         moneyStore: state.moneyStore - action.payload
+      }
+    case UPDATE_SAVINGS_STORE:
+      return {
+        ...state,
+        activeSavingsAccount: state.activeSavingsAccount + action.payload
+      }
+    case DECREASE_SAVINGS_STORE:
+      return {
+        ...state,
+        activeSavingsAccount: state.activeSavingsAccount - action.payload
+      }
+    case UPDATE_CURRENT_STORE:
+      console.log(`UPDATE_CURRENT_STORE: ${state.activeCurrentAccount} + ${action.payload}`)
+      return {
+        ...state,
+        activeCurrentAccount: state.activeCurrentAccount + action.payload
+      }
+    case DECREASE_CURRENT_STORE:
+      console.log(`DECREASE_CURRENT_STORE: ${state.activeCurrentAccount} - ${action.payload}`)
+      return {
+        ...state,
+        activeCurrentAccount: state.activeCurrentAccount - action.payload
       }
     default:
       return state

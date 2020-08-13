@@ -11,7 +11,9 @@ import {
 } from '../_constants/savings.constants'
 import {
   UPDATE_MONEY_STORE,
-  DECREASE_MONEY_STORE
+  DECREASE_MONEY_STORE,
+  UPDATE_SAVINGS_STORE,
+  DECREASE_SAVINGS_STORE
 } from '../_constants/customer.constants'
 
 const savingsActions = {
@@ -28,6 +30,10 @@ function createSavingsAccount(data) {
         dispatch({
           type: POPULATE_SAVINGS_DATA,
           payload: res
+        })
+        dispatch({
+          type: UPDATE_SAVINGS_STORE,
+          payload: res.total
         })
         dispatch({
           type: DECREASE_MONEY_STORE,
@@ -85,6 +91,7 @@ function deleteSavingsAccount(id) {
   return (dispatch) => {
     savingsServices.deleteSavings(id)
       .then((res) => {
+        console.log(res)
         dispatch({
           type: DELETE_SAVINGS,
           payload: id
@@ -94,6 +101,10 @@ function deleteSavingsAccount(id) {
       .then((res) => {
         dispatch({
           type: UPDATE_MONEY_STORE,
+          payload: res.total
+        })
+        dispatch({
+          type: DECREASE_SAVINGS_STORE,
           payload: res.total
         })
       })

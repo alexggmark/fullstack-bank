@@ -11,7 +11,9 @@ import {
 } from '../_constants/current.constants'
 import {
   UPDATE_MONEY_STORE,
-  DECREASE_MONEY_STORE
+  DECREASE_MONEY_STORE,
+  UPDATE_CURRENT_STORE,
+  DECREASE_CURRENT_STORE
 } from '../_constants/customer.constants'
 
 const currentActions = {
@@ -28,6 +30,10 @@ function createCurrentAccount(data) {
         dispatch({
           type: POPULATE_CURRENT_DATA,
           payload: res
+        })
+        dispatch({
+          type: UPDATE_CURRENT_STORE,
+          payload: res.total
         })
         dispatch({
           type: DECREASE_MONEY_STORE,
@@ -52,6 +58,7 @@ function createCurrentAccount(data) {
 }
 
 function deleteCurrentAccount(id) {
+  console.log('DELET CURRENT')
   return (dispatch) => {
     currentServices.deleteCurrent(id)
       .then((res) => {
@@ -65,6 +72,10 @@ function deleteCurrentAccount(id) {
         dispatch({
           type: UPDATE_MONEY_STORE,
           payload: res.total
+        })
+        dispatch({
+          type: DECREASE_CURRENT_STORE,
+          payload: Number(res.total)
         })
       })
       .catch((err) => {

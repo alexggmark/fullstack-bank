@@ -12,7 +12,7 @@ const UserProfileWidget = (props) => {
       <p>Your store:</p>£
       <p>C: {props.activeCurrentAccount}</p>
       <p>S: {props.activeSavingsAccount}</p>
-      <span className="text-info">{formatMoney(props.moneyStore)}</span>
+      <span className="text-info">£{formatMoney(props.moneyStore)}</span>
       <p>You joined {formatDate(props.createdAt)}</p>
       <Logout />
     </div>
