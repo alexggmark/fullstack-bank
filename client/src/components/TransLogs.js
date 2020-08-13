@@ -29,7 +29,7 @@ const TransLogs = (props) => {
         <TransitionGroup
           className="trans"
         >
-          {[...props.translogs].reverse().map((item, index) => {
+          {[...props.translogs].map((item, index) => {
             return (
               <CSSTransition
                 classNames="account-item"

@@ -37,7 +37,6 @@ async function createSavingsAccount(req, res) {
     }
 
     await UserSchema.updateStore(userId, -total)
-    await UserSchema.updateSavings(userId, +total)
 
     const savings = new SavingsSchema({
       nickName,
@@ -45,9 +44,12 @@ async function createSavingsAccount(req, res) {
       userId
     })
 
-    await savings.save((err, data) => {
-      res.send({ nickName, total, _id: data._id })
-    })
+    await savings.save()
+
+    const savingsTotal = await SavingsSchema.calculateTotal(userId)
+    await UserSchema.updateSavings(userId, savingsTotal)
+
+    res.send({ nickName, total, _id: savings._id })
   } catch (err) {
     console.error(err)
   }
@@ -61,9 +63,14 @@ async function deleteSavingsAccount(req, res) {
     const userSavings = await SavingsSchema.findOne({ _id: id })
 
     await UserSchema.updateStore(userId, +userSavings.total)
-    await UserSchema.updateSavings(userId, -userSavings.total)
 
     const response = await SavingsSchema.findOneAndDelete({ _id: id })
+
+    const savingsTotal = await SavingsSchema.calculateTotal(userId)
+
+    console.log(`savingsTotal: ${savingsTotal}`)
+    await UserSchema.updateSavings(userId, savingsTotal)
+
     res.send(response)
   } catch (err) {
     console.error(err)

@@ -41,18 +41,18 @@ CustomerSchema.statics.updateStore = function(userId, total) {
 }
 
 CustomerSchema.statics.updateSavings = function(userId, total) {
+  console.log('updateSavings')
+  if (total === 0) {
+
+  }
   return this.updateOne({ _id: userId }, {
-    $inc: {
-      activeSavingsAccount: total
-    }
+    activeSavingsAccount: total
   })
 }
 
 CustomerSchema.statics.updateCurrent = function(userId, total) {
   return this.updateOne({ _id: userId }, {
-    $inc: {
-      activeCurrentAccount: total
-    }
+    activeCurrentAccount: total
   })
 }
 

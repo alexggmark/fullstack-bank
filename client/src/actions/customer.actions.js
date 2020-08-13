@@ -19,6 +19,8 @@ function populateUserData() {
   return (dispatch) => {
     customerServices.getUserData()
       .then((res) => {
+        console.log('Customer data;')
+        console.log(res);
         dispatch({
           type: POPULATE_USER_DATA,
           payload: res

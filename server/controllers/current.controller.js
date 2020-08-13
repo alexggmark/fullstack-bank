@@ -37,7 +37,6 @@ async function createCurrentAccount(req, res) {
     }
 
     await UserSchema.updateStore(userId, -total)
-    await UserSchema.updateCurrent(userId, +total)
 
     const current = new CurrentSchema({
       nickName,
@@ -45,9 +44,12 @@ async function createCurrentAccount(req, res) {
       userId
     })
 
-    await current.save((err, data) => {
-      res.send({ nickName, total, _id: data._id })
-    })
+    await current.save()
+
+    const currentTotal = await CurrentSchema.calculateTotal(userId)
+    await UserSchema.updateCurrent(userId, currentTotal)
+
+    res.send({ nickName, total, _id: current._id })
   } catch (err) {
     console.error(err)
   }
@@ -61,9 +63,14 @@ async function deleteCurrentAccount(req, res) {
     const userCurrent = await CurrentSchema.findOne({ _id: id })
 
     await UserSchema.updateStore(userId, +userCurrent.total)
-    await UserSchema.updateCurrent(userId, -userCurrent.total)
 
     const response = await CurrentSchema.findOneAndDelete({ _id: id })
+
+    const currentTotal = await CurrentSchema.calculateTotal(userId)
+
+    console.log(`currentTotal: ${currentTotal}`)
+    await UserSchema.updateCurrent(userId, currentTotal)
+
     res.send(response)
   } catch (err) {
     console.error(err)
