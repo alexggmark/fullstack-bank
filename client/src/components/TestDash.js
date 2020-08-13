@@ -1,8 +1,9 @@
 import React, { useEffect } from 'react'
 import { connect } from 'react-redux'
+import D3Chart from './D3Chart'
 import '../styles/accounts.scss'
 
-const TestDash = () => {
+const TestDash = (props) => {
   useEffect(() => {
 
   }, [])
@@ -10,7 +11,11 @@ const TestDash = () => {
   return (
     <div className="account">
       <div className="account__tile">
-        <span className="text-sub-info">This will be the dashboard, try navigating elsewhere.</span>
+        <D3Chart
+          saving={props.activeSavingsAccount}
+          current={props.activeCurrentAccount}
+          store={props.moneyStore}
+        />
       </div>
     </div>
   )
