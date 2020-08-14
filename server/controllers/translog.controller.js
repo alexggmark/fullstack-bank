@@ -10,6 +10,7 @@ const controllers = {
   getMoreTranslogs
 }
 
+// FIXME: this is not good - I'm sorry
 async function transferMoney(req, res) {
   try {
     let { value, fromId, toId } = req.body
