@@ -91,7 +91,6 @@ function deleteSavingsAccount(id) {
   return (dispatch) => {
     savingsServices.deleteSavings(id)
       .then((res) => {
-        console.log(res)
         dispatch({
           type: DELETE_SAVINGS,
           payload: id

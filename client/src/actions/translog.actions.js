@@ -1,4 +1,6 @@
 import transactionServices from '../_services/translog.services'
+import { matchIdWithAccountType } from '../_helpers/matchingUtils'
+
 import {
   POPULATE_TRANSLOG_DATA,
   POPULATE_TRANSLOG_DATA_REVERSE,
@@ -12,7 +14,11 @@ import {
 } from '../_constants/translog.constants'
 import {
   UPDATE_MONEY_STORE,
-  DECREASE_MONEY_STORE
+  DECREASE_MONEY_STORE,
+  UPDATE_SAVINGS_STORE,
+  DECREASE_SAVINGS_STORE,
+  UPDATE_CURRENT_STORE,
+  DECREASE_CURRENT_STORE
 } from '../_constants/customer.constants'
 
 const transactionActions = {
@@ -69,19 +75,41 @@ function transferMoney(sendValue, fromId, toId) {
     dispatch(load())
     transactionServices.transferMoney(sendValue, fromId, toId)
       .then((res) => {
+        const fromType = matchIdWithAccountType(fromId)
+        const toType = matchIdWithAccountType(toId)
+
         dispatch(success())
         dispatch({
           type: UPDATE_SINGLE_TRANSLOG,
           payload: res
         })
-        if (fromId === 'store') dispatch({
-            type: DECREASE_MONEY_STORE,
-            payload: res.value
-          })
-        if (toId === 'store') dispatch({
-            type: UPDATE_MONEY_STORE,
-            payload: res.value
-          })
+
+        switch (fromType) {
+          case 'store':
+            dispatch({ type: DECREASE_MONEY_STORE, payload: res.value })
+            break
+          case 'savings':
+            dispatch({ type: DECREASE_SAVINGS_STORE, payload: res.value })
+            break
+          case 'current':
+            dispatch({ type: DECREASE_CURRENT_STORE, payload: res.value })
+            break
+          default: // do nothing
+        }
+
+        switch (toType) {
+          case 'store':
+            dispatch({ type: UPDATE_MONEY_STORE, payload: res.value })
+            break
+          case 'savings':
+            dispatch({ type: UPDATE_SAVINGS_STORE, payload: res.value })
+            break
+          case 'current':
+            dispatch({ type: UPDATE_CURRENT_STORE, payload: res.value })
+            break
+          default: // do nothing
+        }
+
         resolve(res)
       })
       .catch((err) => {

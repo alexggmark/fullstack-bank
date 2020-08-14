@@ -58,7 +58,6 @@ function createCurrentAccount(data) {
 }
 
 function deleteCurrentAccount(id) {
-  console.log('DELET CURRENT')
   return (dispatch) => {
     currentServices.deleteCurrent(id)
       .then((res) => {

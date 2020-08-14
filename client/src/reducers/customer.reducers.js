@@ -98,38 +98,34 @@ export default (state = initialState, action) => {
         username
       }
     case UPDATE_MONEY_STORE:
-      console.log(`UPDATE_MONEY_STORE: ${state.moneyStore} + ${action.payload}`)
       return {
         ...state,
-        moneyStore: state.moneyStore + action.payload
+        moneyStore: state.moneyStore + Number(action.payload)
       }
     case DECREASE_MONEY_STORE:
-      console.log(`DECREASE_MONEY_STORE: ${state.moneyStore} - ${action.payload}`)
       return {
         ...state,
-        moneyStore: state.moneyStore - action.payload
+        moneyStore: state.moneyStore - Number(action.payload)
       }
     case UPDATE_SAVINGS_STORE:
       return {
         ...state,
-        activeSavingsAccount: state.activeSavingsAccount + action.payload
+        activeSavingsAccount: state.activeSavingsAccount + Number(action.payload)
       }
     case DECREASE_SAVINGS_STORE:
       return {
         ...state,
-        activeSavingsAccount: state.activeSavingsAccount - action.payload
+        activeSavingsAccount: state.activeSavingsAccount - Number(action.payload)
       }
     case UPDATE_CURRENT_STORE:
-      console.log(`UPDATE_CURRENT_STORE: ${state.activeCurrentAccount} + ${action.payload}`)
       return {
         ...state,
-        activeCurrentAccount: state.activeCurrentAccount + action.payload
+        activeCurrentAccount: state.activeCurrentAccount + Number(action.payload)
       }
     case DECREASE_CURRENT_STORE:
-      console.log(`DECREASE_CURRENT_STORE: ${state.activeCurrentAccount} - ${action.payload}`)
       return {
         ...state,
-        activeCurrentAccount: state.activeCurrentAccount - action.payload
+        activeCurrentAccount: state.activeCurrentAccount - Number(action.payload)
       }
     default:
       return state
