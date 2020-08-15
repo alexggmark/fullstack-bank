@@ -1,6 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import Logout from './Logout'
+import D3Chart from './D3Chart'
 import { formatDate, formatMoney } from '../_helpers/formatStrings'
 import '../styles/profileWidget.scss'
 
@@ -15,6 +16,11 @@ const UserProfileWidget = (props) => {
       <span className="text-info">£{formatMoney(props.moneyStore)}</span>
       <p>You joined {formatDate(props.createdAt)}</p>
       <Logout />
+      <D3Chart
+        saving={props.activeSavingsAccount}
+        current={props.activeCurrentAccount}
+        store={props.moneyStore}
+      />
     </div>
   )
 }
