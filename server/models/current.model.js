@@ -8,16 +8,21 @@ const CurrentSchema = new mongoose.Schema({
   nickName: { type: String, required: true }
 })
 
-CurrentSchema.statics.calculateTotal = async function(userId) {
-  console.log('calculateTotal')
+CurrentSchema.statics.updateAccount = function(id, value) {
+  return this.updateOne({ _id: id }, {
+    $inc: {
+      total: value
+    }
+  })
+}
 
+CurrentSchema.statics.calculateTotal = async function(userId) {
   const result = await this.aggregate([
     { $match: { userId: userId.toString() } },
     { $group: { _id: null, amount: { $sum: "$total" } } }
   ])
 
   if (!result.length) return 0
-  console.log(`Current total: ${result[0].amount}`)
   return result[0].amount;
 }
 

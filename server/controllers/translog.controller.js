@@ -10,84 +10,60 @@ const controllers = {
   getMoreTranslogs
 }
 
-// FIXME: this is not good - I'm sorry
-async function transferMoney(req, res) {
+async function handleTransfer(req, from) {
+  const { value, fromId, toId } = req.body
+  const userId = req.user._id
+
+  const total = from ? -value : value
+  const id = from ? fromId : toId
+  let response
+
   try {
-    let { value, fromId, toId } = req.body
-    const userId = req.user._id
-    let toType = ''
-    let fromTotalKey = 'total'
-    let toTotalKey = 'total'
-    let responseFrom = null
-    let responseTo = null
-
-    if (fromId === 'store') {
-      responseFrom = await CustomerSchema.find({ _id: userId })
-      if (responseFrom.length === 0) {
-        res.status(400).send({ message: 'No account ID found' })
-        return
-      }
-      fromTotalKey = 'moneyStore'
-      fromId = userId
-      responseFrom = CustomerSchema
-    } else {
-      responseFrom = await SavingsSchema.find({ _id: fromId })
-      if (responseFrom.length === 0) {
-        responseFrom = await CurrentSchema.find({ _id: fromId })
-        if (responseFrom.length === 0) {
-          res.status(400).send({ message: 'No account ID found' })
-          return
-        }
-        responseFrom = CurrentSchema
-      } else {
-        responseFrom = SavingsSchema
-      }
+    if (fromId === tConst.STORE) {
+      await CustomerSchema.updateStore(userId, total)
+      return tConst.STORE
     }
 
-    if (toId === 'store') {
-      responseTo = await CustomerSchema.find({ _id: userId })
-      if (responseTo.length === 0) {
-        res.status(400).send({ message: 'No account ID found' })
-        return
-      }
-      toTotalKey = 'moneyStore'
-      toId = userId
-      toType = tConst.STORE
-      responseTo = CustomerSchema
-    } else {
-      responseTo = await SavingsSchema.find({ _id: toId })
-      if (responseTo.length === 0) {
-        responseTo = await CurrentSchema.find({ _id: toId })
-        if (responseTo.length === 0) {
-          res.status(400).send({ message: 'No account ID found' })
-          return
-        }
-        responseTo = CurrentSchema
-        toType = tConst.CURRENT
-      } else {
-        responseTo = SavingsSchema
-        toType = tConst.SAVINGS
-      }
+    response = await SavingsSchema.find({ _id: id })
+
+    if (response.length !== 0) {
+      await SavingsSchema.updateAccount(id, total)
+      return tConst.SAVINGS
+    }
+    if (response.length === 0) response = await CurrentSchema.find({ _id: id })
+
+    if (response.length === 0) {
+      res.status(400).send({ message: 'No account ID found' })
+      return
     }
 
-    await responseFrom.updateOne({ _id: fromId}, {
-      $inc: {
-        [fromTotalKey]: -value
-      }
-    })
+    await CurrentSchema.updateAccount(id, total)
+    return tConst.CURRENT
+  } catch (err) {
+    console.error(err)
+  }
+}
 
-    await responseTo.updateOne({ _id: toId }, {
-      $inc: {
-        [toTotalKey]: +value
-      }
-    })
+async function transferMoney(req, res) {
+  const { value, toId } = req.body
+  const userId = req.user._id
+
+  try {
+    const reqFrom = await handleTransfer(req, true)
+    const reqTo = await handleTransfer(req, false)
+
+    const savingsTotal = await SavingsSchema.calculateTotal(userId)
+    await CustomerSchema.updateSavings(userId, savingsTotal)
+
+    const currentTotal = await CurrentSchema.calculateTotal(userId)
+    await CustomerSchema.updateCurrent(userId, currentTotal)
 
     const logResponse = new TranslogSchema({
       userId: userId,
       value: value,
       logType: tConst.TRANSFER,
       accountId: toId,
-      accountType: toType
+      accountType: reqTo
     })
 
     await logResponse.save()
