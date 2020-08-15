@@ -7,7 +7,7 @@ const D3Chart = (props) => {
 
   useEffect(() => {
     renderChart()
-  }, [])
+  }, [props])
 
   const renderChart = () => {
     const width = 450
@@ -53,9 +53,9 @@ const D3Chart = (props) => {
 
   return (
     <>
-      <p>Saving: {props.saving}</p>
+      {/* <p>Saving: {props.saving}</p>
       <p>Current: {props.current}</p>
-      <p>Store: {props.store}</p>
+      <p>Store: {props.store}</p> */}
       <div className="d3-chart" ref={chartRef}></div>
     </>
   )
