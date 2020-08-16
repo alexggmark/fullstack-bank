@@ -11,11 +11,11 @@ const TestDash = (props) => {
   return (
     <div className="account">
       <div className="account__tile">
-        <D3Chart
+        {props.activeCurrentAccount && props.activeSavingsAccount ? (<D3Chart
           saving={props.activeSavingsAccount}
           current={props.activeCurrentAccount}
           store={props.moneyStore}
-        />
+        />) : ''}
       </div>
     </div>
   )
