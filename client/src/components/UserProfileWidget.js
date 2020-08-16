@@ -10,11 +10,10 @@ const UserProfileWidget = (props) => {
     <div className="profile-widget">
       <h3>User Profile</h3>
       <p>Hello {props.firstName},</p>
-      <p>Your store:</p>£
-      <p>C: {formatMoney(props.activeCurrentAccount)}</p>
-      <p>S: {formatMoney(props.activeSavingsAccount)}</p>
+      <p><span className="text-sub-info">Current:</span> £{formatMoney(props.activeCurrentAccount)}</p>
+      <p><span className="text-sub-info">Savings:</span> £{formatMoney(props.activeSavingsAccount)}</p>
       <span className="text-info">£{formatMoney(props.moneyStore)}</span>
-      <p>You joined {formatDate(props.createdAt)}</p>
+      <p><span className="text-sub-info">You joined {formatDate(props.createdAt)}</span></p>
       <Logout />
       {/* <D3Chart
         saving={props.activeSavingsAccount}
