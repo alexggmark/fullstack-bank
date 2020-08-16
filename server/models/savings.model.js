@@ -9,7 +9,7 @@ const SavingsSchema = new mongoose.Schema({
 })
 
 SavingsSchema.statics.updateAccount = function(id, value) {
-  console.log(`CurrentSchema update: ${value}`)
+  console.log(`Savings update: ${value}`)
   return this.updateOne({ _id: id }, {
     $inc: {
       total: value
@@ -18,7 +18,6 @@ SavingsSchema.statics.updateAccount = function(id, value) {
 }
 
 SavingsSchema.statics.calculateTotal = async function(userId) {
-
   const result = await this.aggregate([
     { $match: { userId: userId.toString() } },
     { $group: { _id: null, amount: { $sum: "$total" } } }

@@ -14,6 +14,7 @@ const UserProfileWidget = (props) => {
       <p><span className="text-sub-info">Savings:</span> £{formatMoney(props.activeSavingsAccount)}</p>
       <span className="text-info">£{formatMoney(props.moneyStore)}</span>
       <p><span className="text-sub-info">You joined {formatDate(props.createdAt)}</span></p>
+      <p>TOTAL: {props.moneyStore + props.activeSavingsAccount + props.activeCurrentAccount}</p>
       <Logout />
       {/* <D3Chart
         saving={props.activeSavingsAccount}

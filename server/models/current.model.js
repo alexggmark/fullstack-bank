@@ -9,6 +9,7 @@ const CurrentSchema = new mongoose.Schema({
 })
 
 CurrentSchema.statics.updateAccount = function(id, value) {
+  console.log(`Current update: ${value}`)
   return this.updateOne({ _id: id }, {
     $inc: {
       total: value

@@ -10,47 +10,121 @@ const controllers = {
   getMoreTranslogs
 }
 
+
 async function handleTransfer(req, from) {
   const { value, fromId, toId } = req.body
   const userId = req.user._id
 
-  const total = from ? -value : value
+  const total = from ? -Number(value) : Number(value)
   const id = from ? fromId : toId
-  let response
+  let response = []
 
   try {
-    if (fromId === tConst.STORE) {
-      await CustomerSchema.updateStore(userId, total)
-      return tConst.STORE
+    console.log(total)
+    const checkAccountType = async () => {
+      try {
+        if (id === tConst.STORE) {
+          response = await CustomerSchema.find({ _id: userId })
+          // console.log(`-------> ${tConst.STORE} <------`)
+          // console.log(`response.moneyStore: ${response[0].moneyStore}`)
+          // console.log(response)
+          // console.log(`response.moneyStore + total: ${response[0].moneyStore + total}`)
+          if (from && (response[0].moneyStore + total < 0)) return 400
+          return tConst.STORE
+        }
+        response = await SavingsSchema.find({ _id: id })
+        if (response.length !== 0) {
+          // console.log(`-------> ${tConst.SAVINGS} <------`)
+          // console.log(`response.total: ${response[0].total}`)
+          // console.log(response)
+          // console.log(`response.total + total: ${response[0].total + total}`)
+          if (from && (response[0].total + total < 0)) return 400
+          return tConst.SAVINGS
+        }
+        if (response.length === 0) {
+          response = await CurrentSchema.find({ _id: id })
+        }
+        if (response.length !== 0) {
+          // console.log(`-------> ${tConst.CURRENT} <------`)
+          // console.log(`response.total: ${response[0].total}`)
+          // console.log(response)
+          // console.log(`response.total + total: ${response[0].total + total}`)
+          if (from && (response[0].total + total < 0)) return 400
+          return tConst.CURRENT
+        }
+        // console.log('ERROR A')
+        return 400
+      } catch (err) {
+        // console.log('ERROR D')
+        return 400
+      }
     }
 
-    response = await SavingsSchema.find({ _id: id })
-
-    if (response.length !== 0) {
-      await SavingsSchema.updateAccount(id, total)
-      return tConst.SAVINGS
-    }
-    if (response.length === 0) response = await CurrentSchema.find({ _id: id })
-
-    if (response.length === 0) {
-      res.status(400).send({ message: 'No account ID found' })
-      return
+    const type = await checkAccountType()
+    if (type === 400) {
+      // console.log('ERROR C')
+      return {
+        type,
+      }
     }
 
-    await CurrentSchema.updateAccount(id, total)
-    return tConst.CURRENT
+    switch (type) {
+      case tConst.STORE: {
+        const resPromise = CustomerSchema.updateStore(userId, total)
+        return {
+          type: tConst.STORE,
+          promise: resPromise
+        }
+      }
+      case tConst.SAVINGS: {
+        const resPromise = SavingsSchema.updateAccount(id, total)
+        return {
+          type: tConst.SAVINGS,
+          promise: resPromise
+        }
+      }
+      case tConst.CURRENT: {
+        const resPromise = CurrentSchema.updateAccount(id, total)
+        return {
+          type: tConst.CURRENT,
+          promise: resPromise
+        }
+      }
+      default:
+        return {
+          type: 400,
+          promise: null
+        }
+    }
   } catch (err) {
     console.error(err)
   }
 }
 
 async function transferMoney(req, res) {
-  const { value, toId } = req.body
+  const { value, fromId, toId } = req.body
   const userId = req.user._id
+
+  if (fromId === toId) {
+    // console.log('ERROR B')
+    return res.status(400).json({
+      message: 'Can\'t send to same account'
+    })
+  }
 
   try {
     const reqFrom = await handleTransfer(req, true)
     const reqTo = await handleTransfer(req, false)
+
+    if (reqFrom.type === 400 || reqTo.type === 400) {
+      // console.log('ERROR A')
+      return res.status(400).json({
+        message: 'Not enough money for transfer'
+      })
+    }
+
+    await reqFrom.promise
+    await reqTo.promise
 
     const savingsTotal = await SavingsSchema.calculateTotal(userId)
     await CustomerSchema.updateSavings(userId, savingsTotal)
@@ -63,7 +137,7 @@ async function transferMoney(req, res) {
       value: value,
       logType: tConst.TRANSFER,
       accountId: toId,
-      accountType: reqTo
+      accountType: reqTo.type
     })
 
     await logResponse.save()
