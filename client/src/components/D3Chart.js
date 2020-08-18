@@ -13,11 +13,10 @@ const D3Chart = props => {
     .arc()
     .innerRadius(props.inner)
     .outerRadius(props.outer);
-  // const colors = d3.scaleOrdinal(d3.schemeCategory10);
 
   const colors = d3.scaleOrdinal()
     .domain(props.data)
-    .range(['#1B37AA', '#2D374B', '#0ca99e'])
+    .range(['#1B37AA', '#C44536', '#0ca99e'])
 
   const format = d3.format('.2f');
 

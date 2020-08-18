@@ -34,7 +34,7 @@ const CurrentAccount = (props) => {
     <LoaderComponent
       loading={props.populateCurrentLoading}
     >
-      <h1>Current Accounts</h1>
+      <h1><span className="current-color">Current</span> Accounts</h1>
       <div className="account">
         <TransitionGroup
           className="trans"

@@ -159,6 +159,14 @@ h3 {
   margin-bottom: 0.3rem;
 }
 
+.current-color {
+  color: $color-green-light;
+}
+
+.savings-color {
+  color: $color-red;
+}
+
 .error-box {
   background-color: #f5d7d7;
   border: 1px solid #e48787;
