@@ -1,21 +1,27 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { connect } from 'react-redux'
 import D3Chart from './D3Chart'
 import '../styles/accounts.scss'
 
 const TestDash = (props) => {
-  useEffect(() => {
-
-  }, [])
-
   return (
     <div className="account">
       <div className="account__tile">
-        {props.activeCurrentAccount && props.activeSavingsAccount ? (<D3Chart
-          saving={props.activeSavingsAccount}
-          current={props.activeCurrentAccount}
-          store={props.moneyStore}
-        />) : ''}
+        {props.activeCurrentAccount !== null &&
+        props.activeSavingsAccount !== null &&
+        props.moneyStore !== null ? (
+          <D3Chart
+            data={[
+              { value: props.activeSavingsAccount },
+              { value: props.activeCurrentAccount },
+              { value: props.moneyStore }
+            ]}
+            inner={60}
+            outer={100}
+            height={250}
+            width={250}
+          />
+        ) : ''}
       </div>
     </div>
   )
