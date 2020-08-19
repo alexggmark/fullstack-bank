@@ -29,7 +29,7 @@ const CreateSavings = (props) => {
         <div className="input-form__form-container">
           <input type="number" placeholder="total" onChange={(event) => handleInput(event, 'total')} />
           <input type="text" placeholder="nickName" onChange={(event) => handleInput(event, 'nickname')} />
-          <button className="button-lighter" onClick={() => createSavingsAccount()}>Submit</button>
+          <button className="button-cta" onClick={() => createSavingsAccount()}>Submit</button>
         </div>
         <div className="input-form__loader-switch">
           <LoaderSwitch loading={props.createLoading} success={props.createSuccess} failure={props.createFailure} />

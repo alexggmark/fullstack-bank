@@ -137,7 +137,7 @@ h1 {
 }
 
 h3 {
-  color: $color-quaternary;
+  color: #899cb5;
   font-family: 'Poppins', sans-serif;
   font-size: 14px;
   font-weight: 600;
@@ -179,22 +179,21 @@ h3 {
 .button {
   background-color: transparent;
   border: 0;
-  border-radius: 10px;
+  border-radius: 6px;
   color: $color-white;
   cursor: pointer;
-  margin-right: 0.5rem;
   padding: 0.8rem 1.6rem;
   transition: background-color 0.2s ease;
 }
 
 .button-dark {
   @extend .button;
-  background-color: $color-dark;
+  background-color: #f2f6fb;
   border: 1px solid $color-quaternary;
   color: $color-secondary;
 
   &:hover {
-    background-color: #f2f6fb;
+    background-color: $color-dark;
     color: $color-secondary;
   }
 }
@@ -231,6 +230,17 @@ h3 {
 
   &:hover {
     background-color: $color-dark;
+    color: $color-secondary;
+  }
+}
+
+.button-cta {
+  @extend .button;
+  background-color: $color-green;
+  color: $color-dark;
+
+  &:hover {
+    background-color: $color-green-light;
     color: $color-secondary;
   }
 }

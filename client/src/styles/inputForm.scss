@@ -5,7 +5,8 @@
 
   &__tile {
     // background: linear-gradient(180deg, #06121d, #030d17);
-    background-color: $color-quaternary;
+    background: linear-gradient(180deg, $color-black, #050f19);
+    background-color: $color-black;
     // border-radius: 10px;
     // border: 1px solid #485267;
     box-sizing: border-box;
@@ -24,24 +25,45 @@
     color: $color-white;
   }
 
-  h3 {
-    margin-right: 0.5rem;
-  }
-
   &__form-container {
     display: flex;
     flex-flow: column;
     min-height: 45px;
   }
 
+  &__form-block {
+    align-items: center;
+    display: flex;
+
+    h3 {
+      margin-right: 0.5rem;
+      min-width: 50px;
+      text-align: right;
+    }
+
+    select {
+      flex-grow: 2;
+    }
+  }
+
   input, select {
     background-color: #ffffff;
-    border-radius: 10px;
+    border-radius: 6px;
     border: 1px solid transparent;
     color: $color-secondary;
     padding: 0.8rem;
     outline: none;
-    margin: 0 0 0.5rem 0;
+    margin: 0.5rem 0;
+  }
+
+  button {
+    margin: 0.5rem 0;
+  }
+
+  &.embedded {
+    button {
+      margin: 0.5rem 0;
+    }
   }
 
   &__loader-switch {
@@ -58,6 +80,13 @@
       flex-flow: row;
     }
 
+    &__form-block {
+      h3 {
+        min-width: auto;
+        text-align: left;
+      }
+    }
+
     &.embedded {
       #{$parent}__form-container {
         flex-flow: column;
@@ -70,6 +99,10 @@
 
     input, select {
       margin: 0 0.5rem 0 0;
+    }
+
+    button {
+      margin: 0;
     }
 
     &__loader-switch {

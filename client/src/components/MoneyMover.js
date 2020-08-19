@@ -69,39 +69,41 @@ const MoneyMover = (props) => {
     >
       <div className="input-form__tile">
         <h1>Money mover</h1>
-          <div className="input-form__form-container">
-            <LoaderComponent
-              mininomargin
-              loading={
-                props.populateCurrentLoading ||
-                props.populateSavingsLoading ||
-                props.updatingTranslogLoading
-              }>
-              <h3>From:</h3>
-              <select
-                ref={selectRef}
-                onChange={(event) => handleSelect(event.target.value, 0)}
-                defaultValue={`
-                  ${props.account ? props.account : CONST_STORE}
-                `}
-              >
-                <option value={CONST_STORE}>Money Store</option>
-                {props.currentAccounts.map(item => OptionTemplate(item, 'from'))}
-                {props.savingsAccounts.map(item => OptionTemplate(item, 'from'))}
-              </select>
-              <h3>To:</h3>
-              <select onChange={(event) => handleSelect(event.target.value, 1)} defaultValue={CONST_STORE}>
-                <option value={CONST_STORE}>Money Store</option>
-                {props.currentAccounts.map(item => OptionTemplate(item, 'to'))}
-                {props.savingsAccounts.map(item => OptionTemplate(item, 'to'))}
-              </select>
-              <input onChange={(event) => handleValue(event)} type="number" placeholder="Send value"></input>
-              <button className="button-dark" onClick={sendMoney}>Send</button>
-            </LoaderComponent>
+        <div className="input-form__form-container">
+          <LoaderComponent
+            mininomargin
+            loading={
+              props.populateCurrentLoading ||
+              props.populateSavingsLoading ||
+              props.updatingTranslogLoading
+          }>
+          <div className="input-form__form-block">
+            <h3>From:</h3>
+            <select
+              ref={selectRef}
+              onChange={(event) => handleSelect(event.target.value, 0)}
+              defaultValue={`
+                ${props.account ? props.account : CONST_STORE}
+              `}
+            >
+              <option value={CONST_STORE}>Money Store</option>
+              {props.currentAccounts.map(item => OptionTemplate(item, 'from'))}
+              {props.savingsAccounts.map(item => OptionTemplate(item, 'from'))}
+            </select>
           </div>
-          {/* <div className="test">FROM: {fromValue}</div>
-          <div className="test">TO: {toValue}</div> */}
-          <LoaderSwitch loading={props.updatingTranslogLoading} success={props.updatingTranslogSuccess} failure={props.updatingTranslogFailure} />
+          <div className="input-form__form-block">
+            <h3>To:</h3>
+            <select onChange={(event) => handleSelect(event.target.value, 1)} defaultValue={CONST_STORE}>
+              <option value={CONST_STORE}>Money Store</option>
+              {props.currentAccounts.map(item => OptionTemplate(item, 'to'))}
+              {props.savingsAccounts.map(item => OptionTemplate(item, 'to'))}
+            </select>
+          </div>
+          <input onChange={(event) => handleValue(event)} type="number" placeholder="Send value"></input>
+          <button className="button-cta" onClick={sendMoney}>Send</button>
+          </LoaderComponent>
+        </div>
+        <LoaderSwitch loading={props.updatingTranslogLoading} success={props.updatingTranslogSuccess} failure={props.updatingTranslogFailure} />
       </div>
     </div>
   )

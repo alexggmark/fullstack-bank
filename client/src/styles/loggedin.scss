@@ -10,8 +10,9 @@
   .logo {
     background-color: $color-black;
     border-radius: 100%;
+    box-shadow: 0px 1px 20px rgba(4, 138, 129, 0.2);
     display: block;
-    fill: $color-green-light;
+    fill: $color-green;
     margin: 1rem auto 2rem;
     overflow: visible;
     padding: 0.75rem;
@@ -20,7 +21,6 @@
 
   &__nav {
     background-color: $color-background-dark-lighter;
-    border: 1px solid #485267;
     flex-shrink: 0;
     width: 0;
   }
