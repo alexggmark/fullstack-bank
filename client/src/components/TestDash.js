@@ -25,10 +25,10 @@ const TestDash = (props) => {
                   { value: props.activeCurrentAccount },
                   { value: props.moneyStore }
                 ]}
-                inner={60}
-                outer={100}
-                height={250}
-                width={250}
+                inner={90}
+                outer={150}
+                height={350}
+                width={350}
               />
             ) : ''}
           </div>

@@ -8,9 +8,13 @@
   width: 100%;
 
   .logo {
+    background-color: $color-black;
+    border-radius: 100%;
     display: block;
-    fill: $color-quaternary;
+    fill: $color-green-light;
     margin: 1rem auto 2rem;
+    overflow: visible;
+    padding: 0.75rem;
     width: 60px;
   }
 
@@ -27,7 +31,7 @@
 
   &__main-inner {
     max-width: 1150px;
-    padding: 0 1rem;
+    padding: 0.75rem 1rem 0;
   }
 
   @media screen and (min-width: $breakpoint-lg) {
@@ -36,7 +40,7 @@
     }
 
     &__main-inner {
-      padding: 0 1.5rem;
+      padding: 0.75rem 1.5rem 0;
     }
   }
 }

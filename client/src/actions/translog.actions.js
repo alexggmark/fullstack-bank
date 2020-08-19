@@ -32,6 +32,8 @@ function populateTranslogData() {
     dispatch(load())
     transactionServices.getTransLogs(4)
       .then((res) => {
+        console.log('TRANSLOG DATA')
+        console.log(res)
         dispatch(success())
         res.forEach((item) => {
           dispatch({
