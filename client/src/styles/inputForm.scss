@@ -4,13 +4,14 @@
   $parent: &;
 
   &__tile {
-    background: linear-gradient(180deg, $color-black, #050f19);
-    background-color: $color-black;
-    border-radius: 10px;
+    // background: linear-gradient(180deg, #06121d, #030d17);
+    background-color: $color-quaternary;
+    // border-radius: 10px;
+    // border: 1px solid #485267;
     box-sizing: border-box;
     flex-wrap: wrap;
     justify-content: flex-end;
-    margin: 1rem 0 2rem;
+    margin: 0 0 2rem;
     padding: 1rem;
     width: 100%;
 
@@ -20,7 +21,7 @@
   }
 
   h1 {
-    color: $color-quaternary;
+    color: $color-white;
   }
 
   h3 {
@@ -34,10 +35,10 @@
   }
 
   input, select {
-    background-color: $color-tertiary;
+    background-color: #ffffff;
     border-radius: 10px;
     border: 1px solid transparent;
-    color: $color-dark;
+    color: $color-secondary;
     padding: 0.8rem;
     outline: none;
     margin: 0 0 0.5rem 0;
@@ -49,6 +50,10 @@
   }
 
   @media screen and (min-width: $breakpoint-md) {
+    &__tile {
+      padding: 1rem 1.5rem;
+    }
+
     &__form-container {
       flex-flow: row;
     }

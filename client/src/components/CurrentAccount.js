@@ -6,6 +6,7 @@ import ModalComponent from '../components/ModalComponent'
 import MoneyMover from '../components/MoneyMover'
 import { formatMoney, formatDate } from '../_helpers/formatStrings'
 import { TransitionGroup, CSSTransition } from 'react-transition-group'
+import '../styles/accounts.scss'
 import '../styles/transitions.scss'
 
 const CurrentAccount = (props) => {
@@ -34,7 +35,7 @@ const CurrentAccount = (props) => {
     <LoaderComponent
       loading={props.populateCurrentLoading}
     >
-      <h1><span className="current-color">Current</span> Accounts</h1>
+      <h1 className="current-color">Current Accounts</h1>
       <div className="account">
         <TransitionGroup
           className="trans"
@@ -46,7 +47,7 @@ const CurrentAccount = (props) => {
                 key={item._id}
                 timeout={500}
               >
-                <div className="account__tile">
+                <div className="account__tile current">
                   <div className="account__block">
                     <h3>Account NickName</h3>
                     <span className="text-sub-info">{item.nickName}</span>

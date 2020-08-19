@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from 'react'
 import { connect, useDispatch } from 'react-redux'
 import savingsActions from '../actions/savings.actions'
-import customerActions from '../actions/customer.actions'
 import LoaderComponent from './LoaderComponent'
 import ModalComponent from '../components/ModalComponent'
 import MoneyMover from '../components/MoneyMover'
 import { formatMoney, formatDate } from '../_helpers/formatStrings'
 import { TransitionGroup, CSSTransition } from 'react-transition-group'
+import '../styles/accounts.scss'
 import '../styles/transitions.scss'
 
 const SavingsAccount = (props) => {
@@ -35,7 +35,7 @@ const SavingsAccount = (props) => {
     <LoaderComponent
       loading={props.populateSavingsLoading}
     >
-      <h1><span className="savings-color">Savings</span> Accounts</h1>
+      <h1 className="savings-color">Savings Accounts</h1>
       <div className="account">
         <TransitionGroup
           className="trans"
@@ -47,7 +47,7 @@ const SavingsAccount = (props) => {
                 key={item._id}
                 timeout={500}
               >
-                <div className="account__tile">
+                <div className="account__tile savings">
                   <div className="account__block">
                     <h3>Account NickName</h3>
                     <span className="text-sub-info">{item.nickName}</span>

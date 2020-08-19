@@ -30,21 +30,31 @@ const Loggedin = (props) => {
               <Switch>
                 <Route path="/current">
                   <CreateCurrent />
-                  <CurrentAccount />
+                  <div className="loggedin__main-inner">
+                    <CurrentAccount />
+                  </div>
                 </Route>
                 <Route path="/savings">
                   <CreateSavings />
-                  <SavingsAccount />
+                  <div className="loggedin__main-inner">
+                    <SavingsAccount />
+                  </div>
                 </Route>
                 <Route path="/transfer">
                   <MoneyMover />
-                  <TransLogs />
+                  <div className="loggedin__main-inner">
+                    <TransLogs />
+                  </div>
                 </Route>
                 <Route path="/logs">
-                  <TransLogs />
+                  <div className="loggedin__main-inner">
+                    <TransLogs />
+                  </div>
                 </Route>
                 <Route path="/">
-                  <TestDash />
+                  <div className="loggedin__main-inner">
+                    <TestDash />
+                  </div>
                   {/* <CurrentAccount />
                   <SavingsAccount />
                   <MoneyMover /> */}

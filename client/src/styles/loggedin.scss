@@ -1,7 +1,7 @@
 @import './variables';
 
 .loggedin {
-  background-color: #0c1a27;
+  background-color: #e3e9ef;
   display: flex;
   flex-flow: row;
   min-height: 100vh;
@@ -16,19 +16,27 @@
 
   &__nav {
     background-color: $color-background-dark-lighter;
+    border: 1px solid #485267;
     flex-shrink: 0;
     width: 0;
   }
 
   &__main {
     flex-grow: 1;
+  }
+
+  &__main-inner {
     max-width: 1150px;
-    padding: 0 2rem;
+    padding: 0 1rem;
   }
 
   @media screen and (min-width: $breakpoint-lg) {
     &__nav {
       width: 290px;
+    }
+
+    &__main-inner {
+      padding: 0 1.5rem;
     }
   }
 }

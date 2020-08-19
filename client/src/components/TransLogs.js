@@ -36,7 +36,12 @@ const TransLogs = (props) => {
                 key={item._id}
                 timeout={500}
               >
-                <li className="logs__tile">
+                <li className={`
+                  logs__tile
+                  ${item.accountType === 'savings' ? 'savings' : ''}
+                  ${item.accountType === 'current' ? 'current' : ''}
+                  ${item.accountType === 'store' ? 'store' : ''}
+                `}>
                   <div className="logs__block">
                     <h3>Account Type</h3>
                     <span className="text-sub-info">{item.accountType}</span>
