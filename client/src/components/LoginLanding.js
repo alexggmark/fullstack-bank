@@ -18,7 +18,7 @@ const GuestBox = () => {
       {close ? '' : <div className="guest-box">
         <h3>Test login:</h3>
         <button onClick={closeButton}>X</button>
-        <p>username: <strong>Guest</strong></p>
+        <p>username: <strong>Alex</strong></p>
         <p>password: <strong>test</strong></p>
       </div>}
     </>
@@ -31,7 +31,7 @@ const LoginLanding = () => {
       <div className="loginlanding">
         <div className="loginlanding__container">
           <div className="loginlanding__splash">
-          <GuestBox />
+            <GuestBox />
             {/* <Piggy className="piggu" /> */}
             <div className="loginlanding__character-container">
               <img src={Character1} alt="Welcome character" />
