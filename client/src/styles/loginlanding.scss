@@ -55,6 +55,16 @@
     }
   }
 
+  &__ul {
+    max-width: 350px;
+    color: $color-white;
+
+    li {
+      font-weight: 700;
+      margin: 0.75rem 0;
+    }
+  }
+
   .login, .register {
     display: flex;
     flex-flow: column;

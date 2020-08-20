@@ -14,6 +14,12 @@ const LoginLanding = () => {
           <div className="loginlanding__splash">
             <Piggy className="piggu" />
             <h1 className="logo">BankSim</h1>
+            <ul className="loginlanding__ul">
+              <li>✅ All accounts start with £10,000</li>
+              <li>✅ Move money between Store, Savings and Current accounts</li>
+              <li>✅ D3Charts track live updates to accounts</li>
+              <li>✅ All transactions tracked in log pages</li>
+            </ul>
           </div>
           <div className="loginlanding__content">
             <div className="test">
@@ -32,7 +38,7 @@ const LoginLanding = () => {
                 <li>Finish mobile login page</li>
                 <li>Complete register function</li>
                 <li>Improve transition animations</li>
-                <li>Implement D3 charts and dashboard</li>
+                <li className="strike">Implement D3 charts and dashboard</li>
               </ul>
             </div>
             <Switch>
