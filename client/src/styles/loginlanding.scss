@@ -49,6 +49,49 @@
     }
   }
 
+  .guest-box {
+    background-color: $color-black;
+    border-radius: 5px;
+    box-sizing: border-box;
+    color: white;
+    margin: 0.5rem 0;
+    max-width: 400px;
+    padding: 1rem;
+    position: absolute;
+    top: 0;
+    left: 10px;
+    z-index: 99;
+    width: 100%;
+
+    h3 {
+      line-height: 1rem;
+      margin-bottom: 0.5rem;
+    }
+
+    p {
+      float: left;
+      margin-right: 1.5rem;
+
+      strong {
+        color: #5fd4a4;
+        font-size: 18px;
+      }
+    }
+
+    button {
+      background-color: $color-dark;
+      border: 0;
+      cursor: pointer;
+      position: absolute;
+      top: 10px;
+      right: 10px;
+
+      &:hover {
+        background-color: $color-green-light;
+      }
+    }
+  }
+
   &__character-container {
     height: 550px;
     margin-top: -300px;

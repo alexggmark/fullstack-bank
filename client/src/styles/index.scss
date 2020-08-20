@@ -225,12 +225,12 @@ h3 {
 
 .button-inverse {
   @extend .button;
-  background-color: $color-secondary;
-  border: 1px solid transparent;
+  border: 1px solid $color-dark;
   color: $color-dark;
 
   &:hover {
-    background-color: $color-dark;
+    background-color: $color-red-light;
+    border: 1px solid $color-red-light;
     color: $color-secondary;
   }
 }

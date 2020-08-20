@@ -1,5 +1,6 @@
 import React, { createRef } from 'react'
 import { ReactComponent as Piggy } from '../assets/money.svg'
+import { ReactComponent as Cross } from '../assets/cross.svg'
 import { Link } from 'react-router-dom'
 import UserProfileWidget from './UserProfileWidget'
 import '../styles/navigation.scss'
@@ -27,7 +28,9 @@ const Navigation = () => {
           <li><Link to="/logs">Transfer Logs</Link></li>
 
       </ul>
-      <div className="navigation__button" onClick={() => activeNavMobile()}>X</div>
+      <div className="navigation__button" onClick={() => activeNavMobile()}>
+        <Cross />
+      </div>
       <UserProfileWidget />
     </div>
   )

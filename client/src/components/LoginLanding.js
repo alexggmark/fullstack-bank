@@ -1,11 +1,29 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { connect } from 'react-redux'
 import { BrowserRouter, Route, Switch } from 'react-router-dom'
 import Login from './Login'
 import Register from './Register'
 import '../styles/loginlanding.scss'
-import { ReactComponent as Piggy } from '../assets/money.svg'
 import Character1 from '../assets/character1min.png'
+
+const GuestBox = () => {
+  const [close, setClose] = useState(false)
+
+  const closeButton = () => {
+    setClose(true)
+  }
+
+  return (
+    <>
+      {close ? '' : <div className="guest-box">
+        <h3>Test login:</h3>
+        <button onClick={closeButton}>X</button>
+        <p>username: <strong>Guest</strong></p>
+        <p>password: <strong>test</strong></p>
+      </div>}
+    </>
+  )
+}
 
 const LoginLanding = () => {
   return (
@@ -13,6 +31,7 @@ const LoginLanding = () => {
       <div className="loginlanding">
         <div className="loginlanding__container">
           <div className="loginlanding__splash">
+          <GuestBox />
             {/* <Piggy className="piggu" /> */}
             <div className="loginlanding__character-container">
               <img src={Character1} alt="Welcome character" />
@@ -26,25 +45,6 @@ const LoginLanding = () => {
             </ul> */}
           </div>
           <div className="loginlanding__content">
-            {/* <div className="test">
-              <h1>This is a work in progress</h1>
-              <h1>- 20th Aug 2020</h1>
-              <h2>Test login:</h2>
-              <ul>
-                <li>username: <strong>"Alex"</strong></li>
-                <li>password: <strong>"test"</strong></li>
-              </ul>
-              <p>To do list:</p>
-              <ul>
-                <li className="strike">Paginate transaction logs</li>
-                <li className="strike">Automate account--store process</li>
-                <li className="strike">Improve transfer money button action</li>
-                <li className="strike">Improve transition animations</li>
-                <li className="strike">Implement D3 charts and dashboard</li>
-                <li>Finish mobile login page</li>
-                <li>Complete register animation</li>
-              </ul>
-            </div> */}
             <Switch>
               <Route path="/register">
                 <Register />

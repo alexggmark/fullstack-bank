@@ -7,14 +7,34 @@
 
   &__tile {
     @extend .shadow-md;
+    align-items: center;
     background-color: #f2f6fb;
     border-radius: 5px;
     box-sizing: border-box;
     display: flex;
-    flex-wrap: wrap;
+    flex-flow: column;
+    justify-content: center;
     margin-bottom: 0.75rem;
+    padding: 1rem 2rem;
+    width: 100%;
+  }
+
+  &__text {
     padding: 1rem;
     width: 100%;
+  }
+
+  h1 {
+    margin: 0 0 1rem;
+  }
+
+  h3 {
+    margin: 0.5rem 0 0;
+  }
+
+  li {
+    font-size: 16px;
+    margin: 0.25rem 0;
   }
 
   @media screen and (min-width: $breakpoint-md) {
@@ -29,6 +49,11 @@
         margin-right: 0.75rem;
         width: calc(50% - 0.75rem)
       }
+    }
+
+    li {
+      font-size: 18px;
+      margin: 0.35rem 0;
     }
   }
 }
