@@ -13,7 +13,7 @@ const LoginLanding = () => {
         <div className="loginlanding__container">
           <div className="loginlanding__splash">
             <Piggy className="piggu" />
-            <h1 className="logo">Alex Bank</h1>
+            <h1 className="logo">BankSim</h1>
           </div>
           <div className="loginlanding__content">
             <div className="test">
