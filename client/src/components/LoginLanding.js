@@ -5,6 +5,7 @@ import Login from './Login'
 import Register from './Register'
 import '../styles/loginlanding.scss'
 import Character1 from '../assets/character1min.png'
+import { ReactComponent as Cross } from '../assets/cross.svg'
 
 const GuestBox = () => {
   const [close, setClose] = useState(false)
@@ -17,7 +18,7 @@ const GuestBox = () => {
     <>
       {close ? '' : <div className="guest-box">
         <h3>Test login:</h3>
-        <button onClick={closeButton}>X</button>
+        <button onClick={closeButton}><Cross /></button>
         <p>username: <strong>Alex</strong></p>
         <p>password: <strong>test</strong></p>
       </div>}
