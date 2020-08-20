@@ -64,6 +64,12 @@
     button {
       margin: 0.5rem 0;
     }
+
+    h3 {
+      margin-right: 0.5rem;
+      min-width: 50px;
+      text-align: right;
+    }
   }
 
   &__loader-switch {

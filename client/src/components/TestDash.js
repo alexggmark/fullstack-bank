@@ -31,6 +31,7 @@ const TestDash = (props) => {
                 width={350}
               />
             ) : ''}
+            <h3>Placeholder</h3>
           </div>
         )
       })}

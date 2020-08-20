@@ -18,7 +18,7 @@ const D3Chart = props => {
     .domain(props.data)
     .range(['#1B37AA', '#C44536', '#0ca99e'])
 
-  const format = d3.format('.2f');
+  const format = d3.format('.0f');
 
   useEffect(() => {
       console.log(props.data)
@@ -58,13 +58,13 @@ const D3Chart = props => {
         .attr('text-anchor', 'middle')
         .attr('alignment-baseline', 'middle')
         .style('fill', 'white')
-        .style('font-size', 10)
+        .style('font-size', 12)
         .transition()
         .attr('transform', d => `translate(${createArc.centroid(d)})`)
         .tween('text', (d, i, nodes) => {
           const interpolator = d3.interpolate(prevData[i], d);
 
-          return t => d3.select(nodes[i]).text(format(interpolator(t).value));
+          return t => d3.select(nodes[i]).text(`£${format(interpolator(t).value)}`);
         });
 
       cache.current = props.data;

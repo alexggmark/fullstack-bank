@@ -29,7 +29,12 @@
   }
 
   &__button {
+    cursor: pointer;
     display: none;
+
+    &:hover {
+      background-color: $color-dark;
+    }
   }
 
   @media screen and (max-width: $breakpoint-sm) {
