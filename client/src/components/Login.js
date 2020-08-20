@@ -39,17 +39,17 @@ const Login = (props) => {
         <input type="text" placeholder="Username" onChange={(event) => handleInput(event, 'u')} />
         <input type="text" placeholder="Password" onChange={(event) => handleInput(event, 'p')} />
         <button className="button-inverse" onClick={() => loginMethod()}>Login</button>
+        <CSSTransition
+          in={props.loginFailure}
+          classNames="small"
+          timeout={100}
+          mountOnEnter
+          unmountOnExit
+        >
+          <LoginFailure />
+        </CSSTransition>
+        <Link to="/register" className="button-form">Go to Register</Link>
       </LoaderComponent>
-      <CSSTransition
-        in={props.loginFailure}
-        classNames="small"
-        timeout={100}
-        mountOnEnter
-        unmountOnExit
-      >
-        <LoginFailure />
-      </CSSTransition>
-      <Link to="/register" className="button-form">Go to Register</Link>
     </div>
   )
 }

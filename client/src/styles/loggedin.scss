@@ -1,10 +1,12 @@
 @import './variables';
 
 .loggedin {
-  background-color: #e3e9ef;
   display: flex;
   flex-flow: row;
+  left: 0;
   min-height: 100vh;
+  position: absolute;
+  top: 0;
   width: 100%;
 
   .logo {
