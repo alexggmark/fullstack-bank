@@ -173,6 +173,7 @@ h3 {
   border: 1px solid #e48787;
   border-radius: 5px;
   color: #e64b4b;
+  font-size: 12px;
   margin: 0.5rem 0 0;
   padding: 0.5rem;
 }
@@ -223,14 +224,27 @@ h3 {
   }
 }
 
+.button-black {
+  @extend .button;
+  background-color: $color-black;
+  border: 1px solid transparent;
+  color: $color-dark;
+
+  &:hover {
+    background-color: $color-dark;
+    border: 1px solid transparent;
+    color: $color-secondary;
+  }
+}
+
 .button-inverse {
   @extend .button;
   border: 1px solid $color-dark;
   color: $color-dark;
 
   &:hover {
-    background-color: $color-red-light;
-    border: 1px solid $color-red-light;
+    background-color: $color-green-light;
+    border: 1px solid transparent;
     color: $color-secondary;
   }
 }

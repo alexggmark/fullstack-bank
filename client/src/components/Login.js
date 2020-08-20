@@ -38,7 +38,7 @@ const Login = (props) => {
       <LoaderComponent mini login loading={props.loginLoading}>
         <input type="text" placeholder="Username" onChange={(event) => handleInput(event, 'u')} />
         <input type="text" placeholder="Password" onChange={(event) => handleInput(event, 'p')} />
-        <button className="button-inverse" onClick={() => loginMethod()}>Login</button>
+        <button className="button-black" onClick={() => loginMethod()}>Login</button>
         <CSSTransition
           in={props.loginFailure}
           classNames="small"

@@ -48,7 +48,7 @@ const Register = (props) => {
         <input type="text" placeholder="Last Name" onChange={(event) => handleInput(event, 'l')} />
         <input type="text" placeholder="Username" onChange={(event) => handleInput(event, 'u')} />
         <input type="text" placeholder="Password" onChange={(event) => handleInput(event, 'p')} />
-        <button className="button-inverse" onClick={() => registerMethod()}>Register</button>
+        <button className="button-black" onClick={() => registerMethod()}>Register</button>
         <CSSTransition
           in={props.registerFailure}
           classNames="small"
