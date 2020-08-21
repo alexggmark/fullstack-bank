@@ -19,6 +19,7 @@ const CreateSavings = (props) => {
   }
 
   const createSavingsAccount = () => {
+    if (!nickName || !total) { return; }
     dispatch(savingsActions.createSavingsAccount({ total, nickName }))
   }
 

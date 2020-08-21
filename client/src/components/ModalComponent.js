@@ -1,18 +1,26 @@
-import React, { useState, useEffect } from 'react'
+import React from 'react'
+import { ReactComponent as Cross } from '../assets/cross.svg'
+import { CSSTransition } from 'react-transition-group'
 import '../styles/modalComponent.scss'
 
 const ModalComponent = (props) => {
   return (
-    <>
-      {props.open ?
-        <div className="modal-component">
-          <div className="modal-component__tile">
-            <button className="close-button button-dark" onClick={props.onClick}>X</button>
-            {props.children}
+    <CSSTransition
+      in={props.open}
+      classNames="small"
+      timeout={100}
+      mountOnEnter
+      unmountOnExit
+    >
+      <div className="modal-component">
+        <div className="modal-component__tile">
+          <div className="modal-component__button" onClick={props.onClick}>
+            <Cross />
           </div>
+          {props.children}
         </div>
-      : ''}
-    </>
+      </div>
+    </CSSTransition>
   )
 }
 

@@ -3,6 +3,7 @@ import { useDispatch, connect } from 'react-redux'
 import currentActions from '../actions/current.actions'
 import LoaderSwitch from './LoaderSwitch'
 import '../styles/inputForm.scss'
+import { relativeTimeRounding } from 'moment'
 
 const CreateCurrent = (props) => {
   const [ nickName, setNickname ] = useState(null)
@@ -20,6 +21,7 @@ const CreateCurrent = (props) => {
   }
 
   const createCurrentAccount = async () => {
+    if (!nickName || !total) { return; }
     dispatch(currentActions.createCurrentAccount({ total, nickName }))
   }
 

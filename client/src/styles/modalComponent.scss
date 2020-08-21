@@ -33,14 +33,32 @@
     width: 400px;
   }
 
-  .close-button {
-    // background-color: $color-tertiary;
-    // border: 0;
-    // color: $color-dark;
-    // height: 30px;
+  &__button {
+    align-items: center;
+    background-color: $color-black;
+    cursor: pointer;
+    display: flex;
+    height: 30px;
+    justify-content: center;
     left: 100%;
     position: absolute;
     top: 0;
-    // width: 30px;
+    transition: background-color 0.1s ease;
+    width: 30px;
+
+
+    svg {
+      fill: white;
+      transition: transform 0.3s ease;
+      width: 14px;
+    }
+
+    &:hover {
+      background-color: $color-green-light;
+
+      svg {
+        transform: rotate(45deg);
+      }
+    }
   }
 }
