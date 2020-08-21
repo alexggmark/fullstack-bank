@@ -43,7 +43,7 @@ const Register = (props) => {
 
   return (
     <div className="register">
-      <LoaderComponent mini login loading={props.registerLoading}>
+      <LoaderComponent login loading={props.registerLoading}>
         <input type="text" placeholder="First Name" onChange={(event) => handleInput(event, 'f')} />
         <input type="text" placeholder="Last Name" onChange={(event) => handleInput(event, 'l')} />
         <input type="text" placeholder="Username" onChange={(event) => handleInput(event, 'u')} />

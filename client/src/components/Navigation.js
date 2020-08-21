@@ -19,19 +19,21 @@ const Navigation = () => {
 
   return (
     <div className="navigation" ref={navMenu}>
-      <Piggy className="logo" />
-      <ul>
-          <li><Link to="/">Dashboard</Link></li>
-          <li><Link to="/current">Current Account</Link></li>
-          <li><Link to="/savings">Savings Account</Link></li>
-          <li><Link to="/transfer">Transfer Money</Link></li>
-          <li><Link to="/logs">Transfer Logs</Link></li>
+      <div className="navigation__inner">
+        <Piggy className="logo" />
+        <ul>
+            <li><Link to="/">Dashboard</Link></li>
+            <li><Link to="/current">Current Account</Link></li>
+            <li><Link to="/savings">Savings Account</Link></li>
+            <li><Link to="/transfer">Transfer Money</Link></li>
+            <li><Link to="/logs">Transfer Logs</Link></li>
 
-      </ul>
-      <div className="navigation__button" onClick={() => activeNavMobile()}>
-        <Cross />
+        </ul>
+        <div className="navigation__button" onClick={() => activeNavMobile()}>
+          <Cross />
+        </div>
+        <UserProfileWidget />
       </div>
-      <UserProfileWidget />
     </div>
   )
 }

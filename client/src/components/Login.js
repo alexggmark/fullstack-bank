@@ -35,7 +35,7 @@ const Login = (props) => {
 
   return (
     <div className="login">
-      <LoaderComponent mini login loading={props.loginLoading}>
+      <LoaderComponent login loading={props.loginLoading}>
         <input type="text" placeholder="Username" onChange={(event) => handleInput(event, 'u')} />
         <input type="text" placeholder="Password" onChange={(event) => handleInput(event, 'p')} />
         <button className="button-black" onClick={() => loginMethod()}>Login</button>
