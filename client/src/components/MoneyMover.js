@@ -71,7 +71,7 @@ const MoneyMover = (props) => {
         <h1>Money mover</h1>
         <div className="input-form__form-container">
           <LoaderComponent
-            mininomargin
+            mininomargin={!props.embedded ? true : false}
             loading={
               props.populateCurrentLoading ||
               props.populateSavingsLoading ||
