@@ -22,10 +22,11 @@ const TestDash = (props) => {
           props.moneyStore !== null ? (
             <D3Chart
               data={[
-                { value: props.activeSavingsAccount },
-                { value: props.activeCurrentAccount },
-                { value: props.moneyStore }
+                { key: 'Savings', value: props.activeSavingsAccount },
+                { key: 'Current', value: props.activeCurrentAccount },
+                { key: 'Store', value: props.moneyStore }
               ]}
+              annotated
               inner={90}
               outer={150}
               height={350}
