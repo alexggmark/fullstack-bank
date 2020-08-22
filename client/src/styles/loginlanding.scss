@@ -33,12 +33,14 @@
   }
 
   &__content {
-    background-color: $color-background-light;
-    display: flex;
     align-items: center;
+    background-color: $color-background-light;
+    box-sizing: border-box;
+    display: flex;
+    flex-flow: column;
     height: 50%;
     justify-content: center;
-    flex-flow: column;
+    padding: 0 1rem;
     width: 100%;
 
     input {
