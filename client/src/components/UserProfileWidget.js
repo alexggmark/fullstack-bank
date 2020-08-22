@@ -9,21 +9,23 @@ const UserProfileWidget = (props) => {
     <div className="profile-widget">
       {/* <h3>Hello {props.firstName},</h3> */}
       <p>Hello {props.firstName},</p>
-      {props.activeCurrentAccount !== null &&
-        props.activeSavingsAccount !== null &&
-        props.moneyStore !== null ? (
-          <D3Chart
-            data={[
-              { value: props.activeSavingsAccount },
-              { value: props.activeCurrentAccount },
-              { value: props.moneyStore }
-            ]}
-            inner={60}
-            outer={100}
-            height={220}
-            width={220}
-          />
-        ) : ''}
+      <div className="profile-widget__container">
+        {props.activeCurrentAccount !== null &&
+          props.activeSavingsAccount !== null &&
+          props.moneyStore !== null ? (
+            <D3Chart
+              data={[
+                { value: props.activeSavingsAccount },
+                { value: props.activeCurrentAccount },
+                { value: props.moneyStore }
+              ]}
+              inner={60}
+              outer={100}
+              height={220}
+              width={220}
+            />
+          ) : ''}
+        </div>
       <Logout />
     </div>
   )
