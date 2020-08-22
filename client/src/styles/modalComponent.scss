@@ -40,7 +40,7 @@
     display: flex;
     height: 30px;
     justify-content: center;
-    left: 100%;
+    left: calc(100% - 30px);
     position: absolute;
     top: 0;
     transition: background-color 0.1s ease;
@@ -59,6 +59,12 @@
       svg {
         transform: rotate(45deg);
       }
+    }
+  }
+
+  @media screen and (min-width: $breakpoint-md) {
+    &__button {
+      left: 100%;
     }
   }
 }
