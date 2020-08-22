@@ -46,11 +46,6 @@ const Loggedin = (props) => {
                     <TransLogs />
                   </div>
                 </Route>
-                <Route path="/logs">
-                  <div className="loggedin__main-inner">
-                    <TransLogs />
-                  </div>
-                </Route>
                 <Route path="/">
                   <div className="loggedin__main-inner">
                     <TestDash />

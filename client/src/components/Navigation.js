@@ -26,7 +26,6 @@ const Navigation = () => {
             <li><Link to="/current">Current Account</Link></li>
             <li><Link to="/savings">Savings Account</Link></li>
             <li><Link to="/transfer">Transfer Money</Link></li>
-            <li><Link to="/logs">Transfer Logs</Link></li>
 
         </ul>
         <div className="navigation__button" onClick={() => activeNavMobile()}>

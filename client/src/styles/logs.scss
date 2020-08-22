@@ -4,6 +4,8 @@
 .logs {
   display: flex;
   flex-wrap: wrap;
+  justify-content: flex-end;
+  padding-bottom: 1rem;
 
   &__tile {
     @extend .shadow-md;

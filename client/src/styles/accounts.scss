@@ -45,7 +45,12 @@
     justify-content: space-between;
     margin: 0.5rem 0;
     width: 100%;
+
+    &--spacer-sm {
+      display: none;
+    }
   }
+
 
   @media screen and (min-width: $breakpoint-md) {
     &__tile {
@@ -55,6 +60,10 @@
     &__block {
       margin: 1rem 0;
       width: 50%;
+
+      &--spacer-sm {
+        display: block;
+      }
 
       button {
         margin-right: 1rem;
@@ -69,7 +78,11 @@
 
     &__block {
       margin: 1rem 0;
-      width: 25%;
+      width: calc(100% / 3);
+
+      &--spacer-sm {
+        display: none;
+      }
     }
   }
 }

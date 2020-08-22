@@ -60,9 +60,7 @@ const CurrentAccount = (props) => {
                     <h3>Created on</h3>
                     <span className="text-sub-info">{formatDate(item.createdAt)}</span>
                   </div>
-                  <div className="account__block">
-                    <h3>Recent transaction</h3>
-                  </div>
+                  <div className="account__block account__block--spacer-sm" />
                   <div className="account__block">
                     <button className="button-dark" onClick={() => handleTransfer(item._id)}>Transfer</button>
                   </div>
