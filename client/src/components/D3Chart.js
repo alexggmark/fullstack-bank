@@ -68,9 +68,6 @@ const D3Chart = props => {
         })
 
         if (props.annotated) {
-          console.log('ANNOT')
-          const lineGenerator = d3.line()
-
           const background = groupWithUpdate
             .append('rect')
             .merge(groupWithData.select('rect'))
@@ -78,10 +75,6 @@ const D3Chart = props => {
           const label = groupWithUpdate
             .append('text')
             .merge(groupWithData.select('text'))
-
-          const polyline = groupWithUpdate
-            .append('path')
-            .merge(groupWithData.select('path'))
 
           label
             .attr('text-anchor', 'middle')
@@ -93,15 +86,11 @@ const D3Chart = props => {
             })
             .attr('transform', (d) => {
               console.log(createArc.centroid(d))
-              const xAxis = createArc.centroid(d)[0] > 0 ?
-                createArc.centroid(d)[0] + 30 :
-                createArc.centroid(d)[0] - 26
-              return `translate(${[xAxis, createArc.centroid(d)[1] - 50]})`
+              return `translate(${[createArc.centroid(d)[0], createArc.centroid(d)[1] - 20]})`
             })
 
           background
             .style('fill', '#06121d')
-            .style('border-radius', '5px')
             .style('width', (d) => {
               const matchLabel = label._groups[0][d.index].getBBox()
               return matchLabel.width + 5
@@ -112,36 +101,14 @@ const D3Chart = props => {
             })
             .attr('transform', (d) => {
               const matchLabel = label._groups[0][d.index].getBBox()
-              const xAxis = createArc.centroid(d)[0] > 0 ?
-                createArc.centroid(d)[0] - (matchLabel.width / 2) + 27.5 :
-                createArc.centroid(d)[0] - (matchLabel.width / 2) - 27.5
               return `
                 translate(
                   ${[
-                    xAxis,
-                    createArc.centroid(d)[1] - (matchLabel.height / 2) - 52.5
+                    createArc.centroid(d)[0] - (matchLabel.width / 2) - 2.5,
+                    createArc.centroid(d)[1] - (matchLabel.height / 2) - 23.5
                   ]})
               `
             })
-
-            polyline
-              .style('stroke', '#06121d')
-              .style('fill', 'none')
-              .attr('d', (d) => {
-                const xAxis = createArc.centroid(d)[0] > 0 ?
-                  createArc.centroid(d)[0] + 30 :
-                  createArc.centroid(d)[0] - 30
-                const xStart = createArc.centroid(d)[0] > 0 ?
-                  createArc.centroid(d)[0] + 10 :
-                  createArc.centroid(d)[0] - 15
-                const pathData = lineGenerator([
-                  [xStart, createArc.centroid(d)[1] - 15],
-                  [xAxis, createArc.centroid(d)[1] - 45]
-                ])
-                console.log(pathData)
-                return pathData
-              })
-
         }
 
       cache.current = props.data
