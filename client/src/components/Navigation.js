@@ -22,13 +22,12 @@ const Navigation = () => {
       <div className="navigation__inner">
         <Piggy className="logo" />
         <ul>
-            <li><Link to="/">Dashboard</Link></li>
-            <li><Link to="/current">Current Account</Link></li>
-            <li><Link to="/savings">Savings Account</Link></li>
-            <li><Link to="/transfer">Transfer Money</Link></li>
-
+            <li><Link to="/" onClick={activeNavMobile}>Dashboard</Link></li>
+            <li><Link to="/current" onClick={activeNavMobile}>Current Account</Link></li>
+            <li><Link to="/savings" onClick={activeNavMobile}>Savings Account</Link></li>
+            <li><Link to="/transfer" onClick={activeNavMobile}>Transfer Money</Link></li>
         </ul>
-        <div className="navigation__button" onClick={() => activeNavMobile()}>
+        <div className="navigation__button" onClick={activeNavMobile}>
           <Cross />
         </div>
         <UserProfileWidget />
