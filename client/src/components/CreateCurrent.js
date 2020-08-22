@@ -35,7 +35,11 @@ const CreateCurrent = (props) => {
           <button className="button-cta" onClick={() => createCurrentAccount()}>Submit</button>
         </div>
         <div className="input-form__loader-switch">
-          <LoaderSwitch loading={props.createLoading} success={props.createSuccess} failure={props.createFailure} />
+          <LoaderSwitch
+            loading={props.createLoading}
+            success={props.createSuccess}
+            failure={props.createFailure}
+          />
         </div>
       </div>
     </div>

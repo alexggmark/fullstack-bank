@@ -24,7 +24,7 @@ const TransLogs = (props) => {
       loading={props.populateTranslogLoading}
     >
       <div className="logs">
-        <h1 className="leading">Transaction Logs</h1>
+        <h1>Transfer Logs</h1>
         <LoaderComponent mini loading={props.updatingTranslogLoading}></LoaderComponent>
         <TransitionGroup
           className="trans"
